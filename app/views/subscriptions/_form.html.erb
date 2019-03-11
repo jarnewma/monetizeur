@@ -1,0 +1,22 @@
+
+<div class="container">
+<%= simple_form_for(@subscription) do |f| %>
+  <%= f.error_notification %>
+
+  <div class = "form-group">
+    <%= f.input :name, placeholder: 'Name of the service provider you subscribed to' %>
+    <%= f.input :subscription_type %>
+    <%= f.input :cost %>
+    <%= f.input :creation_date %>
+    <%= f.input :category %>
+    <%= f.input :renewal_notification %>
+    <%= f.input :notification_date %>
+    <%= f.input :payment_method_id %>
+  </div>
+
+  <div clas = "form-action">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<% end %>
