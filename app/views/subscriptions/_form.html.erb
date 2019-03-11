@@ -4,14 +4,14 @@
   <%= f.error_notification %>
 
   <div class = "form-group">
-    <%= f.input :name, placeholder: 'Name of the service provider you subscribed to' %>
+    <%= f.input :name, placeholder: 'Please enter your service provider' %>
     <%= f.input :subscription_type %>
-    <%= f.input :cost %>
+    <%= f.input :cost, placeholder: 'Cost' %>
     <%= f.input :creation_date %>
-    <%= f.input :category %>
+    <%= f.input :category, placeholder: 'Please nter your subscription type' %>
     <%= f.input :renewal_notification %>
     <%= f.input :notification_date %>
-    <%= f.input :payment_method_id %>
+    <%= f.input :payment_method_id, placeholder: 'Please select your payment method' %>
   </div>
 
   <div clas = "form-action">
