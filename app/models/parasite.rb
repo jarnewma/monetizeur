@@ -1,0 +1,2 @@
+class Parasite < ApplicationRecord
+end

@@ -10,9 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_03_11_142316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "parasites", force: :cascade do |t|
+    t.string "name"
+    t.string "parasite_email"
+    t.boolean "notify_parasite"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_parasites_on_user_id"
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "type"
+    t.string "card_nickname"
+    t.string "bank"
+    t.date "expiry_date"
+    t.boolean "expiry_notification"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscription_parasites", force: :cascade do |t|
+    t.bigint "parasite_id"
+    t.bigint "subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parasite_id"], name: "index_subscription_parasites_on_parasite_id"
+    t.index ["subscription_id"], name: "index_subscription_parasites_on_subscription_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "name"
+    t.date "subscription_type"
+    t.integer "cost"
+    t.date "creation_date"
+    t.string "category"
+    t.boolean "renewal_notification"
+    t.date "notification_date"
+    t.bigint "payment_method_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_method_id"], name: "index_subscriptions_on_payment_method_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "dob"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "subscription_parasites", "parasites"
+  add_foreign_key "subscription_parasites", "subscriptions"
+  add_foreign_key "subscriptions", "payment_methods"
 end
