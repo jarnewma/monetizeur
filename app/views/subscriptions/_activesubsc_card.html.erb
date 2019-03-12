@@ -1,0 +1,19 @@
+<div class="card-product">
+  <% subscriptions.each do |subscription| %>
+  <div class="card-product-infos image">
+    <%= image_tag "netflix.png", alt: "netflix" %>
+  </div>
+  <div class="card-product-infos">
+    <p class="upcase name"><%= subscription.name %></p>
+    <p class="price"><%= subscription.cost %>€</p>
+    <p class="extra-info"><%= subscription.cost %> (<%= subscription.subscription_type%>)</p>
+  </div>
+  <div class="card-product-infos" id="second">
+    <p class="price"> <%= subscription.cost %>€</p>
+    <p class="extra-info"><%= subscription.creation_date %></p>
+  </div>
+  <div class="card-product-infos" id="last">
+    <p class="price"> Options</p>
+    <p class="extra-info"><%= subscription.payment_method_id %></p>
+  </div>
+</div>
