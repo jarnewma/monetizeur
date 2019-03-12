@@ -1,0 +1,20 @@
+<h2> <%= @payment_method.card_nickname %> </h2>
+
+<p> <%= @payment_method.category  %></p>
+<p> <%= @payment_method.bank  %></p>
+<p> <%= @payment_method.expiry_date  %></p>
+<p> <% if @payment_method.expiry_notification == true  %>
+  You will be notified via email before your card expires. We will inform you of all subscriptions this may impact.
+  <% else %>
+  You chose not to be notified via email before your card expires.
+  <% end %>
+</p>
+
+<div>
+<% if @subscriptions.count == 0 %>
+<h1> You don't have any subscriptions linked to this card</h1>
+ <% else %>
+<h2> The subscriptions linked to this card are:</h2>
+<p> <% @subscriptions  %></p>
+<% end %>
+</div>
