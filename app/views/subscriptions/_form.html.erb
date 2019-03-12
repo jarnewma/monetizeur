@@ -11,7 +11,7 @@
     <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["Health & Wellness", "Streaming", "Sports & Leisure", "Other"] %>
     <%= f.input :renewal_notification %>
     <%= f.input :notification_date, placeholder: 'Please choose a date to receive a reminder', as: :string, input_html: { class: "datepicker-here" } %>
-    <%= f.input :payment_method_id, placeholder: 'Please select your payment method' %>
+    <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
   </div>
 
   <div class = "form-action">

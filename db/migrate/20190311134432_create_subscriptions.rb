@@ -2,7 +2,7 @@ class CreateSubscriptions < ActiveRecord::Migration[5.2]
   def change
     create_table :subscriptions do |t|
       t.string :name
-      t.date :subscription_type
+      t.string :subscription_type
       t.integer :cost
       t.date :creation_date
       t.string :category

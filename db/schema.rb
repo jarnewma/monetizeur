@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_03_12_140610) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,13 +27,15 @@ ActiveRecord::Schema.define(version: 2019_03_12_140610) do
   end
 
   create_table "payment_methods", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.string "card_nickname"
     t.string "bank"
     t.date "expiry_date"
     t.boolean "expiry_notification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_payment_methods_on_user_id"
   end
 
   create_table "subscription_parasites", force: :cascade do |t|
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_140610) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "name"
-    t.date "subscription_type"
+    t.string "subscription_type"
     t.integer "cost"
     t.date "creation_date"
     t.string "category"
@@ -56,7 +59,9 @@ ActiveRecord::Schema.define(version: 2019_03_12_140610) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "billing_date"
+    t.bigint "user_id"
     t.index ["payment_method_id"], name: "index_subscriptions_on_payment_method_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -77,4 +82,5 @@ ActiveRecord::Schema.define(version: 2019_03_12_140610) do
   add_foreign_key "subscription_parasites", "parasites"
   add_foreign_key "subscription_parasites", "subscriptions"
   add_foreign_key "subscriptions", "payment_methods"
+  add_foreign_key "subscriptions", "users"
 end
