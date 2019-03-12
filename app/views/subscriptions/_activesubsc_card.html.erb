@@ -1,0 +1,19 @@
+<div class="card-product">
+  <% subscriptions.each do |subscription| %>
+  <div class="card-product-infos image">
+    <%= image_tag "netflix.png", alt: "netflix" %>
+  </div>
+  <div class="card-product-infos">
+    <p class="upcase name"> <%= subscription.name%></p>
+    <p class="price"> 7,55€</p>
+    <p class="extra-info">May 30 (Monthly)</p>
+  </div>
+  <div class="card-product-infos" id="second">
+    <p class="price"> 122€</p>
+    <p class="extra-info">Total since 02/04/2019</p>
+  </div>
+  <div class="card-product-infos" id="last">
+    <p class="price"> Options</p>
+    <p class="extra-info">Card nickname</p>
+  </div>
+</div>
