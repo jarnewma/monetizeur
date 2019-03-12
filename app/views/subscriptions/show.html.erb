@@ -7,7 +7,7 @@
 
 <p> Your subscription started on <%= @subscription.creation_date %> </p>
 
-<p> Since your subscription started you spend XXX EUR on <%= @subscription.name %> </p>
+<p> Since your subscription started you spend <%= @subscription.lifelong_cost %>  EUR on <%= @subscription.name %> </p>
 
 <div>
 <% if @subscription.renewal_notification == true %>
