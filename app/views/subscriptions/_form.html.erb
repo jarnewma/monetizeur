@@ -6,7 +6,7 @@
   <div class = "form-group">
     <%= f.input :name, placeholder: 'Please enter your service provider' %>
     <%= f.input :subscription_type, collection: ["Monthly", "Biannually", "Annually"] %>
-    <%= f.input :cost, placeholder: 'Please enter your subscription amount' %>
+    <%= f.input :cost, placeholder: 'Please enter your subscription amount', float: 'any' %>
     <%= f.input :creation_date, placeholder: 'Please choose your subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
     <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["Health & Wellness", "Streaming", "Sports & Leisure", "Other"] %>
     <%= f.input :renewal_notification %>
