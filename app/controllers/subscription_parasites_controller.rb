@@ -1,0 +1,2 @@
+class SubscriptionParasitesController < ApplicationController
+end

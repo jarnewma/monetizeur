@@ -16,4 +16,23 @@
 <h2> You chose not to have a subscription renewal notification</h2>
 <% end %>
 
+
+<p> current parasites  = </p>
+<ul>
+<% @subscription.parasites.each do |para| %>
+
+<li> <%=  para.name %></li>
+<% end %>
+</ul>
+
 <p> please help me make it pretttttyyyyy </p>
+
+<p> Friends & family who use my subscription:</p>
+
+<%= link_to "add friend" , new_parasite_path(subscription_id: @subscription) %>
+
+
+<%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
+    <%= f.association :parasites  %>
+    <%= f.submit %>
+<% end %>

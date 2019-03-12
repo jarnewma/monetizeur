@@ -21,9 +21,18 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-    def edit          # GET /payment_methods/:id/edit
-      @subscribtion = Subscription.find(params[:id])
+  def edit          # GET /payment_methods/:id/edit
+    @subscribtion = Subscription.find(params[:id])
+  end
+
+  def add_parasite
+          @subscription = Subscription.find(params[:id])
+    params[:subscription][:parasite_ids].each do |para|
+      @subscription.parasites << Parasite.find(para) unless para.blank?
     end
+    @subscription.save
+    redirect_to @subscription
+  end
 
 
   def destroy       # DELETE /payment_methods/:id
