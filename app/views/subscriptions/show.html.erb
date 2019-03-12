@@ -1,2 +1,19 @@
 <h2> <%= @subscription.name %> </h2>
 
+<p> you spend <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> manner </p>
+
+<p> your <%= @subscription.name %> subscription is part of our  <%= @subscription.category %> category
+  See planning your analysis tab to see how much you spend in this category this month.</p>
+
+<p> Your subscription started on <%= @subscription.creation_date %> </p>
+
+<p> Since your subscription started you spend <%= @subscription.lifelong_cost %>  EUR on <%= @subscription.name %> </p>
+
+<div>
+<% if @subscription.renewal_notification == true %>
+<h1> We will notify you on the <%= @subscription.notification_date %> about your subscription renewal </h1>
+ <% else %>
+<h2> You chose not to have a subscription renewal notification</h2>
+<% end %>
+
+<p> please help me make it pretttttyyyyy </p>
