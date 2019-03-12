@@ -11,7 +11,7 @@
     <%= f.input :category, placeholder: 'Please nter your subscription type' %>
     <%= f.input :renewal_notification %>
     <%= f.input :notification_date %>
-    <%= f.input :payment_method_id, placeholder: 'Please select your payment method' %>
+    <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
   </div>
 
   <div clas = "form-action">

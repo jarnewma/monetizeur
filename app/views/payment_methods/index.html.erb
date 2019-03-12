@@ -1,0 +1,17 @@
+<div class="container">
+ <div class="row">
+   <% @payment_methods.each do |pm| %>
+     <div class="col-xs-12 col-sm-6 col-md-3 card" >
+       <%= image_tag "stock-card.png", width: '100%' %>
+       <div class="card-infos">
+         <div>
+           <p class="card-uppercase"><%= pm.category %> </p>
+           <h2><%= link_to pm.card_nickname, payment_method_path(pm) %></h2>
+           <p class="card-date"><%= pm.expiry_date %> </p>
+            <%= link_to "Delete card", payment_method_path(pm), method: :delete, class: "btn btn-warning btn-sm" %>
+         </div>
+       </div>
+     </div>
+   <% end %>
+ </div>
+</div>
