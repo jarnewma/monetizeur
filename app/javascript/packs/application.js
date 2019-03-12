@@ -1,7 +1,4 @@
 import "bootstrap";
-<<<<<<< HEAD
-
-=======
 import Pikaday from 'pikaday';
 
 
@@ -14,4 +11,3 @@ var picker = new Pikaday({ field: document.getElementById('subscription_creation
 
 }
  addDPickerSubs();
->>>>>>> master
