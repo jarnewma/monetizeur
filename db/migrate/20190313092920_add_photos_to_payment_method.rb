@@ -1,5 +1,5 @@
 class AddPhotosToPaymentMethod < ActiveRecord::Migration[5.2]
   def change
-    add_column :payment_method, :photos, :binary, :limit => 10.megabyte
+    add_column :payment_methods, :photo, :string
   end
 end
