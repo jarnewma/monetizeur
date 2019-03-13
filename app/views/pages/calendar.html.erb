@@ -1,5 +1,3 @@
-<div id='calendar'></div>
+<div id='calendar' data-subscriptions="<%= Subscription.all.to_json %>"></div>
 
-<script>
-  const marie = `<%= Subscription.all.as_json %>`
-</script>
+
