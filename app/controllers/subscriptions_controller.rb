@@ -34,6 +34,13 @@ class SubscriptionsController < ApplicationController
     redirect_to @subscription
   end
 
+  def update_notification
+    @subscription = Subscription.find(params[:subscription_id])
+    @subscription.renewal_notification = !@subscription.renewal_notification
+    @subscription.save
+    redirect_to subscriptions_path
+  end
+
 
   def destroy       # DELETE /payment_methods/:id
     @subscription = Subscription.find(params[:id])
@@ -43,6 +50,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id)
+    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id)
   end
 end

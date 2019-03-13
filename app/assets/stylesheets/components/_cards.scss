@@ -24,7 +24,7 @@
 
 .card-product p {
   line-height: 1.4;
-  opacity: .7;
+  opacity: .9;
   margin-bottom: 0;
   margin-top: 8px;
 }
@@ -52,6 +52,10 @@
   color: #757575;
   font-size: 13px;
 }
+
+#first{
+  padding-left: 40px;
+}
 #second {
 
 }
@@ -73,14 +77,65 @@
 #category{
 
 }
-#notification{
-  height: 35px;
-  width: 35px;
+.notification{
+  height: 50px;
+  // width: 35px;
   position: absolute;
-  right: 25px;
+  right: 15px;
+  z-index: 2;
+  cursor: pointer;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.bell {
+  height: 100%;
+}
+
+.category{
+    height: 100%;
+    width: 20px;
+    background-color: red;
+    transition: .4s ease;
+    position: relative;
+    // display: none;
+  &:hover {
+    width: 100px;
+    transition: .4s ease;
+  }
+}
+#wrapper .vertical {
+opacity:0;
+position: absolute;
+color: white;
+-webkit-transform: rotate(270deg);
+transition: .1s ease;
+width: 10px;
+height: 120px;
+top: 0px;
+left: 6px;
+display:flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+
+#wrapper:hover .vertical {
+// visibility:visible;
+// color: white;
+opacity: .9;
+transition: .4s ease;
+// font-size: 15px;
 }
 
 
+@media all and (max-width: 500px) {
+  .card-product {
+    flex-direction: column;
+    height: 100%;
+  }
+}
 
 
 
