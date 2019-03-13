@@ -1,32 +1,4 @@
 <div class="card-product">
-  <div class="card-image">
-    <%= image_tag "netflix.png", alt: "netflix" %>
-  </div>
-  <div class="card-product-infos" id="first">
-    <p class="upcase name">Netflix</p>
-    <p class="price">7,50€</p>
-    <p class="extra-info">30th March (Monthly)</p>
-  </div>
-  <div class="card-product-infos" id="second">
-    <p class="extra-info">payed with <strong>Mastercard</strong></p>
-    <p class="price"> 120€</p>
-    <p class="extra-info">Total since 30/02/18</p>
-  </div>
-  <div class="card-product-infos" id="last">
-    <%= image_tag "notification-off.png", alt: "bell", class: "notification", id:"notification-off" %>
-    <div class="card-type dropdown">
-      <p class="card-type dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</p>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Edit", "#", class: "dropdown-item" %>
-          <%= link_to "Remove", "#", class: "dropdown-item" %>
-        </div>
-      </p>
-    </div>
-    <p class="card-type" id="category">Category</p>
-  </div>
-</div>
-
-<div class="card-product">
   <% @subscriptions.each do |subscription| %>
   <div class="category" id="wrapper"><p class="vertical"><%= subscription.category %></p></div>
   <div class="card-image">
@@ -86,3 +58,7 @@
     }
 })
 </script>
+
+
+
+
