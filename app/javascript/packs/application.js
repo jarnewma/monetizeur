@@ -4,7 +4,7 @@ import 'fullcalendar';
 import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
 
-require('./my_calendar')
+require('./my_calendar');
 
 function addDPickerSubs(){
 
