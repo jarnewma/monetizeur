@@ -8,7 +8,10 @@
            <p class="card-uppercase"><%= pm.category %> </p>
            <h2><%= link_to pm.card_nickname, payment_method_path(pm) %></h2>
            <p class="card-date"><%= pm.expiry_date %> </p>
-            <%= link_to "Delete card", payment_method_path(pm), method: :delete, class: "btn btn-warning btn-sm" %>
+            <%= link_to payment_method_path(pm), method: :delete  do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+
          </div>
        </div>
      </div>

@@ -4,14 +4,17 @@
   <%= f.error_notification %>
 
   <div class = "form-group">
-    <%= f.input :category, placeholder: 'Visa, Mastercard, Amex, Paypal - should be dropdown' %>
-    <%= f.input :card_nickname, placeholder: 'how do youw ant to remeber your payment method' %>
-    <%= f.input :bank, placeholder: 'name of your bank' %>
+    <%= f.input :category, placeholder: 'Please select your card type', collection: ['Visa', 'Mastercard', 'Amex', 'Paypal'] %>
+    <%= f.input :card_nickname, placeholder: 'Please label your ' %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :bank, placeholder: 'Please add your bank' %>
     <%= f.input :expiry_date, start_year: Date.today.year, end_year: Date.today.year+10%>
     <%= f.input :expiry_notification %>
     <p> We will send you an email before the expiry date as a reminder and to let you know which subscriptions would be affected </p>
 
-  <div clas = "form-action">
+
+  <div class = "form-action">
     <%= f.button :submit, class: 'btn btn-primary' %>
   </div>
 </div>

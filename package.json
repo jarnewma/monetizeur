@@ -5,7 +5,9 @@
     "@rails/webpacker": "^4.0.2",
     "air-datepicker": "^2.2.3",
     "bootstrap": "^4.3.1",
+    "fullcalendar": "^3.10.0",
     "jquery": "^3.3.1",
+    "moment": "^2.24.0",
     "pikaday": "^1.8.0",
     "popper.js": "^1.14.7"
   },

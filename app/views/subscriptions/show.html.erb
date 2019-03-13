@@ -1,6 +1,6 @@
 <h2> <%= @subscription.name %> </h2>
 
-<p> you spend <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> manner </p>
+<p> you spend <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> basis </p>
 
 <p> your <%= @subscription.name %> subscription is part of our  <%= @subscription.category %> category
   See planning your analysis tab to see how much you spend in this category this month.</p>
@@ -38,3 +38,6 @@
 <% end %>
 
 <p> have to add delete parasites </p>
+
+<%= @subscription.payment_method.card_nickname %>
+<p> button to edit card </p>

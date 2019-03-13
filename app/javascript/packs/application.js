@@ -1,6 +1,9 @@
 import "bootstrap";
+import 'fullcalendar';
 import Pikaday from 'pikaday';
+import selectNotificationDate from './form_subscription';
 
+require('./my_calendar')
 
 function addDPickerSubs(){
 
@@ -11,4 +14,9 @@ var picker = new Pikaday({ field: document.getElementById('subscription_billing_
 
 }
  addDPickerSubs();
+
+const subscriptionForm = document.querySelector('#new_subscription')
+if (subscriptionForm) {
+ selectNotificationDate()
+}
 

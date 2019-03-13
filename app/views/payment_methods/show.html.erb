@@ -10,6 +10,12 @@
   <% end %>
 </p>
 
+<% if @payment_method.photo? %>
+  <%= cl_image_tag @payment_method.photo, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= image_tag "stock-card.png", height: 300, width: 400 %>
+<% end %>
+
 <div>
 <% if @subscriptions.count == 0 %>
 <h1> You don't have any subscriptions linked to this card</h1>
