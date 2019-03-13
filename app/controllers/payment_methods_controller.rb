@@ -33,7 +33,7 @@ class PaymentMethodsController < ApplicationController
   def payment_method_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
-    params.require(:payment_method).permit(:category, :card_nickname, :bank, :expiry_date, :expiry_notification)
+    params.require(:payment_method).permit(:category, :card_nickname, :bank, :expiry_date, :expiry_notification, :photo)
   end
 
 end
