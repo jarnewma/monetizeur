@@ -7,7 +7,8 @@ function addDPickerSubs(){
 var picker = new Pikaday({ field: document.getElementById('subscription_creation_date') });
 var picker = new Pikaday({ field: document.getElementById('subscription_notification_date') });
 var picker = new Pikaday({ field: document.getElementById('subscription_creation_date') });
-
+var picker = new Pikaday({ field: document.getElementById('subscription_billing_date') });
 
 }
  addDPickerSubs();
+

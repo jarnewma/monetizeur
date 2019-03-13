@@ -5,10 +5,13 @@
 
   <div class = "form-group">
     <%= f.input :name, placeholder: 'Please enter your service provider' %>
-    <%= f.input :subscription_type, collection: ["Monthly", "Biannually", "Annually"] %>
-    <%= f.input :cost, placeholder: 'Please enter your subscription amount' %>
+    <%= f.input :subscription_type, collection: ["Monthly", "Quarterly", "Biannually", "Annually"] %>
+    <%= f.input :billing_date, placeholder: 'Please add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
+
+    <%= f.input :cost, placeholder: 'Please enter your subscription amount', float: 'any' %>
+
     <%= f.input :creation_date, placeholder: 'Please choose your subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
-    <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["Health & Wellness", "Streaming", "Sports & Leisure", "Other"] %>
+    <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["News & Media", "Health & Wellness", "Streaming", "Sports & Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
     <%= f.input :renewal_notification %>
     <%= f.input :notification_date, placeholder: 'Please choose a date to receive a reminder', as: :string, input_html: { class: "datepicker-here" } %>
     <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
