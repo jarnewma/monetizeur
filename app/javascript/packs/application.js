@@ -1,6 +1,7 @@
 import "bootstrap";
 
 import Pikaday from 'pikaday';
+import selectNotificationDate from './form_subscription';
 
 
 function addDPickerSubs(){
@@ -12,4 +13,9 @@ var picker = new Pikaday({ field: document.getElementById('subscription_billing_
 
 }
  addDPickerSubs();
+
+const subscriptionForm = document.querySelector('#new_subscription')
+if (subscriptionForm) {
+ selectNotificationDate()
+}
 
