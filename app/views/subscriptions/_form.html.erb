@@ -6,6 +6,7 @@
   <%= simple_form_for(@subscription) do |f| %>
     <%= f.error_notification %>
 
+
       <%= f.input :name, label: 'Name of your service provider/Subscription',placeholder: 'Please enter your service provider: Netflix, Spotify, etc.' %>
       <%= f.input :subscription_type, label: 'Billing frequency',collection: ["Monthly", "Quarterly", "Biannually", "Annually"], selected: "Monthly" %>
       <%= f.input :billing_date, placeholder: 'Please add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
