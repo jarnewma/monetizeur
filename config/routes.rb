@@ -10,6 +10,6 @@ Rails.application.routes.draw do
         patch 'add_parasite', as: 'add_parasite'
       end
   end
-  resources :parasites, only: [ :new, :create, :delete ]
+  resources :parasites, only: [ :new, :create, :delete, :index, :show]
   resources :payment_methods
 end
