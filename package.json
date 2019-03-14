@@ -9,7 +9,8 @@
     "jquery": "^3.3.1",
     "moment": "^2.24.0",
     "pikaday": "^1.8.0",
-    "popper.js": "^1.14.7"
+    "popper.js": "^1.14.7",
+    "rrule": "^2.6.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.2.1"
