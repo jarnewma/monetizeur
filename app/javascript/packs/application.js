@@ -4,8 +4,6 @@ import 'fullcalendar';
 import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
 
-require('./my_calendar')
-
 function addDPickerSubs(){
 
 var picker = new Pikaday({ field: document.getElementById('subscription_creation_date') });
@@ -21,3 +19,16 @@ if (subscriptionForm) {
  selectNotificationDate()
 }
 
+function getEventNotif(){
+  document.getElementById('subscription_renewal_notification').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('notif').classList.toggle('hidden')
+    document.getElementById('subscription_notification_date').click();
+
+  })
+
+}
+if( document.getElementById('subscription_renewal_notification')){
+
+  getEventNotif();
+}

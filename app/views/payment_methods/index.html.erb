@@ -2,13 +2,14 @@
  <div class="row">
    <% @payment_methods.each do |pm| %>
      <div class="col-xs-12 col-sm-6 col-md-3 card" >
-       <%= image_tag "stock-card.png", width: '100%' %>
+       <%= cl_image_tag pm.photo, width: '100%' %>
        <div class="card-infos">
          <div>
            <p class="card-uppercase"><%= pm.category %> </p>
            <h2><%= link_to pm.card_nickname, payment_method_path(pm) %></h2>
            <p class="card-date"><%= pm.expiry_date %> </p>
             <%= link_to payment_method_path(pm), method: :delete  do %>
+
             <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
 
