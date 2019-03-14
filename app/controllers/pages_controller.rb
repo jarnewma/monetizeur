@@ -7,10 +7,11 @@ class PagesController < ApplicationController
     @one_year_events = []
     @subscriptions.each do |event|
       if event.billing_date
-        i = 1
-        11.times do
+        i = 0
+        12.times do
           fake_event = event.dup
           fake_event.billing_date = event.billing_date + i.months
+          fake_event.id = event.id
           @one_year_events << fake_event.to_json
           i += 1
         end
