@@ -90,11 +90,36 @@ class Subscription < ApplicationRecord
       cost = self.cost
       date_pay = self.creation_date
 
-      while date_pay < Date.today
-          date_pay = date_pay + 12.months
-          cost += self.cost
-      end
-      return cost
+
+    while date_pay < Date.today
+      date_pay = date_pay + 12.months
+      cost += self.cost
+    end
+    return cost
   end
+
 end
 
+  def category_color
+    if self.category == "News & Media"
+      'red'
+    elsif self.category == "Health & Wellness"
+      'green'
+    elsif self.category == "Streaming"
+      'lightblue'
+    elsif self.category == "Sports & Leisure"
+      'darkblue'
+    elsif self.category == "Social"
+      'orange'
+    elsif self.category == "Shopping"
+      'pink'
+    elsif self.category == "Food"
+      'yellow'
+    elsif self.category == "Technology"
+      'gray'
+    elsif self.category == "Other"
+      'purple'
+    end
+  end
+
+end
