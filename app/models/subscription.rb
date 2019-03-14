@@ -98,7 +98,6 @@ class Subscription < ApplicationRecord
     return cost
   end
 
-end
 
   def category_color
     if self.category == "News & Media"
@@ -121,5 +120,4 @@ end
       'purple'
     end
   end
-
 end
