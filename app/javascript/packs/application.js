@@ -1,5 +1,5 @@
 import "bootstrap";
-import 'fullcalendar';
+import 'fullcalendar'
 import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
 
