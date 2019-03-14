@@ -50,9 +50,46 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-  def calc_yearly
-    cost = self.cost
-    date_pay = self.creation_date
+  def notify_today
+    notify = false
+    value_date = notification_date
+
+    until value_date > Date.today
+        if self.subscription_type == "Monthly"
+          value_date = value_date + 1.month
+        elsif self.subscription_type == "Quaterly"
+           value_date = value_date + 3.months
+        elsif self.subscription_type == "Biannually"
+           value_date = value_date + 6.months
+        else self.subscription_type == "Annually"
+           value_date = value_date + 1.year
+       end
+        notify = true if value_date == Date.today
+    end
+    notify
+  end
+
+  def payment_date
+    payment_date = billing_date
+
+    until payment_date > Date.today
+        if self.subscription_type == "Monthly"
+          payment_date = payment_date + 1.month
+        elsif self.subscription_type == "Quaterly"
+           payment_date = payment_date + 3.months
+        elsif self.subscription_type == "Biannually"
+           payment_date = payment_date + 6.months
+        else self.subscription_type == "Annually"
+           payment_date = payment_date + 1.year
+       end
+        return payment_date
+    end
+  end
+
+    def calc_yearly
+      cost = self.cost
+      date_pay = self.creation_date
+
 
     while date_pay < Date.today
       date_pay = date_pay + 12.months
@@ -60,6 +97,8 @@ class Subscription < ApplicationRecord
     end
     return cost
   end
+
+end
 
   def category_color
     if self.category == "News & Media"
