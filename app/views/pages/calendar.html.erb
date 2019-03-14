@@ -1,6 +1,20 @@
-<div id="previous-month" class="btn btn-primary"><</div>
-<div id="next-month" class="btn btn-primary">></div>
+<div class="wrapper-calendar">
+  <div class="row">
+   <div class = " col-xs-12 col-md-6 offset-3">
+    <br>
+    <br>
 
-<div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
+    <div id="previous-month" class="btn btn-primary"><</div>
+    <div id="next-month" class="btn btn-primary">></div>
+    <br>
+    <br>
 
+    <div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
 
+    <div>
+      <%= render "./subscriptions/activesubsc_card" %>
+    </div>
+
+  </div>
+</div>
+</div>

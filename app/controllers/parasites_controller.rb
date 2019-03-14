@@ -1,4 +1,11 @@
 class ParasitesController < ApplicationController
+def index
+  @parasites = Parasite.all
+end
+
+def show
+  @parasite = Parasite.find(params[:id])
+end
 
   def new
     @parasite = Parasite.new

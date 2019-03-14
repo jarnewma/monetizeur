@@ -1,17 +1,23 @@
 <div class="container">
-<%= simple_form_for(@parasite) do |f| %>
-  <%= f.error_notification %>
+  <div class="row">
+    <div class = " col-xs-12 col-md-6 offset-3">
+      <%= simple_form_for(@parasite) do |f| %>
+      <%= f.error_notification %>
 
-  <div class = "form-group">
-    <%= f.input :name, placeholder: 'Name of your lucky friend' %>
-    <%= f.input :parasite_email, placeholder: 'friend@gmail.com' %>
-    <%= f.input :notify_parasite %>
-    <%= f.hidden_field :subscription_id, value: params[:subscription_id] %>
-       <p> We will send e friendly email to your friend at the billing date to inform him you paid his subscription & he/she owes you a beer </p>
+      <div class = "form-group">
+        <br>
+        <br>
+        <%= f.input :name, placeholder: 'Name of your lucky friend' %>
+        <%= f.input :parasite_email, placeholder: 'friend@gmail.com' %>
+        <%= f.input :notify_parasite %>
+        <%= f.hidden_field :subscription_id, value: params[:subscription_id] %>
+        <p> We will send e friendly email to your friend at the billing date to inform him you paid his subscription & he/she owes you a beer </p>
 
-  <div clas = "form-action">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+        <div clas = "form-action">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <% end %>
+    </div>
   </div>
-</div>
-
-<% end %>
