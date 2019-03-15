@@ -50,11 +50,11 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-  def notify_today
+  def notify_today?
     notify = false
     value_date = notification_date
 
-    until value_date > Date.today
+    until value_date >= Date.today
         if self.subscription_type == "Monthly"
           value_date = value_date + 1.month
         elsif self.subscription_type == "Quaterly"
@@ -64,26 +64,25 @@ class Subscription < ApplicationRecord
         else self.subscription_type == "Annually"
            value_date = value_date + 1.year
        end
-        notify = true if value_date == Date.today
     end
-    notify
+    value_date == Date.today
   end
 
   def payment_date
     payment_date = billing_date
 
     until payment_date > Date.today
-        if self.subscription_type == "Monthly"
-          payment_date = payment_date + 1.month
-        elsif self.subscription_type == "Quaterly"
-           payment_date = payment_date + 3.months
-        elsif self.subscription_type == "Biannually"
-           payment_date = payment_date + 6.months
-        else self.subscription_type == "Annually"
-           payment_date = payment_date + 1.year
-       end
-        return payment_date
+      if self.subscription_type == "Monthly"
+        payment_date = payment_date + 1.month
+      elsif self.subscription_type == "Quaterly"
+        payment_date = payment_date + 3.months
+      elsif self.subscription_type == "Biannually"
+        payment_date = payment_date + 6.months
+      else self.subscription_type == "Annually"
+        payment_date = payment_date + 1.year
+      end
     end
+    return payment_date
   end
 
     def calc_yearly
