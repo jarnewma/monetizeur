@@ -21,7 +21,7 @@
       <%= f.input :cost, label: 'Subscription cost', placeholder: 'Please enter your subscription amount', float: 'any' %>
       <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Please choose your subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
       <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["News & Media", "Health & Wellness", "Streaming", "Sports & Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
-      <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
+      <%= f.input :payment_method_id, collection: current_user.payment_methods, label_method: :card_nickname %>
     <div class = "form-action">
       <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
