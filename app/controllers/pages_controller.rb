@@ -19,4 +19,8 @@ class PagesController < ApplicationController
     end
     @one_year_events.to_json
   end
+
+  def my_profile
+    @users = current_user
+  end
 end
