@@ -11,16 +11,30 @@
 </p>
 
 <% if @payment_method.photo? %>
-  <%= cl_image_tag @payment_method.photo, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @payment_method.photo, height: 300, width: 400, crop: :fill %>
 <% else %>
-  <%= image_tag "stock-card.png", height: 300, width: 400 %>
+<%= image_tag "stock-card.png", height: 300, width: 400 %>
 <% end %>
 
 <div>
-<% if @subscriptions.count == 0 %>
-<h1> You don't have any subscriptions linked to this card</h1>
- <% else %>
-<h2> The subscriptions linked to this card are:</h2>
-<p> <% @subscriptions  %></p>
-<% end %>
+  <% if @subscriptions.count == 0 %>
+  <h1> You don't have any subscriptions linked to this card</h1>
+  <% else %>
+  <h2> The subscriptions linked to this card are:</h2>
+    <ul>
+      <% @subscriptions.each do |sub|  %></p>
+      <li>
+        <%= link_to sub.name, subscription_path %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
+
+  <div id="back" class="btn btn-primary">
+    <%= link_to "all my payment methods", payment_methods_path   %>
+  </div>
+
+  <div id="back" class="btn btn-primary">
+    <%= link_to "all my subscripions", subscriptions_path   %>
+  </div>

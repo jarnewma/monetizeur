@@ -1,22 +1,30 @@
 
 <div class="container">
-<%= simple_form_for(@payment_method) do |f| %>
-  <%= f.error_notification %>
+  <div class="row">
+    <div class = " col-xs-12 col-md-6 offset-3">
+      <br>
+      <br>
+      <%= simple_form_for(@payment_method) do |f| %>
+      <%= f.error_notification %>
 
-  <div class = "form-group">
-    <%= f.input :category, placeholder: 'Please select your card type', collection: ['Visa', 'Mastercard', 'Amex', 'Paypal'] %>
-    <%= f.input :card_nickname, placeholder: 'Please label your ' %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.input :bank, placeholder: 'Please add your bank' %>
-    <%= f.input :expiry_date, start_year: Date.today.year, end_year: Date.today.year+10%>
-    <%= f.input :expiry_notification %>
-    <p> We will send you an email before the expiry date as a reminder and to let you know which subscriptions would be affected </p>
+      <div class = "form-group">
+        <%= f.input :category, placeholder: 'Please select your card type', collection: ['Visa', 'Mastercard', 'Amex', 'Paypal'] %>
+        <%= f.input :card_nickname, placeholder: 'Please label your ' %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.input :bank, placeholder: 'Please add your bank' %>
+        <%= f.input :expiry_date, start_year: Date.today.year, end_year: Date.today.year+10%>
+        <%= f.input :expiry_notification %>
+        <p> We will send you an email before the expiry date as a reminder and to let you know which subscriptions would be affected </p>
 
 
-  <div class = "form-action">
-    <%= f.button :submit, class: 'btn btn-primary' %>
+        <div class = "form-action">
+          <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <% end %>
+
+    </div>
   </div>
 </div>
-
-<% end %>
