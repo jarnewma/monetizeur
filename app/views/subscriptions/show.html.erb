@@ -1,41 +1,42 @@
-<div class="main-container col-xs-12 col-md-6 col-md-offset-3">
-  <div class="image">
-    <%= image_tag "netflix.png", alt: "netflix", class:"logo" %>
-  </div>
-  <div class="square">
-    <h3 class="cost"><%= @subscription.cost %> EUR</h3>
-    <p>(<%= @subscription.subscription_type %>)</p>
-  </div>
-  <div class="field first">
-    <h4>Billing date</h4>
-    <p><%= @subscription.billing_date %></p>
-  </div>
-  <div class="field second">
-    <h4>Subscription started</h4>
-    <p><%= @subscription.creation_date %></p>
-  </div>
-  <div class="field third">
-    <h4>Total spenditure since </h4>
-    <p><%= @subscription.lifelong_cost %></p>
-  </div>
-  <div class="field forth">
-    <h4>Category</h4>
-    <p><%= @subscription.lifelong_cost %></p>
-  </div>
-  <div class="field fith">
-    <h4>Card </h4>
-    <p><%= @subscription.payment_method.card_nickname %></p>
-  </div>
-  <div>
-    <h4>Parasites</h4>
-    <ul>
-      <% @subscription.parasites.each do |para| %>
-        <li> <%=  para.name %></li>
-      <% end %>
-    </ul>
+<div class="container">
+  <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
+    <div class="image">
+      <%= image_tag "netflix.png", alt: "netflix", class:"logo" %>
+    </div>
+    <div class="square">
+      <h4 class="cost"><%= @subscription.cost %> EUR</h4>
+      <p>(<%= @subscription.subscription_type %>)</p>
+    </div>
+    <div class="field first">
+      <h4>Billing date</h4>
+      <p><%= @subscription.billing_date %></p>
+    </div>
+    <div class="field second">
+      <h4>Subscription started</h4>
+      <p><%= @subscription.creation_date %></p>
+    </div>
+    <div class="field third">
+      <h4>Total spenditure since </h4>
+      <p><%= @subscription.lifelong_cost %></p>
+    </div>
+    <div class="field forth">
+      <h4>Category</h4>
+      <p><%= @subscription.category %></p>
+    </div>
+    <div class="field fith">
+      <h4>Card </h4>
+      <p><%= @subscription.payment_method.card_nickname %></p>
+    </div>
+    <div>
+      <h4>Parasites</h4>
+      <ul>
+        <% @subscription.parasites.each do |para| %>
+          <li> <%=  para.name %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
-
 
 
 
