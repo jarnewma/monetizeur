@@ -8,7 +8,8 @@ const computeEvent = (subscription) => {
   return {
     title: subscription.name,
     start: subscription.billing_date,
-    backgroundColor: computeColor(subscription)
+    backgroundColor: computeColor(subscription),
+    url: computeUrl(subscription)
   }
 }
 
@@ -28,7 +29,7 @@ const computeColor = (subscription) => {
 }
 
 const computeUrl = (subscription) => {
-  return
+  return `/subscriptions/${subscription.id}`
 }
 
 if (calendarObject) {
@@ -45,7 +46,8 @@ if (calendarObject) {
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
-    events : calendar
+    events: calendar,
+    backgroundColor: 'red'
   })
 
 
