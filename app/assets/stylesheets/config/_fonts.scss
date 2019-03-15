@@ -1,9 +1,10 @@
 // Import Google fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 @import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700');
 // Define fonts for body and headers
-$body-font: 'Merriweather', serif;
+$body-font: 'Nunito', sans-serif;
 $headers-font: "Lato", sans-serif;
 
 // To use a font file (.woff) uncomment following lines

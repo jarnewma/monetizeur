@@ -99,13 +99,13 @@ class Subscription < ApplicationRecord
 
 
   def category_color
-    if self.category == "News & Media"
+    if self.category == "Media"
       'red'
-    elsif self.category == "Health & Wellness"
+    elsif self.category == "Wellbeing"
       'green'
     elsif self.category == "Streaming"
       'lightblue'
-    elsif self.category == "Sports & Leisure"
+    elsif self.category == "Leisure"
       'darkblue'
     elsif self.category == "Social"
       'orange'

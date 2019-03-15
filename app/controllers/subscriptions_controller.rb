@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   def index
-    @subscriptions = current_user.subscriptions
+    @subscriptions = current_user.subscriptions.order(created_at: :desc)
   end
 
   def show  # GET /payment_methods/:id
@@ -46,7 +46,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
       # no need for app/views/restaurants/destroy.html.erb
-    redirect_to root_path
+    redirect_to subscriptions_path
   end
 
   def subscription_params
