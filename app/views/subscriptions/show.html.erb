@@ -57,24 +57,21 @@
 
 <h2> <%= @subscription.name %> </h2>
 
-<p> you spend <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> basis </p>
+<p> You are currently spending <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> basis. </p>
 
-<p> your <%= @subscription.name %> subscription is part of our  <%= @subscription.category %> category
-  See planning your analysis tab to see how much you spend in this category this month.</p>
+<p> Your <%= @subscription.name %> subscription is part of our  <%= @subscription.category %> category. (To check your spending in this category, visit your analysis tab)</p>
 
-<p> Your subscription started on <%= @subscription.creation_date %> </p>
+<p> Your subscription began on <%= @subscription.creation_date %> </p>
 
-<p> Since your subscription started you spend <%= @subscription.lifelong_cost %>  EUR on <%= @subscription.name %> </p>
+<p> Since your subscription started, you have spent <%= @subscription.lifelong_cost %>  EUR on <%= @subscription.name %>. </p>
 
 <div>
 <% if @subscription.renewal_notification == true %>
-<h1> We will notify you on the <%= @subscription.notification_date %> about your subscription renewal </h1>
+<h1> We will notify you on <%= @subscription.notification_date %> about your subscription renewal </h1>
  <% else %>
-<h2> You chose not to have a subscription renewal notification</h2>
+<h2> You have opted out of renewal notifications.</h2>
 <% end %>
 
-
-<p> current parasites  = </p>
 <ul>
 <% @subscription.parasites.each do |para| %>
 
@@ -82,9 +79,7 @@
 <% end %>
 </ul>
 
-<p> please help me make it pretttttyyyyy </p>
-
-<p> Friends & family who use my subscription:</p>
+<p> The friends & family members who use your subscription services are:</p>
 
 <%= link_to "add friend" , new_parasite_path(subscription_id: @subscription) %>
 
@@ -94,7 +89,8 @@
     <%= f.submit %>
 <% end %>
 
-<p> have to add delete parasites </p>
+<p class="btn btn-primary">
+    <%= link_to "remove friend", new_subscription_path   %> </p>
 
 <%= @subscription.payment_method.card_nickname %>
 <p> button to edit card </p>
