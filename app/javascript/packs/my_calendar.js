@@ -9,21 +9,24 @@ const computeEvent = (subscription) => {
     title: subscription.name,
     start: subscription.billing_date,
     backgroundColor: computeColor(subscription),
-    url: computeUrl(subscription)
+    url: computeUrl(subscription),
+    textColor: 'white !important',
+    borderColor: 'white !important'
   }
 }
 
 const computeColor = (subscription) => {
   const categories = {
-    "Media": "#C42D2B",
-    "Wellbeing": "#5CB566",
-    "Streaming": "#72C6E0",
-    "Leisure": "#20325E",
-    "Social": "#FFA544",
-    "Shopping": "#E892A3",
-    "Food": "#FFE74C",
-    "Technology": "#989C94",
-    "Other": "#624763"
+
+    "News & Media": "#C42D2B !important",
+    "Health & Wellness": "#5CB566 !important",
+    "Streaming": "#72C6E0 !important",
+    "Sports & Leisure": "#20325E !important",
+    "Social": "#FFA544 !important",
+    "Shopping": "#E892A3 !important",
+    "Food": "#FFE74C !important",
+    "Technology": "#989C94 !important",
+    "Other": "#624763!important",
   }
   return categories[subscription.category]
 }
@@ -47,7 +50,6 @@ if (calendarObject) {
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     events: calendar,
-    backgroundColor: 'red'
   })
 
 
