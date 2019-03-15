@@ -1,0 +1,37 @@
+<div class="user-profile">
+  <div class="profile-picture">
+    <%= image_tag "avatar-profile.png", class: "profile-picture-round"%>
+  </div>
+  <div class="profile info">
+    <p> Email: <%=current_user.email  %> </p>
+    <p> First Name:
+      <% if current_user.first_name == nil %>
+        <% " " %>
+      <% else %>
+        <% current_user.first_name %>
+      <% end %>
+    </p>
+    <p> Last Name:
+      <% if current_user.last_name == nil %>
+        <% " " %>
+      <% else %>
+        <% current_user.last_name %>
+      <% end %>
+    </p>
+    <p> Birth Date:
+      <% if current_user.dob == nil %>
+        <% " " %>
+      <% else %>
+        <% current_user.dob %>
+      <% end %>
+    </p>
+    <div id="back" class="btn btn-primary">
+      <%= link_to "Update Your Profile", "#"   %>
+    </div>
+  </div>
+</div>
+
+<div class="Parasites-my-profile">
+  <%= render "parasites/index", parasites: current_user.parasites %>
+
+</div>

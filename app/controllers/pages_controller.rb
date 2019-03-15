@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+skip_before_action :authenticate_user!, only: :home
+
   def home
   end
 
@@ -18,5 +21,9 @@ class PagesController < ApplicationController
       end
     end
     @one_year_events.to_json
+  end
+
+  def my_profile
+    @users = current_user
   end
 end

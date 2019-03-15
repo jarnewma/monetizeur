@@ -3,7 +3,7 @@
   <br>
   <div class="container">
     <div class="row">
-    <div class = " col-xs-12 col-md-6 offset-3">
+    <div class = " col-xs-12 col-md-12 offset-12">
 
   <%= simple_form_for(@subscription) do |f| %>
     <%= f.error_notification %>
@@ -22,8 +22,9 @@
 
       <%= f.input :cost, label: 'Subscription cost', placeholder: 'Enter your subscription charge', float: 'any' %>
       <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Choose subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
-      <%= f.input :category, placeholder: 'Enter subscription type', collection: ["News & Media", "Health & Wellness", "Streaming", "Sports & Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
+      <%= f.input :category, placeholder: 'Enter subscription type', collection: ["Media", "Wellbeing", "Streaming", "Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
       <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
+
     <div class = "form-action">
       <%= f.button :submit, class: 'btn btn-primary' %>
     </div>
