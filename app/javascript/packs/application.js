@@ -2,6 +2,7 @@ import "bootstrap";
 import 'fullcalendar'
 import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
+import selectDropdown from './select_dropdown'
 
 require('./my_calendar')
 
@@ -21,7 +22,7 @@ if (subscriptionForm) {
 
 function getEventNotif(){
   document.getElementById('subscription_renewal_notification').addEventListener('click', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     document.getElementById('notif').classList.toggle('hidden')
     if(document.getElementById('subscription_notification_date').value == "" ) {
     var picker = new Pikaday({
@@ -41,3 +42,5 @@ if( document.getElementById('subscription_renewal_notification')){
 
   getEventNotif();
 }
+
+selectDropdown()

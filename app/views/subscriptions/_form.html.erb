@@ -9,20 +9,22 @@
     <%= f.error_notification %>
 
 
-      <%= f.input :name, label: 'Name of your service provider/Subscription',placeholder: 'Please enter your service provider: Netflix, Spotify, etc.' %>
+      <%= f.input :name, label: 'Name of your service provider/Subscription', input_html: { style: "display: none;"} %>
+      <%= f.input :name, placeholder: 'Enter subscription name', label: false, input_html: { id: "nameInput", class: "hidden" } %>
+      <%= f.input :name, label: false, collection: ["Amazon Prime", "Apple Music", "Dropbox", "iCloud", "LinkedIn", "Netflix", "Spotify", "Add manually"], select: 'From ', prompt: 'Select your subscription', input_html: { id: "nameDropdown"} %>
       <%= f.input :subscription_type, label: 'Billing frequency',collection: ["Monthly", "Quarterly", "Biannually", "Annually"], selected: "Monthly" %>
-      <%= f.input :billing_date, placeholder: 'Please add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
+      <%= f.input :billing_date, placeholder: 'Add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
       <%= f.input :renewal_notification %>
       <div  id="notif"  class="hidden">
 
-      <%= f.input :notification_date, placeholder: 'Please choose a date to receive a reminder', as: :string, input_html: { class: "datepicker-here" } %>
+      <%= f.input :notification_date, placeholder: 'Choose date to receive reminder', as: :string, input_html: { class: "datepicker-here" } %>
         </div>
 
-      <%= f.input :cost, label: 'Subscription cost', placeholder: 'Please enter your subscription amount', float: 'any' %>
-      <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Please choose your subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
+      <%= f.input :cost, label: 'Subscription cost', placeholder: 'Enter your subscription charge', float: 'any' %>
+      <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Choose subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
+      <%= f.input :category, placeholder: 'Enter subscription type', collection: ["Media", "Wellbeing", "Streaming", "Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
+      <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
 
-      <%= f.input :category, placeholder: 'Please enter your subscription type', collection: ["Media", "Wellbeing", "Streaming", "Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
-      <%= f.input :payment_method_id, collection: current_user.payment_methods, label_method: :card_nickname %>
     <div class = "form-action">
       <%= f.button :submit, class: 'btn btn-primary' %>
     </div>

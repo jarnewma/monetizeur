@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
 gem 'letter_opener', group: :development
+gem 'chartkick'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

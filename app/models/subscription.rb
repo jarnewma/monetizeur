@@ -4,6 +4,8 @@ class Subscription < ApplicationRecord
   has_many :subscription_parasites
   has_many :parasites, through: :subscription_parasites
 
+  after_create :send_email_to_author
+
   def lifelong_cost
     total_cost = 0
     if self.subscription_type == "Monthly"
@@ -84,6 +86,11 @@ class Subscription < ApplicationRecord
     end
     return payment_date
   end
+
+  # def send_email_to_author
+  #   if
+  #     UserMailer.notification(subscription.id).deliver_now
+  # end
 
     def calc_yearly
       cost = self.cost
