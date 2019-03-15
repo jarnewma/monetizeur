@@ -17,6 +17,7 @@ const computeEvent = (subscription) => {
 
 const computeColor = (subscription) => {
   const categories = {
+
     "News & Media": "#C42D2B !important",
     "Health & Wellness": "#5CB566 !important",
     "Streaming": "#72C6E0 !important",
@@ -25,7 +26,7 @@ const computeColor = (subscription) => {
     "Shopping": "#E892A3 !important",
     "Food": "#FFE74C !important",
     "Technology": "#989C94 !important",
-    "Other": "#624763"
+    "Other": "#624763!important",
   }
   return categories[subscription.category]
 }
