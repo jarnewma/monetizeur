@@ -66,13 +66,17 @@ skip_before_action :authenticate_user!, only: :home
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
     # TU M'EXPLIQUES TOUT DANS 15 min !!! Oli.
-    i = -2
+    i = 0
     @chart_array = []
     12.times do
       current_month = Date.today + i.month
       @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) }
       @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2)
       @monthly_name = "#{(current_month).strftime("%B")} #{current_month.year}"
+      p "*" * 40
+      p @monthly_name
+      p @monthly_cost
+      # @total_cost += @monthly_cost
       @chart_array << { name: "#{@monthly_name}", data: { "value": @monthly_cost } }
       i += 1
     end
