@@ -1,9 +1,10 @@
 <div class="container">
  <div class="row">
    <% @payment_methods.each do |pm| %>
-     <div class="col-xs-12 col-sm-12 col-md-12 card" >
+  <div class="col-4">
+     <div class="card-payment-method-image " >
        <% if pm.photo? %>
-        <%= cl_image_tag pm.photo %>
+        <%= cl_image_tag pm.photo, height: 300, width: 400 %>
         <% else %>
         <%= image_tag "stock-card.png", height: 300, width: 400 %>
         <% end %>
@@ -11,7 +12,7 @@
        <div class="card-infos">
          <div>
            <p class="card-uppercase"><%= pm.category %> </p>
-           <h2><%= link_to pm.card_nickname, payment_method_path(pm) %></h2>
+           <%= link_to pm.card_nickname, payment_method_path(pm) %>
            <p class="card-date"><%= pm.expiry_date %> </p>
             <%= link_to payment_method_path(pm), method: :delete  do %>
 
@@ -20,6 +21,7 @@
 
          </div>
        </div>
+     </div>
      </div>
    <% end %>
  </div>
