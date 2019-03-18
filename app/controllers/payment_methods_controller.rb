@@ -17,7 +17,7 @@ class PaymentMethodsController < ApplicationController
     @payment_method = PaymentMethod.new(payment_method_params)
     @payment_method.user = current_user
     if @payment_method.save
-      redirect_to payment_method_path(@payment_method), notice: 'Payment method added'
+      redirect_to my_profile_path, notice: 'Payment method added'
     else
       render :new
     end
