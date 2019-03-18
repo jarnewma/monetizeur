@@ -1,8 +1,25 @@
+require "pry-byebug"
+
 class Subscription < ApplicationRecord
   belongs_to :payment_method
   belongs_to :user
   has_many :subscription_parasites
   has_many :parasites, through: :subscription_parasites
+
+  validates :name, presence: true
+  validates :subscription_type, presence: true
+  validates :cost, presence: true
+  validates :billing_date, presence: true
+
+  before_validation :set_create_date
+
+  def set_create_date
+    if self.creation_date.nil?
+      self.creation_date = Date.today
+    end
+  end
+
+
 
   def lifelong_cost
     total_cost = 0
@@ -18,7 +35,12 @@ class Subscription < ApplicationRecord
   end
 
   def calc_monthly
-      cost = self.cost
+      if self.cost.nil?
+        cost = 0
+      else
+        cost = self.cost
+      end
+
       date_pay = self.creation_date
 
       while date_pay < Date.today
@@ -29,9 +51,13 @@ class Subscription < ApplicationRecord
   end
 
   def calc_quatertly
-      cost = self.cost
-      date_pay = self.creation_date
+      if self.cost.nil?
+        cost = 0
+      else
+        cost = self.cost
+      end
 
+      date_pay = self.creation_date
       while date_pay < Date.today
           date_pay = date_pay + 3.months
           cost += self.cost
@@ -40,7 +66,12 @@ class Subscription < ApplicationRecord
   end
 
     def calc_biannualy
-      cost = self.cost
+      if self.cost.nil?
+        cost = 0
+      else
+        cost = self.cost
+      end
+
       date_pay = self.creation_date
 
       while date_pay < Date.today
@@ -48,6 +79,22 @@ class Subscription < ApplicationRecord
           cost += self.cost
       end
       return cost
+  end
+
+  def calc_yearly
+    if self.cost.nil?
+        cost = 0
+    else
+        cost = self.cost
+    end
+
+    date_pay = self.creation_date
+
+    while date_pay < Date.today
+        date_pay = date_pay + 12.months
+        cost += self.cost
+    end
+    return cost
   end
 
   def notify_today?
@@ -67,6 +114,26 @@ class Subscription < ApplicationRecord
     end
     value_date == Date.today
   end
+
+
+  def  subs_month(date)
+    notify = false
+    value_date = billing_date
+
+    until ((date.beginning_of_month..date.end_of_month) === value_date) || (value_date > date.end_of_month )
+       if self.subscription_type == "Monthly"
+          value_date = value_date + 1.month
+        elsif self.subscription_type == "Quaterly"
+           value_date = value_date + 3.months
+        elsif self.subscription_type == "Biannually"
+           value_date = value_date + 6.months
+        else self.subscription_type == "Annually"
+           value_date = value_date + 1.year
+       end
+    end
+    (date.beginning_of_month..date.end_of_month) === value_date
+  end
+
 
   def payment_date
     payment_date = billing_date
@@ -90,17 +157,7 @@ class Subscription < ApplicationRecord
   #     UserMailer.notification(subscription.id).deliver_now
   # end
 
-    def calc_yearly
-      cost = self.cost
-      date_pay = self.creation_date
 
-
-    while date_pay < Date.today
-      date_pay = date_pay + 12.months
-      cost += self.cost
-    end
-    return cost
-  end
 
 
   def category_color
