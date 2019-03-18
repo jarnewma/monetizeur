@@ -1,1 +1,9 @@
-analysis.html.erb
+<!--
+<%= pie_chart Subscription.group(:category).count %> -->
+
+<div class="row">
+  <div class="col-xs-6">
+    <h3>Total Spend by Category</h3>
+    <%= pie_chart @subscription.group(:category).sum %>
+  </div>
+</div>
