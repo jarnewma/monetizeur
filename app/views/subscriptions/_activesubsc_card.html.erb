@@ -5,7 +5,24 @@
     </div>
     <div class="card-image">
       <%= link_to  subscription_path(subscription) do%>
-      <%= image_tag "netflix.png", alt: "netflix" %>
+        <% if subscription.name == "Amazon Prime" %>
+          <%= image_tag "amazon.png", alt: "amazon" %>
+        <% elsif subscription.name == "Apple Music" %>
+          <%= image_tag "applemusic.jpg", alt: "apple" %>
+        <% elsif subscription.name == "Dropbox" %>
+          <%= image_tag "dropbox.png", alt: "dropbox" %>
+        <% elsif subscription.name == "iCloud" %>
+          <%= image_tag "icloud.png", alt: "icloud" %>
+        <% elsif subscription.name == "LinkedIn" %>
+          <%= image_tag "linkedin.png", alt: "linkedin" %>
+        <% elsif subscription.name == "Netflix" %>
+          <%= image_tag "netflix.png", alt: "netflix" %>
+        <% elsif subscription.name == "Spotify" %>
+          <%= image_tag "spotify.jpg", alt: "spotify" %>
+        <% else %>
+          <%= image_tag "logo.png", alt: "logo" %>
+
+        <% end %>
       <% end %>
     </div>
     <div class="card-product-infos" id="first">
