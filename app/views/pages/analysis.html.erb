@@ -9,9 +9,9 @@
         library: {backgroundColor: "#FFF", height: 265} %>
     </div>
     <div class="piechart">
-    <%= pie_chart @pie_chart_data_this_month %>
+    <%= pie_chart @pie_chart_data_this_month, colors: @colors %>
 
-    <%= pie_chart @pie_chart_data_this_year %>
+    <%= pie_chart @pie_chart_data_this_year, colors: @colors %>
     </div>
   </div>
 </div>
