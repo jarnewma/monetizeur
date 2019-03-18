@@ -25,5 +25,6 @@ skip_before_action :authenticate_user!, only: :home
 
   def my_profile
     @users = current_user
+    @payment_methods = current_user.payment_methods
   end
 end
