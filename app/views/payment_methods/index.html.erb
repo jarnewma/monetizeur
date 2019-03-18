@@ -1,35 +1,39 @@
-<div class="container">
- <div class="row">
-   <% @payment_methods.each do |pm| %>
-  <div class="col-4">
-     <div class="card-payment-method-image " >
-       <% if pm.photo? %>
-        <%= cl_image_tag pm.photo, height: 300, width: 400 %>
-        <% else %>
-        <%= image_tag "stock-card.png", height: 300, width: 400 %>
+
+<h3 class="pm-header"> Your payment methods </h3>
+<div class="pm-container">
+  <% @payment_methods.each do |pm| %>
+  <div class="single-pm">
+    <div class="pm-image" >
+        <% if pm.photo? %>
+          <%= cl_image_tag pm.photo, height: 300, width: 400 %>
+        <% elsif pm.category == "Visa"%>
+          <%= image_tag "visa.jpg", height: 300, width: 400 %>
+        <% elsif pm.category == "Amex"%>
+          <%= image_tag "amex.png", height: 300, width: 400 %>
+        <% elsif pm.category == "Paypal"%>
+          <%= image_tag "paypal.png", height: 300, width: 400 %>
+        <% elsif pm.category == "Mastercard"%>
+          <%= image_tag "master.jpg", height: 300, width: 400 %>
         <% end %>
+    </div>
+    <div class="pm-infos">
+      <p class="pm-uppercase"><%= pm.category %> </p>
+      <p class="pm-name"><%= link_to pm.card_nickname, payment_method_path(pm) %></p>
+      <p class="pm-date"><%= pm.expiry_date %> </p>
+      <%= link_to payment_method_path(pm), method: :delete  do %>
+      <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-       <div class="card-infos">
-         <div>
-           <p class="card-uppercase"><%= pm.category %> </p>
-           <%= link_to pm.card_nickname, payment_method_path(pm) %>
-           <p class="card-date"><%= pm.expiry_date %> </p>
-            <%= link_to payment_method_path(pm), method: :delete  do %>
-
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-
-         </div>
-       </div>
-     </div>
-     </div>
-   <% end %>
- </div>
-  <br>
-  <br>
+<br>
+<br>
+<div class="btn-wrapper">
   <div id="back" class="btn btn-primary">
     <%= link_to "add a Payment Method", new_payment_method_path   %>
   </div>
-
 </div>
+
 
