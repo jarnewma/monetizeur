@@ -1,1 +1,19 @@
-analysis.html.erb
+<h1> My spending Dashboard </h1>
+
+<div>
+  <% @sub_cat.each do |cat, sub_array| %>
+    <li>
+      <%= cat %>
+      <%= sub_array.inject(0){|sum,x| sum + x.cost   } %>
+    </li>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+<%= line_chart Subscription.group_by_month(:creation_date).count %>
