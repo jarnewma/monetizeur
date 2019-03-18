@@ -1,7 +1,23 @@
 <div class="container">
   <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
-    <div class="image">
-      <%= image_tag "netflix.png", alt: "netflix", class:"logo" %>
+    <div class="card-image2">
+        <% if @subscription.name == "Amazon Prime" %>
+          <%= image_tag "amazon.png", alt: "amazon" %>
+        <% elsif @subscription.name == "Apple Music" %>
+          <%= image_tag "applemusic.jpg", alt: "apple" %>
+        <% elsif @subscription.name == "Dropbox" %>
+          <%= image_tag "dropbox.png", alt: "dropbox" %>
+        <% elsif @subscription.name == "iCloud" %>
+          <%= image_tag "icloud.png", alt: "icloud" %>
+        <% elsif @subscription.name == "LinkedIn" %>
+          <%= image_tag "linkedin.png", alt: "linkedin" %>
+        <% elsif @subscription.name == "Netflix" %>
+          <%= image_tag "netflix.png", alt: "netflix" %>
+        <% elsif @subscription.name == "Spotify" %>
+          <%= image_tag "spotify.jpg", alt: "spotify" %>
+        <% else %>
+          <%= image_tag "logosmall.png", alt: "logo" %>
+        <% end %>
     </div>
     <div class="square">
       <h4 class="cost"><%= @subscription.cost %> EUR</h4>
