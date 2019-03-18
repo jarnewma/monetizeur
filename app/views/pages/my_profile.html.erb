@@ -36,12 +36,28 @@
 
 
   <div class="cards">
+
     <div class="summary">
       <h3>Summary</h3>
       <div class="summary-container">
         <div class="box subscriptions">
           <h5><i class="fas fa-wallet"></i>  Subscriptions</h5>
+          <div>
+            <% @subscriptions.each do |x| %>
+            <% sum = 0 %>
+            <%= sum += x.cost %>
+            <% end %>
+          </div>
+          <br>
+          <div class="info-btn-container">
+            <%= link_to analysis_path do %>
+            <div class="btn btn-primary" id="more-info">
+              <i class="fas fa-sort-down"></i> MORE INFO
+            </div>
+            <% end %>
+          </div>
         </div>
+
         <div class="box calendar-view">
           <h5><i class="far fa-calendar-alt"></i> Calendar</h5>
         </div>
