@@ -8,7 +8,7 @@
         <% if subscription.name == "Amazon Prime" %>
           <%= image_tag "amazon.png", alt: "amazon" %>
         <% elsif subscription.name == "Apple Music" %>
-          <%= image_tag "applemusic.jpg", alt: "apple" %>
+          <%= image_tag "apple.png", alt: "apple" %>
         <% elsif subscription.name == "Dropbox" %>
           <%= image_tag "dropbox.png", alt: "dropbox" %>
         <% elsif subscription.name == "iCloud" %>
@@ -18,7 +18,7 @@
         <% elsif subscription.name == "Netflix" %>
           <%= image_tag "netflix.png", alt: "netflix" %>
         <% elsif subscription.name == "Spotify" %>
-          <%= image_tag "spotify.jpg", alt: "spotify" %>
+          <%= image_tag "spotify.png", alt: "spotify" %>
         <% else %>
           <%= image_tag "logosmall.png", alt: "logo" %>
         <% end %>
@@ -26,7 +26,7 @@
     </div>
     <div class="card-product-infos" id="first">
       <p class="upcase name"><%= subscription.name %></p>
-      <p class="price"><%= subscription.cost %>€</p>
+      <p class="price"><%= subscription.cost %> €</p>
       <p class="extra-info"><%= subscription.billing_date %> (<%= subscription.subscription_type%>)</p>
     </div>
     <div class="card-product-infos" id="second">

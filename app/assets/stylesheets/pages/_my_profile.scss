@@ -1,0 +1,128 @@
+.my-profile{
+  background-color: #FCFCFC;
+}
+
+.user-profile{
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #E8E8E8;
+}
+
+.my-profile {
+  display: flex;
+}
+
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+}
+.summary{
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0 15px;
+}
+.Parasites-my-profile{
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0 15px;
+  padding-bottom: 15px;
+}
+.your-cards{
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0 15px;
+}
+.summary-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+.info-btn-container{
+  display: flex;
+  justify-content: flex-end;
+}
+#more-info{
+  border: 1px solid #87A2C6 !important;
+  color: gray !important;
+  background-color: white !important;
+  border-radius: 5px;
+  font-size: 10px;
+
+}
+.box{
+  border: 1px solid #87A2C6;
+  padding: 15px;
+  width: 300px;
+  height: 150px;
+  border-radius: 5px;
+}
+.cards-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-star;
+}
+.subscriptions{
+  margin-right: 40px;
+}
+
+.single-card{
+  text-align: center;
+  padding-right: 20px;
+}
+.single-card img{
+  width: 150px;
+  height: auto;
+}
+.single-card a{
+  color: #5D5D5E;
+  &:hover{
+    color: #272428;
+    text-decoration: none;
+  }
+}
+h3, h5, p{
+  color: #5D5D5E;
+}
+// ---- PARASITES
+.parasites-container{
+  display:flex;
+  flex-direction: row;
+
+}
+.para-avatar {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.initial{
+  font-size: 40px;
+  color: #5D5D5E;
+  position:absolute;
+
+}
+.single-parasite{
+  text-align: center;
+  margin-left: 20px;
+  margin-right:20px;
+}
+
+.para-name{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.para-subsc{
+  font-size: 15px;
+}

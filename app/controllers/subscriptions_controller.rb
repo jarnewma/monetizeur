@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     @subscription.user = current_user
     if @subscription.save
-      redirect_to subscription_path(@subscription), notice: 'Subscription method added'
+      redirect_to subscription_path(@subscription), notice: 'New subscription added'
     else
       render :new
     end
@@ -32,6 +32,15 @@ class SubscriptionsController < ApplicationController
 
   def edit          # GET /payment_methods/:id/edit
     @subscription = Subscription.find(params[:id])
+  end
+
+  def update
+    @subscription = Subscription.find(params[:id])
+    if @subscription.update(subscription_params)
+      redirect_to subscription_path(@subscription), notice: 'Subscription updated'
+    else
+      render :edit
+    end
   end
 
   def add_parasite

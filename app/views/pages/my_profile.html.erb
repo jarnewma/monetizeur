@@ -1,37 +1,95 @@
-<div class="user-profile">
-  <div class="profile-picture">
-    <%= image_tag "avatar-profile.png", class: "profile-picture-round"%>
-  </div>
-  <div class="profile info">
-    <p> Email: <%=current_user.email  %> </p>
-    <p> First Name:
-      <% if current_user.first_name == nil %>
-        <% " " %>
-      <% else %>
-        <% current_user.first_name %>
-      <% end %>
-    </p>
-    <p> Last Name:
-      <% if current_user.last_name == nil %>
-        <% " " %>
-      <% else %>
-        <% current_user.last_name %>
-      <% end %>
-    </p>
-    <p> Birth Date:
-      <% if current_user.dob == nil %>
-        <% " " %>
-      <% else %>
-        <% current_user.dob %>
-      <% end %>
-    </p>
-    <div id="back" class="btn btn-primary">
-      <%= link_to "Update Your Profile", "#"   %>
+<div class="my-profile" >
+
+
+  <div class="user-profile">
+    <div class="profile-picture">
+      <%= image_tag "avatar-profile.png", class: "profile-picture-round"%>
+    </div>
+    <div class="profile info">
+      <p> Email: <%=current_user.email  %> </p>
+      <p> First Name:
+        <% if current_user.first_name == nil %>
+          <% " " %>
+        <% else %>
+          <% current_user.first_name %>
+        <% end %>
+      </p>
+      <p> Last Name:
+        <% if current_user.last_name == nil %>
+          <% " " %>
+        <% else %>
+          <% current_user.last_name %>
+        <% end %>
+      </p>
+      <p> Birth Date:
+        <% if current_user.dob == nil %>
+          <% " " %>
+        <% else %>
+          <% current_user.dob %>
+        <% end %>
+      </p>
+      <div id="back" class="btn btn-primary">
+        <%= link_to "Update Your Profile", "#"   %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="Parasites-my-profile">
-  <%= render "parasites/index", parasites: current_user.parasites %>
+
+  <div class="cards">
+
+    <div class="summary">
+      <h3>Summary</h3>
+      <div class="summary-container">
+        <div class="box subscriptions">
+          <h5><i class="fas fa-wallet"></i>  Subscriptions</h5>
+          <div>
+            <% @subscriptions.each do |x| %>
+            <% sum = 0 %>
+            <%= sum += x.cost %>
+            <% end %>
+          </div>
+          <br>
+          <div class="info-btn-container">
+            <%= link_to analysis_path do %>
+            <div class="btn btn-primary" id="more-info">
+              <i class="fas fa-sort-down"></i> MORE INFO
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="box calendar-view">
+          <h5><i class="far fa-calendar-alt"></i> Calendar</h5>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="Parasites-my-profile">
+      <%= render "parasites/index", parasites: current_user.parasites %>
+    </div>
+
+    <div class="your-cards">
+      <h3>Your cards</h3>
+      <div class="cards-container">
+        <% @payment_methods.each do |pm|%>
+        <div class="single-card">
+          <%= link_to payment_method_path(pm) do %>
+            <% if pm.photo? %>
+              <%= cl_image_tag pm.photo, height: 300, width: 400, crop: :fill %>
+            <% else %>
+                <%= image_tag "stock-card.png", height: 300, width: 400 %>
+            <% end %>
+          <% end %>
+          <p><%= link_to pm.card_nickname, payment_method_path(pm)%></p>
+        </div>
+        <% end %>
+      </div>
+      <div id="back" class="btn btn-primary">
+        <%= link_to "add a Card", new_payment_method_path   %>
+      </div>
+    </div>
+  </div>
+
 
 </div>

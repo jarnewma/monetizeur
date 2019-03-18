@@ -1,1 +1,17 @@
-analysis.html.erb
+
+<div class="analysis-dashboard">
+
+  <h1> My spending Dashboard </h1>
+
+  <div class="charts2">
+    <div class="column_chart">
+      <%= column_chart @chart_array, colors: ["#32A287", "#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287"],
+        library: {backgroundColor: "#FFF", height: 265} %>
+    </div>
+    <div class="piechart">
+    <%= pie_chart @pie_chart_data_this_month %>
+
+    <%= pie_chart @pie_chart_data_this_year %>
+    </div>
+  </div>
+</div>

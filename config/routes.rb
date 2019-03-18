@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "/calendar", to: 'pages#calendar'
   get "/my_profile", to: 'pages#my_profile'
+  get "/analysis", to: 'pages#analysis'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :subscriptions do
     patch 'update_notification', to: 'subscriptions#update_notification'

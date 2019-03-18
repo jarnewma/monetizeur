@@ -11,7 +11,6 @@ function addDPickerSubs(){
 var picker = new Pikaday({ field: document.getElementById('subscription_creation_date') });
 var picker = new Pikaday({ field: document.getElementById('subscription_creation_date') });
 var picker = new Pikaday({ field: document.getElementById('subscription_billing_date') });
-
 }
  addDPickerSubs();
 
@@ -44,3 +43,6 @@ if( document.getElementById('subscription_renewal_notification')){
 }
 
 selectDropdown()
+
+firstFieldForm = document.querySelector('#nameDropdown')
+if (firstFieldForm) { firstFieldForm.focus() }

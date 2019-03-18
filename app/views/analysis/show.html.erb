@@ -1,0 +1,34 @@
+<%= pie_chart Subscription.group(:category).count %>
+
+
+
+<div>
+  <% @sub_cat.each do |cat, sub_array| %>
+    <li>
+      <%= cat %>
+      <%= sub_array.inject(0){|sum,x| sum + x.cost   } %>
+    </li>
+  <% end %>
+</div>
+
+<div>
+  <br>
+  <br>
+  <% i = 0 %>
+  <% chart_array = [] %>
+  <% 12.times do %>
+  <p> <%= (Time.now + i.month).strftime("%B")%> <%= (Time.now + i.month).year %>
+  <% @subscriptions_all.select{|sub| sub.subs_month(Date.today + i.month)}.group_by(&:category).each do |cat, sub_array| %>
+      <%= cat %>
+      <% monthly_cost = sub_array.inject(0){|sum,x| (sum + x.cost).round(2)   } %>
+      <%= monthly_cost %>EUR
+    <% end %>
+  <% i += 1 %>
+</p>
+  <% end %>
+</div>
+
+<div>
+  <%= @chart_array %>
+</div>
+
