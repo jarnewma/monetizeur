@@ -24,7 +24,7 @@ class Subscription < ApplicationRecord
     if self.subscription_type == "Monthly"
       return calc_monthly.round(2)
     elsif self.subscription_type == "Quarterly"
-      return calc_quatertly.round(2)
+      return calc_quartertly.round(2)
     elsif self.subscription_type == "Biannually"
       return calc_biannualy.round(2)
     else self.subscription_type == "Annually"
@@ -48,7 +48,7 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-  def calc_quatertly
+  def calc_quartertly
       if self.cost.nil?
         cost = 0
       else

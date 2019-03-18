@@ -1,42 +1,17 @@
 
-<h1> My spending Dashboard </h1>
+<div class="analysis-dashboard">
 
-<div>
-  <% @sub_cat.each do |cat, sub_array| %>
-    <li>
-      <%= cat %>
-      <%= sub_array.inject(0){|sum,x| sum + x.cost   } %>
-    </li>
-  <% end %>
+  <h1> My spending Dashboard </h1>
+
+  <div class="charts2">
+    <div class="column_chart">
+      <%= column_chart @chart_array, colors: ["#32A287", "#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287"],
+        library: {backgroundColor: "#FFF", height: 265} %>
+    </div>
+    <div class="piechart">
+    <%= pie_chart @pie_chart_data_this_month %>
+
+    <%= pie_chart @pie_chart_data_this_year %>
+    </div>
+  </div>
 </div>
-
-
-<%= pie_chart @pie_chart_data_this_month %>
-
-<%= pie_chart @pie_chart_data_this_year %>
-
-<div>
-  <br>
-  <br>
-  <% i = -2 %>
-  <% 12.times do %>
-  <p> <%= (Time.now + i.month).strftime("%B")%> <%= (Time.now + i.month).year %>
-  <% @subscriptions_all.select{|sub| sub.subs_month(Date.today + i.month)}.group_by(&:category).each do |cat, sub_array| %>
-      <%= cat %>
-      <%= sub_array.inject(0){|sum,x| (sum + x.cost).round(2)   } %> EUR
-    <% end %>
-  <% i += 1 %>
-</p>
-  <% end %>
-</div>
-
-
-<div>
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-</div>
-

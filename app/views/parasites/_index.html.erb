@@ -1,17 +1,18 @@
 <h3> Your "lovely" friends using your subscriptions </h3>
-
-<ul>
+<div class="parasites-container">
   <% parasites.each do |para| %>
-    <li>
-      <%=  para.name %>
-      ( <%= para.subscriptions.map{ |sub| sub.name }.join(", ") %> )
-    </li>
+    <div class="single-parasite">
+      <div class="para-avatar">
+        <p class="initial"><%=  para.name[0,1] %></p>
+      </div>
+      <p class="para-name"><%=  para.name %> </p>
+      <p class="para-subsc"><%= para.subscriptions.map{ |sub| sub.name }.join(", ") %></p>
+    </div>
   <% end %>
-</ul>
+</div>
 
-  <br>
-  <br>
-  <div id="back" class="btn btn-primary">
+
+<div id="back" class="btn btn-primary">
     <%= link_to "add a Friend", new_parasite_path   %>
-  </div>
+</div>
 
