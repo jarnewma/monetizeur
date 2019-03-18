@@ -56,6 +56,8 @@ skip_before_action :authenticate_user!, only: :home
   def my_profile
     @users = current_user
     @payment_methods = current_user.payment_methods
+    @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
+    @sub_cat = @subscriptions.group_by(&:category)
   end
 
   def analysis
