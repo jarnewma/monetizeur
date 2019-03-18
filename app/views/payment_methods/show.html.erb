@@ -1,4 +1,4 @@
-<div class="container">
+<div class="show-card container">
   <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
     <div class="single-card">
       <% if @payment_method.photo? %>
@@ -28,11 +28,11 @@
     <div class="field third">
       <h4>Payment method expiry date </h4>
       <p><%= @payment_method.expiry_date  %></p>
-      <p> <% if @payment_method.expiry_notification == true  %>
-        You will be notified via email before your card expires. We will inform you of all subscriptions this may impact.
+       <% if @payment_method.expiry_notification == true  %>
+        <p class="notify-me"><i class="fas fa-info-circle"></i> You will be notified via email before your card expires. We will inform you of all subscriptions this may impact.</p>
         <% else %>
-        You chose not to be notified via email before your card expires.
-        <% end %> </p>
+        <p class="notify-me"> <i class="fas fa-info-circle"></i> You chose not to be notified via email before your card expires.</p>
+        <% end %>
     </div>
     <div class="field forth">
       <% if @subscriptions.count == 0 %>
@@ -41,7 +41,7 @@
       <h4> The subscriptions linked to this card are: </h4>
       <ul>
             <% @subscriptions.each do |sub|  %></p>
-            <li>
+            <li class="sub-name">
               <%= link_to sub.name, subscription_path %>
             </li>
             <% end %>
@@ -57,3 +57,8 @@
 
   </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>
