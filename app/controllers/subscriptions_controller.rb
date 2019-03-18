@@ -11,6 +11,15 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new
   end
 
+  def update
+    @subscription = Subscription.find(params[:id])
+    if @subscription.update(subscription_params)
+      redirect_to subscription_path(@subscription), notice: 'Subscription edited'
+    else
+      render :edit
+    end
+  end
+
   def create        # POST /subscribtion
     @subscription = Subscription.new(subscription_params)
     @subscription.user = current_user
@@ -22,7 +31,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit          # GET /payment_methods/:id/edit
-    @subscribtion = Subscription.find(params[:id])
+    @subscription = Subscription.find(params[:id])
   end
 
   def add_parasite
@@ -41,7 +50,6 @@ class SubscriptionsController < ApplicationController
     redirect_to subscriptions_path
   end
 
-
   def destroy       # DELETE /payment_methods/:id
     @subscription = Subscription.find(params[:id])
     @subscription.destroy
@@ -50,6 +58,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date)
+    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date, :photo)
   end
 end

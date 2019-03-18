@@ -4,6 +4,8 @@ class Subscription < ApplicationRecord
   has_many :subscription_parasites
   has_many :parasites, through: :subscription_parasites
 
+  mount_uploader :photo, PhotoUploader
+
   def lifelong_cost
     total_cost = 0
     if self.subscription_type == "Monthly"
