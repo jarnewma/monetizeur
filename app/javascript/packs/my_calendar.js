@@ -18,10 +18,10 @@ const computeEvent = (subscription) => {
 const computeColor = (subscription) => {
   const categories = {
 
-    "News & Media": "#C42D2B !important",
-    "Health & Wellness": "#5CB566 !important",
+    "Media": "#C42D2B !important",
+    "Wellbeing": "#5CB566 !important",
     "Streaming": "#72C6E0 !important",
-    "Sports & Leisure": "#20325E !important",
+    "Leisure": "#20325E !important",
     "Social": "#FFA544 !important",
     "Shopping": "#E892A3 !important",
     "Food": "#FFE74C !important",
