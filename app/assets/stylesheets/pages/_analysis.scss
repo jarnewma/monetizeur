@@ -1,0 +1,11 @@
+.analysis-dashboard {
+  display: flex;
+}
+
+.charts2 {
+  flex-grow: 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+}
