@@ -65,6 +65,7 @@ skip_before_action :authenticate_user!, only: :home
     @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
+    @sub_app = @subscriptions.group_by(&:name)
     @colors = []
 
     @pie_chart_data_this_month = []
@@ -72,7 +73,7 @@ skip_before_action :authenticate_user!, only: :home
       month_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
     @pie_chart_data_this_month << [month, month_value]
     @colors << sub_array.first.category_color
-  end
+    end
 
 
     @pie_chart_data_this_year = []
@@ -80,24 +81,27 @@ skip_before_action :authenticate_user!, only: :home
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
     @pie_chart_data_this_year << [year, year_value]
     @colors << sub_array.first.category_color
+    end
+
+    @pie_chart_data_per_app = []
+    @sub_app.each do |year, sub_array|
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
+    @pie_chart_data_per_app << [year, year_value]
+    @colors << sub_array.first.category_color
   end
 
-    p @sub_cat
-
     i = 0
-    @chart_array = []
+    @chart_array = { }
     12.times do
       current_month = Date.today + i.month
       @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) }
       @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2)
       @monthly_name = "#{(current_month).strftime("%B")} #{current_month.year}"
-      p "*" * 40
-      p @monthly_name
-      p @monthly_cost
-      # @total_cost += @monthly_cost
-      @chart_array << { name: "#{@monthly_name}", data: { "value": @monthly_cost } }
+
+      @chart_array[@monthly_name] = @monthly_cost
       i += 1
     end
+    return p @chart_array
 
   end
 end

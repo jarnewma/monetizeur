@@ -3,18 +3,25 @@
 
   <h1> My spending Dashboard </h1>
 
-  <div class="charts2">
-    <div class="column_chart">
-      <%= column_chart @chart_array, {height: "400px", library: {hAxis: {title: "Months"}, vAxis: {title: "subscription costs"}}} %>
-    </div>
-    <div class="legend">
-      info here
-    </div>
-    <div class="piechart-month">
-      <%= pie_chart @pie_chart_data_this_month %>
-    </div>
-    <div class="piechart-year">
-      <%= pie_chart @pie_chart_data_this_year %>
+    <div class="dashboard-small">
+
+    <div class="charts2">
+      <div class="column_chart">
+        <h4> Monthly subscription cost for the next 12 months</h4>
+        <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"] %>
+      </div>
+      <div class="legend">
+         <h4> Yearly spending per subscription </h4>
+         <%= pie_chart @pie_chart_data_per_app%>
+      </div>
+      <div class="piechart-month">
+         <h4> This month's subscription cost per category </h4>
+        <%= pie_chart @pie_chart_data_this_month %>
+      </div>
+      <div class="piechart-year">
+        <h4> This year's subscription cost per category </h4>
+        <%= pie_chart @pie_chart_data_this_year %>
+      </div>
     </div>
   </div>
 </div>
