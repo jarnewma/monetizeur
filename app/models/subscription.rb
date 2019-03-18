@@ -1,5 +1,3 @@
-require "pry-byebug"
-
 class Subscription < ApplicationRecord
   belongs_to :payment_method
   belongs_to :user
@@ -116,7 +114,7 @@ class Subscription < ApplicationRecord
   end
 
 
-  def  subs_month(date)
+  def subs_month(date)
     notify = false
     value_date = billing_date
 
