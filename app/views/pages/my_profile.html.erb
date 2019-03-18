@@ -41,12 +41,20 @@
       <h3>Summary</h3>
       <div class="summary-container">
         <div class="box subscriptions">
-          <h5><i class="fas fa-wallet"></i>  Subscriptions</h5>
+          <h5><i class="fas fa-wallet"></i>  Subscriptions <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
           <div>
             <% @subscriptions.each do |x| %>
-            <% sum = 0 %>
-            <%= sum += x.cost %>
+              <% sum = 0 %>
+              <% sum += x.cost %>
             <% end %>
+            <% i = 0 %>
+            <% 12.times do %>
+              <% current_month = Date.today + i.month %>
+              <% @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) } %>
+              <% @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2) %>
+              <% i += 1 %>
+            <% end %>
+            <p> <%= @monthly_cost %>  € this month</p>
           </div>
           <br>
           <div class="info-btn-container">
@@ -59,7 +67,8 @@
         </div>
 
         <div class="box calendar-view">
-          <h5><i class="far fa-calendar-alt"></i> Calendar</h5>
+          <h5><i class="far fa-calendar-alt"></i> Calendar <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
+          <div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
         </div>
       </div>
 
