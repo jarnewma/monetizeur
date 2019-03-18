@@ -44,54 +44,33 @@
     <div class="field fith">
       <h4>Card </h4>
       <p><%= @subscription.payment_method.card_nickname %></p>
-      <p id="back" class="btn btn-primary index"> <%= link_to "Edit Payment Method", edit_payment_method_path %></p>
     </div>
-    <div>
-      <h4>Parasites/Leeches/Scum of the Earth</h4>
+    <div class="field sixth">
+      <% if @subscription.renewal_notification == true %>
+        <h4> Notification suvscription Renewal: Yes </h4>
+        <p> Notification Date: <%= @subscription.notification_date %></p>
+      <% else %>
+        <h4> Notification suvscription Renewal: No </h4>
+      <% end %>
+      </ul>
+    </div>
+    <div class="field seventh">
+      <h4>Your lovely friends using this app for "free" </h4>
       <ul>
         <% @subscription.parasites.each do |para| %>
           <li> <%=  para.name %></li>
         <% end %>
       </ul>
+      <p id="back-little" class="btn btn-primary index">
+        <%= link_to "Add Friend" , new_parasite_path(subscription_id: @subscription) %></p>
+      <p id="back" class="btn btn-primary index">
+        <%= link_to "Remove Friend", new_subscription_path   %> </p>
+      <p>
+        <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
+        <%= f.association :parasites  %>
+        <%= f.submit %>
+        <% end %>
+      </p>
     </div>
   </div>
 </div>
-
-
-<h2> <%= @subscription.name %> </h2>
-
-<p> You are currently spending <%= @subscription.cost %> EUR on a <%= @subscription.subscription_type %> basis. </p>
-
-<p> Your <%= @subscription.name %> subscription is part of our  <%= @subscription.category %> category. (To check your spending in this category, visit your analysis tab)</p>
-
-<p> Your subscription began on <%= @subscription.creation_date %> </p>
-
-<p> Since your subscription started, you have spent <%= @subscription.lifelong_cost %>  EUR on <%= @subscription.name %>. </p>
-
-<div>
-<% if @subscription.renewal_notification == true %>
-<h1> We will notify you on <%= @subscription.notification_date %> about your subscription renewal </h1>
- <% else %>
-<h2> You have opted out of renewal notifications.</h2>
-<% end %>
-
-<ul>
-<% @subscription.parasites.each do |para| %>
-
-<li> <%=  para.name %></li>
-<% end %>
-</ul>
-
-<p> The friends & family members who use your subscription services are:</p>
-
-<%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
-    <%= f.association :parasites  %>
-<% end %>
-
-<p id="back" class="btn btn-primary index">
-  <%= link_to "Add Friend" , new_parasite_path(subscription_id: @subscription) %></p>
-
-<p id="back" class="btn btn-primary index">
-    <%= link_to "Remove Friend", new_subscription_path   %> </p>
-
-<p  </p>

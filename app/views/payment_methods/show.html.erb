@@ -1,40 +1,59 @@
-<h2> <%= @payment_method.card_nickname %> </h2>
-
-<p> <%= @payment_method.category  %></p>
-<p> <%= @payment_method.bank  %></p>
-<p> <%= @payment_method.expiry_date  %></p>
-<p> <% if @payment_method.expiry_notification == true  %>
-  You will be notified via email before your card expires. We will inform you of all subscriptions this may impact.
-  <% else %>
-  You chose not to be notified via email before your card expires.
-  <% end %>
-</p>
-
-<% if @payment_method.photo? %>
-<%= cl_image_tag @payment_method.photo %>
-<% else %>
-<%= image_tag "stock-card.png", height: 300, width: 400 %>
-<% end %>
-
-<div>
-  <% if @subscriptions.count == 0 %>
-  <h1> You don't have any subscriptions linked to this card</h1>
-  <% else %>
-  <h2> The subscriptions linked to this card are:</h2>
-    <ul>
-      <% @subscriptions.each do |sub|  %></p>
-      <li>
-        <%= link_to sub.name, subscription_path %>
-      </li>
+<div class="container">
+  <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
+    <div class="single-card">
+      <% if @payment_method.photo? %>
+      <%= cl_image_tag @payment_method.photo %>
+      <% elsif @payment_method.category == "Visa"%>
+        <%= image_tag "visa.jpg", height: 300, width: 400 %>
+      <% elsif @payment_method.category == "Amex"%>
+        <%= image_tag "amex.png", height: 300, width: 400 %>
+      <% elsif @payment_method.category == "Paypal"%>
+        <%= image_tag "paypal.png", height: 300, width: 400 %>
+      <% elsif @payment_method.category == "Mastercard"%>
+        <%= image_tag "master.jpg", height: 300, width: 400 %>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+
+    <div class="square2">
+      <h4> <%= @payment_method.card_nickname %> </h4>
+    </div>
+
+    <div class="field first">
+      <h4>Payment type </h4> <p> <%= @payment_method.category %></p>
+    </div>
+    <div class="field second">
+      <h4>Payment bank</h4>
+      <p><%= @payment_method.bank %></p>
+    </div>
+    <div class="field third">
+      <h4>Payment method expiry date </h4>
+      <p><%= @payment_method.expiry_date  %></p>
+      <p> <% if @payment_method.expiry_notification == true  %>
+        You will be notified via email before your card expires. We will inform you of all subscriptions this may impact.
+        <% else %>
+        You chose not to be notified via email before your card expires.
+        <% end %> </p>
+    </div>
+    <div class="field forth">
+      <% if @subscriptions.count == 0 %>
+      <h4>You don't have any subscriptions linked to this card</h4>
+      <% else %>
+      <h4> The subscriptions linked to this card are: </h4>
+      <ul>
+            <% @subscriptions.each do |sub|  %></p>
+            <li>
+              <%= link_to sub.name, subscription_path %>
+            </li>
+            <% end %>
+          </ul>
+      <% end %>
+    </div>
+
+  </div>
+    <br>
+      <div id="back" class="btn btn-primary">
+        <%= link_to "My Profile", my_profile_path %>
+      </div>
+
+  </div>
 </div>
-
-  <div id="back" class="btn btn-primary">
-    <%= link_to "all my payment methods", payment_methods_path %>
-  </div>
-
-  <div id="back" class="btn btn-primary">
-    <%= link_to "all my subscripions", subscriptions_path %>
-  </div>

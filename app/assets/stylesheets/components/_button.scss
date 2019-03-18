@@ -23,3 +23,17 @@ text-align: center;
   vertical-align: center;
   text-align:center;
 }
+
+#back-little{
+  background-color: #87A2C6 !important;
+  border:none;
+  border-radius: 10px;
+  &:hover{
+    background-color: #446582 !important;
+  }
+}
+
+#back-little a{
+  color: #FCFCFC !important;
+  text-decoration: none;
+}
