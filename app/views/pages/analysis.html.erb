@@ -35,14 +35,7 @@
   <br>
   <br>
 
-<%#= line_chart Subscription.group_by_month(:creation_date).count %>
 
 <%= column_chart @chart_array, colors: ["green", "#FF0000"],
   library: {backgroundColor: "#FFF", height: 265} %>
-
-
-<%#= column_chart networth_data,
-  colors: ["green", "#FF0000"],
-  library: {backgroundColor: "#FFF", height: 265} %>
-</div>
 
