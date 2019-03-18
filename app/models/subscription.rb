@@ -25,7 +25,7 @@ class Subscription < ApplicationRecord
     total_cost = 0
     if self.subscription_type == "Monthly"
       return calc_monthly.round(2)
-    elsif self.subscription_type == "Quaterly"
+    elsif self.subscription_type == "Quarterly"
       return calc_quatertly.round(2)
     elsif self.subscription_type == "Biannually"
       return calc_biannualy.round(2)
@@ -104,7 +104,7 @@ class Subscription < ApplicationRecord
     until value_date >= Date.today
         if self.subscription_type == "Monthly"
           value_date = value_date + 1.month
-        elsif self.subscription_type == "Quaterly"
+        elsif self.subscription_type == "Quarterly"
            value_date = value_date + 3.months
         elsif self.subscription_type == "Biannually"
            value_date = value_date + 6.months
@@ -123,7 +123,7 @@ class Subscription < ApplicationRecord
     until ((date.beginning_of_month..date.end_of_month) === value_date) || (value_date > date.end_of_month )
        if self.subscription_type == "Monthly"
           value_date = value_date + 1.month
-        elsif self.subscription_type == "Quaterly"
+        elsif self.subscription_type == "Quarterly"
            value_date = value_date + 3.months
         elsif self.subscription_type == "Biannually"
            value_date = value_date + 6.months
@@ -141,7 +141,7 @@ class Subscription < ApplicationRecord
     until payment_date > Date.today
       if self.subscription_type == "Monthly"
         payment_date = payment_date + 1.month
-      elsif self.subscription_type == "Quaterly"
+      elsif self.subscription_type == "Quarterly"
         payment_date = payment_date + 3.months
       elsif self.subscription_type == "Biannually"
         payment_date = payment_date + 6.months

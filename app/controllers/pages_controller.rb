@@ -19,7 +19,7 @@ skip_before_action :authenticate_user!, only: :home
           @one_year_events << fake_event.to_json
           i += 1
         end
-      elsif event.subscription_type == "Quaterly"
+      elsif event.subscription_type == "Quarterly"
         i = 0
         8.times do
           fake_event = event.dup
@@ -58,7 +58,8 @@ skip_before_action :authenticate_user!, only: :home
 
   def analysis
     @users = current_user
-    @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today + 1.month   )}
+    @subscriptions_all = current_user.subscriptions
+    @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
     p @sub_cat
   end
