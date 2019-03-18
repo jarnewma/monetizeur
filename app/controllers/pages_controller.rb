@@ -8,6 +8,7 @@ skip_before_action :authenticate_user!, only: :home
   def calendar
     @subscriptions = current_user.subscriptions
     @one_year_events = []
+
     @subscriptions.each do |event|
 
       if event.subscription_type == "Monthly"
@@ -47,6 +48,7 @@ skip_before_action :authenticate_user!, only: :home
           i += 12
         end
       end
+
     end
     @one_year_events.to_json
   end
@@ -61,6 +63,16 @@ skip_before_action :authenticate_user!, only: :home
     @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
-    p @sub_cat
+    # TU M'EXPLIQUES TOUT DANS 15 min !!! Oli.
+    i = -2
+    @chart_array = []
+    12.times do
+      current_month = Date.today + i.month
+      @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) }
+      @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2)
+      @monthly_name = "#{(current_month).strftime("%B")} #{current_month.year}"
+      @chart_array << { name: "#{@monthly_name}", data: { "value": @monthly_cost } }
+      i += 1
+    end
   end
 end

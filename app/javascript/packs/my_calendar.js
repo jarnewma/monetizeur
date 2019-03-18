@@ -6,13 +6,16 @@ const calendarObject = document.getElementById('calendar')
 
 const computeEvent = (subscription) => {
   return {
-    title: subscription.name,
+    title: computeName(subscription),
     start: subscription.billing_date,
     backgroundColor: computeColor(subscription),
     url: computeUrl(subscription),
     textColor: 'white !important',
     borderColor: 'white !important'
   }
+}
+const computeName = (subscription) => {
+  return `${subscription.name}    ${subscription.cost} €`
 }
 
 const computeColor = (subscription) => {

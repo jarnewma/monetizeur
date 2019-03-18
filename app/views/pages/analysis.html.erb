@@ -14,11 +14,14 @@
   <br>
   <br>
   <% i = -2 %>
+  <% chart_array = [] %>
   <% 12.times do %>
   <p> <%= (Time.now + i.month).strftime("%B")%> <%= (Time.now + i.month).year %>
   <% @subscriptions_all.select{|sub| sub.subs_month(Date.today + i.month)}.group_by(&:category).each do |cat, sub_array| %>
       <%= cat %>
-      <%= sub_array.inject(0){|sum,x| (sum + x.cost).round(2)   } %> EUR
+      <% monthly_cost = sub_array.inject(0){|sum,x| (sum + x.cost).round(2)   } %>
+      <%= monthly_cost %>EUR
+      total <%= @monthly_cost%>
     <% end %>
   <% i += 1 %>
 </p>
@@ -33,5 +36,6 @@
   <br>
 
 
-</div>
+<%= column_chart @chart_array, colors: ["green", "#FF0000"],
+  library: {backgroundColor: "#FFF", height: 265} %>
 
