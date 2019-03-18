@@ -1,3 +1,16 @@
 .hidden {
     display: none;
 }
+.form-container{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.form{
+margin-top: 20px;
+}
+h3{
+  color: #5D5D5E;
+  text-align: center;
+  margin-top: 30px;
+}
