@@ -11,7 +11,7 @@
 </p>
 
 <% if @payment_method.photo? %>
-<%= cl_image_tag @payment_method.photo, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @payment_method.photo %>
 <% else %>
 <%= image_tag "stock-card.png", height: 300, width: 400 %>
 <% end %>

@@ -22,6 +22,18 @@
   // object-fit: cover;
 }
 
+.card-payment-method-image {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e9e9e9;
+}
+
+.card-payment-method-image img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
 .card-product p {
   line-height: 1.4;
   opacity: .9;
