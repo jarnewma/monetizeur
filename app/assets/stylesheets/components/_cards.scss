@@ -16,6 +16,12 @@
   border-right: 1px solid #e9e9e9;
 }
 
+.card-image2 {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e9e9e9;
+}
+
 .card-image img {
   // height: 100%;
   width: 120px;
@@ -32,6 +38,13 @@
   height: 100%;
   width: 120px;
   object-fit: cover;
+
+.card-image2 img {
+  // height: 100%;
+  width: 120px;
+  // object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-product p {

@@ -26,4 +26,7 @@ skip_before_action :authenticate_user!, only: :home
   def my_profile
     @users = current_user
   end
+
+  def analysis
+  end
 end
