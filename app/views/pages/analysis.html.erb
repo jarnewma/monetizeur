@@ -5,13 +5,16 @@
 
   <div class="charts2">
     <div class="column_chart">
-      <%= column_chart @chart_array, colors: ["#32A287", "#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287","#32A287"],
-        library: {backgroundColor: "#FFF", height: 265} %>
+      <%= column_chart @chart_array, {height: "400px", library: {hAxis: {title: "Months"}, vAxis: {title: "subscription costs"}}} %>
     </div>
-    <div class="piechart">
-    <%= pie_chart @pie_chart_data_this_month, colors: @colors %>
-
-    <%= pie_chart @pie_chart_data_this_year, colors: @colors %>
+    <div class="legend">
+      info here
+    </div>
+    <div class="piechart-month">
+      <%= pie_chart @pie_chart_data_this_month %>
+    </div>
+    <div class="piechart-year">
+      <%= pie_chart @pie_chart_data_this_year %>
     </div>
   </div>
 </div>

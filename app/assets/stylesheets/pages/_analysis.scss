@@ -1,11 +1,14 @@
-.analysis-dashboard {
-  display: flex;
+.analysis-dashboard h1 {
+  text-align: center;
+  padding: 20px;
 }
 
 .charts2 {
   flex-grow: 1;
   display: grid;
+  grid-template-columns: 70vh 70vh;
   grid-template-rows: 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+  width: 100vh;
 }
