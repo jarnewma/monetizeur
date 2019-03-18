@@ -1,6 +1,7 @@
 <div class="container">
   <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
-    <div class="card-image2">
+    <div class="card-image2" class="btn btn-primary">
+
         <% if @subscription.name == "Amazon Prime" %>
           <%= image_tag "amazon.png", alt: "amazon" %>
         <% elsif @subscription.name == "Apple Music" %>
@@ -19,6 +20,7 @@
           <%= image_tag "logosmall.png", alt: "logo" %>
         <% end %>
     </div>
+    <%= cl_image_tag(@subscription.photo) %>
     <div class="square">
       <h4 class="cost"><%= @subscription.cost %> EUR</h4>
       <p>(<%= @subscription.subscription_type %>)</p>
@@ -42,9 +44,10 @@
     <div class="field fith">
       <h4>Card </h4>
       <p><%= @subscription.payment_method.card_nickname %></p>
+      <p id="back" class="btn btn-primary index"> <%= link_to "Edit Payment Method", edit_payment_method_path %></p>
     </div>
     <div>
-      <h4>Parasites</h4>
+      <h4>Parasites/Leeches/Scum of the Earth</h4>
       <ul>
         <% @subscription.parasites.each do |para| %>
           <li> <%=  para.name %></li>
@@ -81,16 +84,14 @@
 
 <p> The friends & family members who use your subscription services are:</p>
 
-<%= link_to "add friend" , new_parasite_path(subscription_id: @subscription) %>
-
-
 <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
     <%= f.association :parasites  %>
-    <%= f.submit %>
 <% end %>
 
-<p class="btn btn-primary">
-    <%= link_to "remove friend", new_subscription_path   %> </p>
+<p id="back" class="btn btn-primary index">
+  <%= link_to "Add Friend" , new_parasite_path(subscription_id: @subscription) %></p>
 
-<%= @subscription.payment_method.card_nickname %>
-<p> button to edit card </p>
+<p id="back" class="btn btn-primary index">
+    <%= link_to "Remove Friend", new_subscription_path   %> </p>
+
+<p  </p>

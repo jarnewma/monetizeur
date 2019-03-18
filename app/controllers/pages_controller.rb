@@ -65,19 +65,22 @@ skip_before_action :authenticate_user!, only: :home
     @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
+    @colors = []
 
     @pie_chart_data_this_month = []
     @sub_cat.each do |month, sub_array|
       month_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
     @pie_chart_data_this_month << [month, month_value]
+    @colors << sub_array.first.category_color
+  end
 
 
     @pie_chart_data_this_year = []
     @sub_cat.each do |year, sub_array|
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
     @pie_chart_data_this_year << [year, year_value]
+    @colors << sub_array.first.category_color
   end
-end
 
     p @sub_cat
 

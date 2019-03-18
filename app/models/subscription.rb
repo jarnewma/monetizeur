@@ -4,6 +4,8 @@ class Subscription < ApplicationRecord
   has_many :subscription_parasites
   has_many :parasites, through: :subscription_parasites
 
+
+  mount_uploader :photo, PhotoUploader
   validates :name, presence: true
   validates :subscription_type, presence: true
   validates :cost, presence: true
@@ -16,7 +18,6 @@ class Subscription < ApplicationRecord
       self.creation_date = Date.today
     end
   end
-
 
 
   def lifelong_cost
