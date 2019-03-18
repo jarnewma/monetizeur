@@ -81,9 +81,9 @@ class Subscription < ApplicationRecord
 
   def calc_yearly
     if self.cost.nil?
-        cost = 0
+      cost = 0
     else
-        cost = self.cost
+      cost = self.cost
     end
 
     date_pay = self.creation_date
@@ -149,13 +149,6 @@ class Subscription < ApplicationRecord
     end
     return payment_date
   end
-
-  # def send_email_to_author
-  #   if
-  #     UserMailer.notification(subscription.id).deliver_now
-  # end
-
-
 
 
   def category_color

@@ -65,7 +65,22 @@ skip_before_action :authenticate_user!, only: :home
     @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
     @sub_cat = @subscriptions.group_by(&:category)
-    # TU M'EXPLIQUES TOUT DANS 15 min !!! Oli.
+
+    @pie_chart_data_this_month = []
+    @sub_cat.each do |month, sub_array|
+      month_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
+    @pie_chart_data_this_month << [month, month_value]
+
+
+    @pie_chart_data_this_year = []
+    @sub_cat.each do |year, sub_array|
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
+    @pie_chart_data_this_year << [year, year_value]
+  end
+end
+
+    p @sub_cat
+
     i = 0
     @chart_array = []
     12.times do
@@ -80,5 +95,6 @@ skip_before_action :authenticate_user!, only: :home
       @chart_array << { name: "#{@monthly_name}", data: { "value": @monthly_cost } }
       i += 1
     end
+
   end
 end
