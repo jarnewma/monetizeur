@@ -55,9 +55,11 @@ skip_before_action :authenticate_user!, only: :home
 
   def my_profile
     @users = current_user
-    @payment_methods = current_user.payment_methods
+    @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
+    @payment_methods = current_user.payment_methods
     @sub_cat = @subscriptions.group_by(&:category)
+
 
     @one_year_events = []
 
@@ -136,20 +138,23 @@ skip_before_action :authenticate_user!, only: :home
     @sub_app.each do |year, sub_array|
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
       @pie_chart_data_per_app << [year, year_value]
-    end
+      @colors << sub_array.first.category_color
 
     i = 0
     @chart_array = { }
     12.times do
       current_month = Date.today + i.month
-      @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) }
-      @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2)
+      @subscription_costs = @subscriptions_all.select { |sub| sub.subs_month(current_month) }
+      @monthly_cost = @subscription_costs.inject(0){ |sum, x|  sum + x.cost }.round(2)
       @monthly_name = "#{(current_month).strftime("%B")} #{current_month.year}"
 
       @chart_array[@monthly_name] = @monthly_cost
       i += 1
-    end
+      end
     return p @chart_array
+
 
   end
 end
+
+

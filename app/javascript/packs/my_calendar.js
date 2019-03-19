@@ -49,11 +49,19 @@ if (calendarObject) {
   console.log(calendar)
 
 
+  $('.my-profile #calendar').fullCalendar({
+    // put your options and callbacks here
+    header: false,
+    events: calendar,
+
+  })
 
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     events: calendar,
+
   })
+
 
 
   $('#previous-month').click(function() {

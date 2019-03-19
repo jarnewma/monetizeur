@@ -64,7 +64,7 @@
       <p id="back-little" class="btn btn-primary index">
         <%= link_to "Add Friend" , new_parasite_path(subscription_id: @subscription) %></p>
       <p id="back" class="btn btn-primary index">
-        <%= link_to "Remove Friend", new_subscription_path   %> </p>
+        <%= link_to "Remove Friend", "#", method: :delete   %> </p>
       <p>
         <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
         <%= f.association :parasites  %>

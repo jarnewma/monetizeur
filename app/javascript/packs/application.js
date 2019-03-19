@@ -44,5 +44,5 @@ if( document.getElementById('subscription_renewal_notification')){
 
 selectDropdown()
 
-firstFieldForm = document.querySelector('#nameDropdown')
+let firstFieldForm = document.querySelector('#nameDropdown')
 if (firstFieldForm) { firstFieldForm.focus() }

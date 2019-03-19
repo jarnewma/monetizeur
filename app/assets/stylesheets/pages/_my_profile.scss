@@ -46,6 +46,7 @@
 .info-btn-container{
   display: flex;
   justify-content: flex-end;
+  bottom: 10px;
 }
 #more-info{
   border: 1px solid #87A2C6 !important;
@@ -53,22 +54,21 @@
   background-color: white !important;
   border-radius: 5px;
   font-size: 10px;
-
 }
 .box{
   border: 1px solid #87A2C6;
   padding: 15px;
-  width: 300px;
-  height: 150px;
+  width: 350px;
   border-radius: 5px;
 }
 .cards-container{
   display: flex;
   flex-direction: row;
-  justify-content: flex-star;
+  justify-content: flex-start;
 }
 .subscriptions{
   margin-right: 40px;
+  position: relative;
 }
 
 .single-card{
@@ -93,10 +93,9 @@ h3, h5, p{
 .parasites-container{
   display:flex;
   flex-direction: row;
-
+  justify-content: flex-start;
 }
 .para-avatar {
-  position: relative;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -105,6 +104,8 @@ h3, h5, p{
   position: relative;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 0;
 }
 .initial{
   font-size: 40px;
@@ -114,10 +115,9 @@ h3, h5, p{
 }
 .single-parasite{
   text-align: center;
-  width: 150px;
+  width: 300px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -128,4 +128,36 @@ h3, h5, p{
 
 .para-subsc{
   font-size: 15px;
+}
+.para-details{
+  margin-top: 100px;
+}
+
+.pm-nickname {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.entire-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ---CALENDAR INJECTION
+.my-profile {
+  .fc tbody .fc-row .fc-content-skeleton tbody tr:last-child td {
+      padding-bottom: 0;
+  }
+
+  .fc table, body .fc {
+      font-size: 8px;
+  }
+  .profile-calendar{
+    display: flex;
+    justify-content: center;
+  }
+  .fc-view-container{
+    width: 300px;
+  }
 }
