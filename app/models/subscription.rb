@@ -19,79 +19,69 @@ class Subscription < ApplicationRecord
     end
   end
 
-
-  def lifelong_cost
+  def lifelong_cost(from_date: nil, to_date: nil)
     total_cost = 0
     if self.subscription_type == "Monthly"
-      return calc_monthly.round(2)
+      return calc_monthly(from_date: from_date, to_date: to_date).round(2)
     elsif self.subscription_type == "Quarterly"
-      return calc_quartertly.round(2)
+      return calc_quartertly(from_date: from_date, to_date: to_date).round(2)
     elsif self.subscription_type == "Biannually"
-      return calc_biannualy.round(2)
+      return calc_biannualy(from_date: from_date, to_date: to_date).round(2)
     else self.subscription_type == "Annually"
-      return calc_yearly.round(2)
+      return calc_yearly(from_date: from_date, to_date: to_date).round(2)
     end
   end
 
-  def calc_monthly
-      if self.cost.nil?
-        cost = 0
-      else
-        cost = self.cost
-      end
-
-      date_pay = self.creation_date
-
-      while date_pay < Date.today
-          date_pay = date_pay + 1.months
-          cost += self.cost
-      end
-      return cost
-  end
-
-  def calc_quartertly
-      if self.cost.nil?
-        cost = 0
-      else
-        cost = self.cost
-      end
-
-      date_pay = self.creation_date
-      while date_pay < Date.today
-          date_pay = date_pay + 3.months
-          cost += self.cost
-      end
-      return cost
-  end
-
-    def calc_biannualy
-      if self.cost.nil?
-        cost = 0
-      else
-        cost = self.cost
-      end
-
-      date_pay = self.creation_date
-
-      while date_pay < Date.today
-          date_pay = date_pay + 6.months
-          cost += self.cost
-      end
-      return cost
-  end
-
-  def calc_yearly
-    if self.cost.nil?
+  def calc_monthly(from_date: nil, to_date: nil)
       cost = 0
-    else
-      cost = self.cost
-    end
 
-    date_pay = self.creation_date
+      date_pay = from_date.nil? ? self.creation_date : from_date
+      to_date = to_date.nil? ? Date.today : to_date
 
-    while date_pay < Date.today
-        date_pay = date_pay + 12.months
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 1.months
+
+      end
+      return cost
+  end
+
+  def calc_quartertly(from_date: nil, to_date: nil)
+        cost = 0
+
+      date_pay = from_date.nil? ? self.creation_date : from_date
+      to_date = to_date.nil? ? Date.today : to_date
+
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 3.months
+
+      end
+      return cost
+  end
+
+    def calc_biannualy(from_date: nil, to_date: nil)
+      cost = 0
+      date_pay = from_date.nil? ? self.creation_date : from_date
+      to_date = to_date.nil? ? Date.today : to_date
+
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 6.months
+
+      end
+      return cost
+  end
+
+  def calc_yearly(from_date: nil, to_date: nil)
+    cost = 0
+    date_pay = from_date.nil? ? self.creation_date : from_date
+    to_date = to_date.nil? ? Date.today : to_date
+
+    while date_pay < to_date
         cost += self.cost
+        date_pay = date_pay + 12.months
+
     end
     return cost
   end
@@ -150,7 +140,6 @@ class Subscription < ApplicationRecord
     end
     return payment_date
   end
-
 
   def category_color
     if self.category == "Media"

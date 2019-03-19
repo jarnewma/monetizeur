@@ -124,11 +124,11 @@ skip_before_action :authenticate_user!, only: :home
     end
 
     # This year's subscription cost per category
-    @yearly_subscriptions = current_user.subscriptions.select{|sub| sub.creation_date > Time.current - 1.year }
+    @yearly_subscriptions = current_user.subscriptions
     @colors_year = []
     @pie_chart_data_this_year = []
     @yearly_subscriptions.group_by(&:category).each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(from_date: Time.current - 1.year, to_date: Time.current)}
       @pie_chart_data_this_year << [year, year_value]
       @colors_year << sub_array.first.category_color[:value]
     end
@@ -155,5 +155,4 @@ skip_before_action :authenticate_user!, only: :home
 
   end
 end
-
 end
