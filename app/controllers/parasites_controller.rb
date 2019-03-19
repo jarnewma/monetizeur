@@ -15,15 +15,20 @@ end
 
     @parasite = Parasite.new(name: parasite_params[:name], parasite_email: parasite_params[:parasite_email], notify_parasite: parasite_params[:notify_parasite])
     @parasite.user = current_user
-    @subscription = Subscription.find(parasite_params[:subscription_id].to_i)
     if @parasite.save
-      redirect_to subscription_path(@subscription), notice: 'Friend added'
+
+     return  redirect_to(subscription_path(parasite_params[:subscription_id]), notice: 'Friend added' ) unless parasite_params[:subscription_id].blank?
+      redirect_to my_profile_path
     else
       render :new
     end
   end
 
   def destroy
+    @parasites = Parasite.find(params[:id])
+    @parasite.destroy
+      return  redirect_to(subscription_path(parasite_params[:subscription_id]), notice: 'Friend added' ) unless parasite_params[:subscription_id].blank?
+      redirect_to my_profile_path
   end
 
   def parasite_params
