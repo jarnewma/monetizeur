@@ -134,7 +134,6 @@ class Subscription < ApplicationRecord
     (date.beginning_of_month..date.end_of_month) === value_date
   end
 
-
   def payment_date
     payment_date = billing_date
 

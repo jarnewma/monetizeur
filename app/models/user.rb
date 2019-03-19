@@ -36,7 +36,11 @@ class User < ApplicationRecord
   end
 
   def growth_subscription
+    if self.total_monthly_cost_last_month > 0
     percentage = (((self.total_monthly_cost - self.total_monthly_cost_last_month)/self.total_monthly_cost_last_month)*100).round(2)
+    else
+      100
+    end
   end
 
 end
