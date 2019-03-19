@@ -39,16 +39,38 @@
       <h4>You don't have any subscriptions linked to this card</h4>
       <% else %>
       <h4> The subscriptions linked to this card are: </h4>
-      <ul>
-            <% @subscriptions.each do |sub|  %></p>
-            <li class="sub-name">
-              <%= link_to sub.name, subscription_path %>
-            </li>
-            <% end %>
-          </ul>
+      <div class="subscription-container ">
+        <div class="row">
+          <% @subscriptions.each do |sub|  %></p>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 entire-subscription">
+            <div class="single-subscription">
+              <div class="subsc-image">
+                  <%= link_to  subscription_path(sub) do%>
+                    <% if sub.name == "Amazon Prime" %>
+                      <%= image_tag "amazon.png", alt: "amazon" %>
+                    <% elsif sub.name == "Apple Music" %>
+                      <%= image_tag "apple.png", alt: "apple" %>
+                    <% elsif sub.name == "Dropbox" %>
+                      <%= image_tag "dropbox.png", alt: "dropbox" %>
+                    <% elsif sub.name == "iCloud" %>
+                      <%= image_tag "icloud.png", alt: "icloud" %>
+                    <% elsif sub.name == "LinkedIn" %>
+                      <%= image_tag "linkedin.png", alt: "linkedin" %>
+                    <% elsif sub.name == "Netflix" %>
+                      <%= image_tag "netflix.png", alt: "netflix" %>
+                    <% elsif sub.name == "Spotify" %>
+                      <%= image_tag "spotify.png", alt: "spotify" %>
+                    <% else %>
+                      <%= image_tag "logosmall.png", alt: "logo" %>
+                    <% end %>
+                  <% end %>
+                </div>
+              <p> class="subsc-name"><%= link_to sub.name, subscription_path(sub) %></p>
+          <% end %>
+        </div> <!-- closing row -->
+      </div>
       <% end %>
     </div>
-
   </div>
     <br>
       <div id="back" class="btn btn-primary">

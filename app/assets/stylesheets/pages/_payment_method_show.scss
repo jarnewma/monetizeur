@@ -27,3 +27,13 @@
   margin-bottom: 5px;
   text-align: left !important;
 }
+
+.subsc-image img{
+  width: 80px;
+  height: auto;
+}
+
+.subscription-container{
+  display: flex;
+  flex-direction: row;
+}
