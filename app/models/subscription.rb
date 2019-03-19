@@ -118,7 +118,7 @@ class Subscription < ApplicationRecord
   def subs_month(date)
     notify = false
     value_date = billing_date
-
+    p self if self.name == "Fitness"
     until ((date.beginning_of_month..date.end_of_month) === value_date) || (value_date > date.end_of_month )
        if self.subscription_type == "Monthly"
           value_date = value_date + 1.month
@@ -130,6 +130,7 @@ class Subscription < ApplicationRecord
            value_date = value_date + 1.year
        end
     end
+    p value_date if self.name == "Fitness"
     (date.beginning_of_month..date.end_of_month) === value_date
   end
 
