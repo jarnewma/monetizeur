@@ -138,7 +138,6 @@ skip_before_action :authenticate_user!, only: :home
     @sub_app.each do |year, sub_array|
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
       @pie_chart_data_per_app << [year, year_value]
-      @colors << sub_array.first.category_color
 
     i = 0
     @chart_array = { }
