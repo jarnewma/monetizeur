@@ -1,31 +1,35 @@
 
 <h3 class="pm-header"> Your payment methods </h3>
-<div class="pm-container">
+<div class="pm-container container">
+  <div class="row">
   <% @payment_methods.each do |pm| %>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
   <div class="single-pm">
-    <div class="pm-image" >
-        <% if pm.photo? %>
-          <%= cl_image_tag pm.photo, height: 300, width: 400 %>
-        <% elsif pm.category == "Visa"%>
-          <%= image_tag "visa.jpg", height: 300, width: 400 %>
-        <% elsif pm.category == "Amex"%>
-          <%= image_tag "amex.png", height: 300, width: 400 %>
-        <% elsif pm.category == "Paypal"%>
-          <%= image_tag "paypal.png", height: 300, width: 400 %>
-        <% elsif pm.category == "Mastercard"%>
-          <%= image_tag "master.jpg", height: 300, width: 400 %>
+      <div class="pm-image" >
+          <% if pm.photo? %>
+            <%= cl_image_tag pm.photo, height: 300, width: 400 %>
+          <% elsif pm.category == "Visa"%>
+            <%= image_tag "visa.jpg", height: 300, width: 400 %>
+          <% elsif pm.category == "Amex"%>
+            <%= image_tag "amex.png", height: 300, width: 400 %>
+          <% elsif pm.category == "Paypal"%>
+            <%= image_tag "paypal.png", height: 300, width: 400 %>
+          <% elsif pm.category == "Mastercard"%>
+            <%= image_tag "master.jpg", height: 300, width: 400 %>
+          <% end %>
+      </div>
+      <div class="pm-infos">
+        <p class="pm-uppercase"><%= pm.category %> </p>
+        <p class="pm-name"><%= link_to pm.card_nickname, payment_method_path(pm) %></p>
+        <p class="pm-date"><%= pm.expiry_date %> </p>
+        <%= link_to payment_method_path(pm), method: :delete  do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
         <% end %>
-    </div>
-    <div class="pm-infos">
-      <p class="pm-uppercase"><%= pm.category %> </p>
-      <p class="pm-name"><%= link_to pm.card_nickname, payment_method_path(pm) %></p>
-      <p class="pm-date"><%= pm.expiry_date %> </p>
-      <%= link_to payment_method_path(pm), method: :delete  do %>
-      <i class="fa fa-trash" aria-hidden="true"></i>
-      <% end %>
+      </div>
     </div>
   </div>
   <% end %>
+  </div>
 </div>
 
 <br>
@@ -36,4 +40,6 @@
   </div>
 </div>
 
-
+<br>
+<br>
+<br>
