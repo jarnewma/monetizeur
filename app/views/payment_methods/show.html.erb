@@ -1,5 +1,5 @@
 <div class="show-card container">
-  <div class="main-container col-xs-12 col-md-6 col-md-offset-3">
+  <div class="main-container">
     <div class="single-card">
       <% if @payment_method.photo? %>
       <%= cl_image_tag @payment_method.photo %>
@@ -39,10 +39,10 @@
       <h4>You don't have any subscriptions linked to this card</h4>
       <% else %>
       <h4> The subscriptions linked to this card are: </h4>
-      <div class="subscription-container ">
+      <div class="container pm_subsc_show">
         <div class="row">
           <% @subscriptions.each do |sub|  %></p>
-          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 entire-subscription">
+          <div class="col-xs-12 col-sm-6 col-md-4 entire-subscription">
             <div class="single-subscription">
               <div class="subsc-image">
                   <%= link_to  subscription_path(sub) do%>
@@ -65,17 +65,29 @@
                     <% end %>
                   <% end %>
                 </div>
-              <p> class="subsc-name"><%= link_to sub.name, subscription_path(sub) %></p>
+              <p class="subsc-name"><%= link_to sub.name, subscription_path(sub) %></p>
+            </div>
+          </div>
           <% end %>
         </div> <!-- closing row -->
       </div>
       <% end %>
     </div>
-  </div>
     <br>
-      <div id="back" class="btn btn-primary">
-        <%= link_to "My Profile", my_profile_path %>
-      </div>
+
+  <div class="buttons-container">
+    <div id="remove-btn" class="btn btn-primary">
+      <%= link_to "Delete this card", payment_method_path(@payment_method), method: :delete %>
+    </div>
+    <div id="back" class="btn btn-primary back-my-profile">
+      <%= link_to my_profile_path do %>
+      <p><i class="fas fa-undo"></i> My Profile</p>
+      <% end %>
+    </div>
+  </div>
+
+
+
 
   </div>
 </div>

@@ -28,9 +28,11 @@
           <% current_user.dob %>
         <% end %>
       </p>
+
       <div id="back" class="btn btn-primary">
         <%= link_to "Update Your Profile", "#"   %>
       </div>
+
     </div>
   </div>
 
@@ -100,8 +102,10 @@
           <% end %>
         </div>
       </div>
-      <div id="back" class="btn btn-primary">
-        <%= link_to "add a Card", new_payment_method_path   %>
+      <div class="btn-contain">
+        <div id="back" class="btn btn-primary">
+          <%= link_to "add a Card", new_payment_method_path   %>
+        </div>
       </div>
     </div>
   </div>

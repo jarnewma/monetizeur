@@ -37,3 +37,58 @@
   display: flex;
   flex-direction: row;
 }
+
+.entire-subscription{
+  display: flex;
+  align-items: flex-end;
+}
+.entire-subscription a{
+  color: #484848;
+  font-size: 14px;
+   &:hover{
+   color: black;
+   text-decoration: none;
+  }
+}
+
+.pm_subsc_show{
+  padding-bottom: 20px !important;
+}
+// --BUTTONS
+#remove-btn{
+  background-color: #E88C8B !important;
+  color:white !important;
+  border: none;
+  border-radius: 10px;
+  margin-bottom:10px;
+  &:hover{
+   background-color: #C13836 !important;
+  }
+}
+#remove-btn a{
+  color:white !important;
+  &:hover{
+   text-decoration: none !important;
+  }
+}
+.buttons-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.back-my-profile p{
+  color:white !important;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
