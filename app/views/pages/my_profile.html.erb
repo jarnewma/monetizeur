@@ -43,20 +43,12 @@
         <div class="box subscriptions">
           <h5><i class="fas fa-wallet"></i>  Subscriptions <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
           <div>
-            <% @subscriptions.each do |x| %>
-              <% sum = 0 %>
-              <% sum += x.cost %>
-            <% end %>
-            <% i = 0 %>
-            <% 12.times do %>
-              <% current_month = Date.today + i.month %>
-              <% @subscription_costs = @subscriptions.select { |sub| sub.subs_month(current_month) } %>
-              <% @monthly_cost = @subscription_costs.map(&:cost).inject(0, &:+).round(2) %>
-              <% i += 1 %>
-            <% end %>
-            <p> <%= @monthly_cost %>  € this month</p>
+            <p> <%= current_user.total_monthly_cost %> € this month</p>
+            <p> <%= current_user.growth_subscription%> % </p>
           </div>
-          <br>
+          <div>
+            <p> <%= current_user.total_monthly_cost_next_month %> € next month</p>
+          </div>
           <div class="info-btn-container">
             <%= link_to analysis_path do %>
             <div class="btn btn-primary" id="more-info">
