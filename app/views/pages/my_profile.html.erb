@@ -42,12 +42,16 @@
       <div class="summary-container">
         <div class="box subscriptions">
           <h5><i class="fas fa-wallet"></i>  Subscriptions <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
-          <div>
-            <p> <%= current_user.total_monthly_cost %> € this month</p>
-            <p> <%= current_user.growth_subscription%> % </p>
+          <div class="subsc-cost">
+            <p class="total-spent"> <%= current_user.total_monthly_cost %> € this month</p>
+            <% if  current_user.growth_subscription > 0 %>
+              <p class="total-increase"><i class="fas fa-caret-up"></i> <%= current_user.growth_subscription%> % </p>
+            <% else %>
+              <p class="total-decrease"><i class="fas fa-caret-down"></i> <%= current_user.growth_subscription%> % </p>
+            <% end %>
           </div>
           <div>
-            <p> <%= current_user.total_monthly_cost_next_month %> € next month</p>
+            <p class="next-subsc-cost"> <%= current_user.total_monthly_cost_next_month %> € next month</p>
           </div>
           <div class="info-btn-container">
             <%= link_to analysis_path do %>
