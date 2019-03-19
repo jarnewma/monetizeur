@@ -59,7 +59,7 @@
       <ul>
         <% @subscription.parasites.each do |para| %>
           <li> <%=  para.name %>
-            <%= link_to delete_parasite_subscription_path(parasite: para), method: :delete  do %>
+            <%= link_to delete_parasite_subscription_path(parasite: para), method: :delete, data: { confirm: "Are your friend isn't using this service anymore?" }  do %>
             <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </li>
