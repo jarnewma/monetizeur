@@ -16,11 +16,11 @@
       </div>
       <div class="piechart-month">
          <h4> This month's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_month %>
+        <%= pie_chart @pie_chart_data_this_month, colors: @colors_month %>
       </div>
       <div class="piechart-year">
         <h4> This year's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_year %>
+        <%= pie_chart @pie_chart_data_this_year, colors: @colors_year  %>
       </div>
     </div>
   </div>

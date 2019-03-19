@@ -13,7 +13,7 @@
       <%= f.input :name, label: 'Name of your service provider/Subscription', input_html: { style: "display: none;"} %>
       <%= f.input :name, placeholder: 'Enter subscription name', label: false, input_html: { id: "nameInput", class: "hidden" } %>
       <%= f.input :name, label: false, collection: ["Amazon Prime", "Apple Music", "Dropbox", "iCloud", "LinkedIn", "Netflix", "Spotify", "Add manually"], select: 'From ', prompt: 'Select your subscription', input_html: { id: "nameDropdown"} %>
-      <%= f.input :subscription_type, label: 'Billing frequency',collection: ["Monthly", "Quarterly", "Biannually", "Annually"], selected: "Monthly" %>
+      <%= f.input :subscription_type, label: 'Billing frequency', collection: ["Monthly", "Quarterly", "Biannually", "Annually"], prompt: 'Select frequency' %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :billing_date, placeholder: 'Add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
