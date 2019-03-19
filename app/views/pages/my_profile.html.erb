@@ -60,7 +60,7 @@
 
         <div class="box calendar-view">
           <h5><i class="far fa-calendar-alt"></i> Calendar <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
-          <div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
+          <div id='calendar' class='profile-calendar' data-subscriptions="<%= @one_year_events %>"></div>
         </div>
       </div>
 
@@ -72,25 +72,29 @@
 
     <div class="your-cards">
       <h3>Your cards</h3>
-      <div class="cards-container">
-        <% @payment_methods.each do |pm|%>
-        <div class="single-card">
-          <%= link_to payment_method_path(pm) do %>
-            <% if pm.photo? %>
-              <%= cl_image_tag pm.photo, height: 300, width: 400 %>
-            <% elsif pm.category == "Visa"%>
-              <%= image_tag "visa.jpg", height: 300, width: 400 %>
-            <% elsif pm.category == "Amex"%>
-              <%= image_tag "amex.png", height: 300, width: 400 %>
-            <% elsif pm.category == "Paypal"%>
-              <%= image_tag "paypal.png", height: 300, width: 400 %>
-            <% elsif pm.category == "Mastercard"%>
-              <%= image_tag "master.jpg", height: 300, width: 400 %>
-            <% end %>
+      <div class="cards-container container">
+        <div class="row">
+          <% @payment_methods.each do |pm|%>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 entire-card">
+            <div class="single-card">
+              <%= link_to payment_method_path(pm) do %>
+                <% if pm.photo? %>
+                  <%= cl_image_tag pm.photo, height: 300, width: 400 %>
+                <% elsif pm.category == "Visa"%>
+                  <%= image_tag "visa.jpg", height: 300, width: 400 %>
+                <% elsif pm.category == "Amex"%>
+                  <%= image_tag "amex.png", height: 300, width: 400 %>
+                <% elsif pm.category == "Paypal"%>
+                  <%= image_tag "paypal.png", height: 300, width: 400 %>
+                <% elsif pm.category == "Mastercard"%>
+                  <%= image_tag "master.jpg", height: 300, width: 400 %>
+                <% end %>
+              <% end %>
+              <p class="pm-nickname"><%= link_to pm.card_nickname, payment_method_path(pm)%></p>
+            </div>
+          </div>
           <% end %>
-          <p><%= link_to pm.card_nickname, payment_method_path(pm)%></p>
         </div>
-        <% end %>
       </div>
       <div id="back" class="btn btn-primary">
         <%= link_to "add a Card", new_payment_method_path   %>
