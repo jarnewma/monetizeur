@@ -25,7 +25,7 @@ end
   end
 
   def destroy
-    @parasites = Parasite.find(params[:id])
+    @parasite = Parasite.find(params[:id])
     @parasite.destroy
       return  redirect_to(subscription_path(parasite_params[:subscription_id]), notice: 'Friend added' ) unless parasite_params[:subscription_id].blank?
       redirect_to my_profile_path

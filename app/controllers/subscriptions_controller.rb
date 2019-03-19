@@ -44,12 +44,21 @@ class SubscriptionsController < ApplicationController
   end
 
   def add_parasite
-          @subscription = Subscription.find(params[:id])
+    @subscription = Subscription.find(params[:id])
     params[:subscription][:parasite_ids].each do |para|
       @subscription.parasites << Parasite.find(para) unless para.blank?
     end
     @subscription.save
     redirect_to @subscription
+  end
+
+
+  def delete_parasite
+    @subscription = Subscription.find(params[:id])
+    @parasite = Parasite.find(params[:parasite])
+    @relationship_to_destroy = SubscriptionParasite.where(parasite: @parasite).where(subscription:@subscription).first
+    @relationship_to_destroy.destroy
+    redirect_to subscription_path(@subscription)
   end
 
   def update_notification

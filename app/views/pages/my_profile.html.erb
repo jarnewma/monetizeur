@@ -8,28 +8,16 @@
     <div class="profile info">
       <p> Email: <%=current_user.email  %> </p>
       <p> First Name:
-        <% if current_user.first_name == nil %>
-          <% " " %>
-        <% else %>
-          <% current_user.first_name %>
-        <% end %>
+          <%= current_user.first_name %>
       </p>
       <p> Last Name:
-        <% if current_user.last_name == nil %>
-          <% " " %>
-        <% else %>
-          <% current_user.last_name %>
-        <% end %>
+          <%= current_user.last_name %>
       </p>
       <p> Birth Date:
-        <% if current_user.dob == nil %>
-          <% " " %>
-        <% else %>
-          <% current_user.dob %>
-        <% end %>
+          <%= current_user.dob %>
       </p>
       <div id="back" class="btn btn-primary">
-        <%= link_to "Update Your Profile", "#"   %>
+        <%= link_to "Update Your Profile", edit_user_registration_path  %>
       </div>
     </div>
   </div>
