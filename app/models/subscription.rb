@@ -155,23 +155,23 @@ class Subscription < ApplicationRecord
 
   def category_color
     if self.category == "Media"
-      'red'
+      {class_name: 'red', value: 'red'}
     elsif self.category == "Wellbeing"
-      'green'
+      {class_name:'green', value: '#5CB566'}
     elsif self.category == "Streaming"
-      'lightblue'
+      {class_name:'lightblue', value: 'lightblue'}
     elsif self.category == "Leisure"
-      'darkblue'
+      {class_name:'darkblue', value: 'darkblue'}
     elsif self.category == "Social"
-      'orange'
+      {class_name:'orange', value: 'orange'}
     elsif self.category == "Shopping"
-      'pink'
+      {class_name:'pink', value: 'pink'}
     elsif self.category == "Food"
-      'yellow'
+      {class_name:'yellow', value: 'yellow'}
     elsif self.category == "Technology"
-      'gray'
+      {class_name:'gray', value: 'gray'}
     elsif self.category == "Other"
-      'purple'
+      {class_name:'purple', value: 'purple'}
     end
   end
 end

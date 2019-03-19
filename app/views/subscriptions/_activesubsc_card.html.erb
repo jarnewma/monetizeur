@@ -1,6 +1,6 @@
 <% @subscriptions.each do |subscription| %>
   <div class="card-product">
-    <div class="category  <%= subscription.category_color %>" id="wrapper">
+    <div class="category  <%= subscription.category_color[:class_name] %>" id="wrapper">
       <p class="vertical"><%= subscription.category %></p>
     </div>
     <div class="card-image">

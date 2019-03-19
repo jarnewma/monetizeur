@@ -109,31 +109,36 @@ skip_before_action :authenticate_user!, only: :home
     @users = current_user
     @subscriptions_all = current_user.subscriptions
     @subscriptions = current_user.subscriptions.select{|sub| sub.subs_month(Date.today)}
+
     @sub_cat = @subscriptions.group_by(&:category)
     @sub_app = @subscriptions.group_by(&:name)
-    @colors = []
 
+    # This month's subscription cost per category
+    @monthly_subscriptions = current_user.subscriptions.select{|sub| sub.billing_date.month == Time.current.month }
+    @colors_month = []
     @pie_chart_data_this_month = []
-    @sub_cat.each do |month, sub_array|
+    @monthly_subscriptions.group_by(&:category).each do |month, sub_array|
       month_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
-    @pie_chart_data_this_month << [month, month_value]
-    @colors << sub_array.first.category_color
+      @pie_chart_data_this_month << [month, month_value]
+      @colors_month << sub_array.first.category_color[:value]
     end
 
-
+    # This year's subscription cost per category
+    @yearly_subscriptions = current_user.subscriptions.select{|sub| sub.creation_date > Time.current - 1.year }
+    @colors_year = []
     @pie_chart_data_this_year = []
-    @sub_cat.each do |year, sub_array|
+    @yearly_subscriptions.group_by(&:category).each do |year, sub_array|
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
-    @pie_chart_data_this_year << [year, year_value]
-    @colors << sub_array.first.category_color
+      @pie_chart_data_this_year << [year, year_value]
+      @colors_year << sub_array.first.category_color[:value]
     end
+
 
     @pie_chart_data_per_app = []
     @sub_app.each do |year, sub_array|
       year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
       @pie_chart_data_per_app << [year, year_value]
       @colors << sub_array.first.category_color
-  end
 
     i = 0
     @chart_array = { }
