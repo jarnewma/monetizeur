@@ -19,10 +19,12 @@
 
 .cards {
   flex-grow: 1;
-  display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+}
+.your-cards h3{
+  margin-top:15px;
 }
 .summary{
   border-bottom: 1px solid #E8E8E8;
@@ -41,7 +43,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-
+  margin: 20px;
 }
 .info-btn-container{
   display: flex;
@@ -70,7 +72,25 @@
   margin-right: 40px;
   position: relative;
 }
-
+.subsc-cost{
+  display: flex;
+  text-direction: row;
+  .total-spent{
+    font-size: 18px;
+    margin-right: 5px;
+  }
+  .total-increase{
+    color: red;
+    font-size: 12px;
+  }
+  .total-decrease{
+    color: green;
+    font-size: 12px;
+  }
+}
+.next-subsc-cost{
+  color: #767676;
+}
 .single-card{
   text-align: center;
   padding-right: 20px;
@@ -90,6 +110,9 @@ h3, h5, p{
   color: #5D5D5E;
 }
 // ---- PARASITES
+.Parasites-my-profile h3{
+  margin-top:15px;
+}
 .parasites-container{
   display:flex;
   flex-direction: row;
@@ -161,3 +184,8 @@ h3, h5, p{
     width: 300px;
   }
 }
+
+.btn-contain{
+  margin-bottom: 15px;
+}
+

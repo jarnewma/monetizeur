@@ -2,10 +2,13 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 .main-container{
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   padding: 20px;
+  background-color: #FCFCFC;
 }
 
 .image{
@@ -16,7 +19,6 @@
 .logo{
   height: 100px;
 }
-
 
 .square{
   text-align: center;
