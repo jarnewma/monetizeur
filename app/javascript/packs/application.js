@@ -4,7 +4,11 @@ import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
 import selectDropdown from './select_dropdown';
 import { initUpdateNavbarOnScroll } from './navbar';
-initUpdateNavbarOnScroll();
+
+const landingNavbar = document.querySelector('.navbar-lewagon')
+if (landingNavbar) {
+  initUpdateNavbarOnScroll();
+}
 
 require('./my_calendar')
 
