@@ -1,27 +1,112 @@
+<div class="analysis">
 
-<div class="analysis-dashboard">
+  <div class="analysis-profile">
 
-  <h1> My spending Dashboard </h1>
-
-    <div class="dashboard-small">
-
-    <div class="charts2">
-      <div class="column_chart">
-        <h4> Monthly subscription cost for the next 12 months</h4>
-        <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"] %>
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-wallet"></i>  Subscriptions <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
       </div>
-      <div class="legend">
-         <h4> Yearly spending per subscription </h4>
-         <%= pie_chart @pie_chart_data_per_app%>
+      <div class="info-text">
+        <p><%= current_user.total_monthly_cost %> €</p>
       </div>
-      <div class="piechart-month">
-         <h4> This month's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_month, colors: @colors_month %>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-user-clock"></i>  Compared to <%= (Date.today - 1.year).strftime("%B") %> <%= Date.today.year - 1 %></h5>
       </div>
-      <div class="piechart-year">
-        <h4> This year's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_year, colors: @colors_year  %>
+      <div class="info-text">
+        <% if  current_user.growth_subscription_to_month == 100 %>
+          <p class="total-increase"><i class="fas fa-caret-up"></i> <%= current_user.growth_subscription_to_month%> % </p>
+          <p class="notify-me"> <i class="fas fa-info-circle"></i> You didn't have any subscriptions last year, so we indicated a growth of 100% </class></p>
+        <% elsif  current_user.growth_subscription_to_month > 0 %>
+          <p class="total-increase"><i class="fas fa-caret-up"></i> <%= current_user.growth_subscription_to_month%> % </p>
+        <% else %>
+          <p class="total-decrease"><i class="fas fa-caret-down"></i> <%= current_user.growth_subscription_to_month%> % </p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-file-invoice-dollar"></i>  Year to date Spending </h5>
+      </div>
+      <div class="info-text">
+        <p><%= current_user.ytd_spending %> €</p>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-sort-amount-up"></i>  Most expensive subscription YTD </h5>
+      </div>
+      <div class="info-text">
+        <p> <%= current_user.most_expensive[1] %> €
+          <% if current_user.most_expensive[0].to_s ==  %>
+
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-chart-pie"></i> Most expensive category YTD</h5>
+      </div>
+      <div class="info-text">
+        <p> <%= current_user.most_expensive_category[1] %> € <%= current_user.most_expensive_category[0] %> </p>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="far fa-kiss-wink-heart"></i> Friend using the most app's </h5>
+      </div>
+      <div class="info-text">
+        <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
+
+      </div>
+    </div>
+
+        <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="far fa-handshake"></i> Free trials</h5>
+      </div>
+      <div class="info-text">
+        <p> will have a list here :) </p>
       </div>
     </div>
   </div>
+
+
+  <div class="cards-analysis">
+    <div class="analysis-dashboard">
+
+      <h1> My spending Dashboard </h1>
+
+        <div class="dashboard-small">
+
+        <div class="charts2">
+          <div class="column_chart">
+            <h4> Monthly subscription cost for the next 12 months</h4>
+            <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"] %>
+          </div>
+          <div class="legend">
+             <h4> Yearly spending per subscription </h4>
+             <%= pie_chart @pie_chart_data_per_app%>
+          </div>
+          <div class="piechart-month">
+             <h4> This month's subscription cost per category </h4>
+            <%= pie_chart @pie_chart_data_this_month, colors: @colors_month %>
+          </div>
+          <div class="piechart-year">
+            <h4> This year's subscription cost per category </h4>
+            <%= pie_chart @pie_chart_data_this_year, colors: @colors_year  %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
