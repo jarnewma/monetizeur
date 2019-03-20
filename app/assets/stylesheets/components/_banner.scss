@@ -1,9 +1,12 @@
 .banner {
+  background-image: asset-url("banner.png");
+  height: 100vh;
   background-size: cover;
+  color: #eee;
+  text-align: center;
+  padding-top: 40vh;
   background-position: center;
   padding: 150px 0;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), asset-url("banner.jpg");
-  text-align: center;
 }
 
 .banner h1 {
@@ -18,6 +21,7 @@
 .banner p {
   font-size: 30px;
   color: white;
+  font-weight:lighter;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }

@@ -1,7 +1,8 @@
-
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo.png" %>
+    <%= image_tag "logo-small-white.png", id:"nav-logo" %>
+    <div style="display: none;" id="other-img"> <%= image_path 'logosmall.png' %></div>
+    <div style="display: none;" id="init-img"> <%= image_path 'logo-small-white.png' %></div>
   <% end %>
 
 
