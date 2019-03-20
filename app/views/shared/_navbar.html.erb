@@ -4,6 +4,7 @@
     <%= image_tag "logo.png" %>
   <% end %>
 
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,20 +19,30 @@
 
   <% else %>
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to notifications_path, class: "nav-link"  do %>
-            <% notify = false %>
-            <% current_user.subscriptions.each { |n| notify = true if (n.notification_date && n.notify_today?) } %>
+      <div class="nav-link">
+        <% notify = false %>
+        <% current_user.subscriptions.each { |n| notify = true if (n.notification_date && n.notify_today?) } %>
 
-            <% if notify %>
-              <div class="notify-circle"></div>
-            <% else %>
-              You have no notifications today
-            <% end %>
+        <% if notify %>
+          <div class="notify-circle"></div>
+        <% else %>
+          <div id="notice_wrapper">
+            <p>You have no notifications today</p>
+          </div>
+        <% end %>
+        <div class="dropdown nav-link">
+          <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
-          <% end %>
-        </li>
+          </div>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <p class="dropdown-item">hey</p>
+            <p class="dropdown-item">ho</p>
+          </div>
+        </div>
+      </div>
+
+
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <%= link_to "My Calendar", calendar_path, class: "nav-link" %>
         </li>
@@ -42,7 +53,7 @@
           <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Analytics", analysis_path, class: "dropdown-item" %>
-             <%= link_to "Payment Methods", payment_methods_path , class: "dropdown-item" %>
+            <%= link_to "Payment Methods", payment_methods_path , class: "dropdown-item" %>
             <%= link_to "My Profile", my_profile_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

@@ -25,6 +25,11 @@
   height: 5px;
   border-radius: 5px;
   position: absolute;
-  right: 5px;
-  top: 9px;
+  right: 35px;
+  top: 18px;
+}
+
+.dropdown-toggle::after {
+  content: '' !important;
+  border: 0 !important;
 }

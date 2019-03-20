@@ -167,6 +167,7 @@ skip_before_action :authenticate_user!, only: :home
 
           next if origin_date.year > current_year
 
+
           yearly_cost += create.lifelong_cost(from_date: Date.new(current_year, 1, 1) , to_date: Date.new(current_year, 12, 31))
 
         end
