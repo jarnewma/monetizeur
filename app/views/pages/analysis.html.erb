@@ -1,3 +1,5 @@
+
+
 <div class="analysis">
 
   <div class="analysis-profile">
@@ -134,40 +136,36 @@
     </div>
   </div>
 
+<div>
+<h3> My spending Dashboard </h3>
 
   <div class="cards-analysis">
 
-    <h3> My spending Dashboard </h3>
 
-    <div class="column-chart">
-      <div class="column_chart1">
+      <div class="chartkick first">
         <h4> Monthly subscription cost for the next 12 months</h4>
         <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"], height: "300px", xtitle: "months", ytitle: "cost in €" %>
       </div>
-      <div class="line-chart">
+      <div class="chartkick second">
         <h4> Yearly subscription cost for the last 5 years</h4>
         <%= line_chart @line_array, legend: false,  colors: ["#748CAB"], height: "300px", xtitle: "years", ytitle: "cost in €" %>
       </div>
-    </div>
-
-    <div class="piechart-category">
-      <div class="piechart-month">
+      <div class="chartkick third">
          <h4> This month's subscription cost per category </h4>
         <%= pie_chart @pie_chart_data_this_month, colors: @colors_month, heigth: "250px" %>
       </div>
-      <div class="piechart-year">
+      <div class="chartkick forth">
         <h4> This year's subscription cost per category </h4>
         <%= pie_chart @pie_chart_data_this_year, colors: @colors_year, heigth: "250px"  %>
       </div>
-    </div>
 
-    <div class="piechart-app">
-      <div class="legend">
+      <div class="chartkick fifth">
         <h4> Yearly spending per subscription </h4>
           <%= pie_chart @pie_chart_data_per_app, heigth: "250px"%>
-      </div>
     </div>
 
   </div>
+  </div>
+
 
 </div>
