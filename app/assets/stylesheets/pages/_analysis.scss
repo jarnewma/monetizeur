@@ -1,3 +1,102 @@
+.analysis{
+  background-color: #FCFCFC;
+  display: flex;
+}
+
+.analysis-profile{
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #E8E8E8;
+}
+
+.info-a {
+  border-top: 1px solid #E8E8E8;
+  width: 400px;
+  flex-grow: 1;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+  justify: content;
+}
+
+.info-a h5 {
+  text-font: bold;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.info-text2 {
+  text-font: bold;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.info-text2 p {
+  padding-top:8px;
+}
+
+.image-app img{
+  width: 40px;
+  margin-left: 20px;
+}
+
+.info-text3 {
+  text-font: bold;
+  text-align: left;
+  padding-left: 20px;
+  .total-increase{
+    padding-top: 10px;
+    color: red;
+    font-weight: bold;
+  }
+  .total-decrease{
+    padding-top: 10px;
+    color: green;
+    font-weight: bold;
+  }
+}
+
+.info-text {
+  text-font: bold;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.info-text4 {
+  text-font: bold;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+.picture-app-all img {
+  width: 40px;
+  margin-left: 20px;
+}
+
+
+
+
+.cards-analysis {
+  flex-grow: 1;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 16px;
+}
+
+
+
 .analysis-dashboard h1 {
   text-align: center;
   padding: 20px;

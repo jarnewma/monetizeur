@@ -1,27 +1,168 @@
+<div class="analysis">
 
-<div class="analysis-dashboard">
+  <div class="analysis-profile">
 
-  <h1> My spending Dashboard </h1>
-
-    <div class="dashboard-small">
-
-    <div class="charts2">
-      <div class="column_chart">
-        <h4> Monthly subscription cost for the next 12 months</h4>
-        <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"] %>
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-wallet"></i>  Subscriptions <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
       </div>
-      <div class="legend">
-         <h4> Yearly spending per subscription </h4>
-         <%= pie_chart @pie_chart_data_per_app%>
+      <div class="info-text">
+        <p><%= current_user.total_monthly_cost %> €</p>
       </div>
-      <div class="piechart-month">
-         <h4> This month's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_month, colors: @colors_month %>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-user-clock"></i>  Compared to <%= (Date.today - 1.year).strftime("%B") %> <%= Date.today.year - 1 %></h5>
       </div>
-      <div class="piechart-year">
-        <h4> This year's subscription cost per category </h4>
-        <%= pie_chart @pie_chart_data_this_year, colors: @colors_year  %>
+      <div class="info-text3">
+        <% if  current_user.growth_subscription_to_month == 100 %>
+          <p class="total-increase"><i class="fas fa-caret-up"></i> <%= current_user.growth_subscription_to_month%> % </p>
+          <p class="notify-me"> <i class="fas fa-info-circle"></i> You didn't have any subscriptions last year, so we indicated a growth of 100% </class></p>
+        <% elsif  current_user.growth_subscription_to_month > 0 %>
+          <p class="total-increase"><i class="fas fa-caret-up"></i> <%= current_user.growth_subscription_to_month%> % </p>
+        <% else %>
+          <p class="total-decrease"><i class="fas fa-caret-down"></i> <%= current_user.growth_subscription_to_month%> % </p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-file-invoice-dollar"></i>  Year to date Spending </h5>
+      </div>
+      <div class="info-text">
+        <p><%= current_user.ytd_spending %> €</p>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-sort-amount-up"></i>  Most expensive subscription YTD </h5>
+      </div>
+      <div class="info-text2">
+        <p> <%= current_user.most_expensive[1] %> € </p>
+        <div class="image-app">
+          <% if current_user.most_expensive[0] == "Amazon Prime" %>
+              <%= image_tag "amazon.png", alt: "amazon" %>
+            <% elsif current_user.most_expensive[0] == "Apple Music" %>
+              <%= image_tag "apple.png", alt: "apple" %>
+            <% elsif current_user.most_expensive[0] == "Dropbox" %>
+              <%= image_tag "dropbox.png", alt: "dropbox" %>
+            <% elsif current_user.most_expensive[0] == "iCloud" %>
+              <%= image_tag "icloud.png", alt: "icloud" %>
+            <% elsif current_user.most_expensive[0] == "LinkedIn" %>
+              <%= image_tag "linkedin.png", alt: "linkedin" %>
+            <% elsif current_user.most_expensive[0] == "Netflix" %>
+              <%= image_tag "netflix.png", alt: "netflix" %>
+            <% elsif current_user.most_expensive[0] == "Spotify" %>
+              <%= image_tag "spotify.png", alt: "spotify" %>
+            <% else %>
+              <%= image_tag "logosmall.png", alt: "logo" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="fas fa-chart-pie"></i> Most expensive category YTD</h5>
+      </div>
+      <div class="info-text">
+        <p> <%= current_user.most_expensive_category[1] %> €
+          <% if current_user.most_expensive_category[0] == "Media" %>
+            Media color:red
+          <% elsif current_user.most_expensive_category[0] == "Wellbeing" %>
+            <p style="color:#5CB566;"> &nbsp;&nbsp;Wellbeing</p>
+          <% elsif current_user.most_expensive_category[0] == "Streaming" %>
+            <p style="color:lightblue;"> &nbsp;&nbsp;Streaming</p>
+          <% elsif current_user.most_expensive_category[0] == "Leisure" %>
+            <p style="color:darkblue;"> &nbsp;&nbsp;Leisure</p>
+          <% elsif current_user.most_expensive_category[0] == "Social" %>
+            <p style="color:orange;"> &nbsp;&nbsp;Social</p>
+          <% elsif current_user.most_expensive_category[0] == "Shopping" %>
+            <p style="color:pink;"> &nbsp;&nbsp;Leisure</p>
+          <% elsif current_user.most_expensive_category[0] == "Food" %>
+            <p style="color:darkblue;"> &nbsp;&nbsp;Food</p>
+          <% elsif current_user.most_expensive_category[0] == "Technology" %>
+            <p style="color:gray;"> &nbsp;&nbsp;Technology</p>
+          <% elsif current_user.most_expensive_category[0] == "Other" %>
+            <p style="color:purple;"> &nbsp;&nbsp;Other</p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="far fa-kiss-wink-heart"></i> Friend using the most app's </h5>
+      </div>
+      <div class="info-text4">
+        <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
+        <div class="picture-app-all">
+          <% current_user.parasite_app_name.each do |app| %>
+          <% if app == "Amazon Prime" %>
+              <%= image_tag "amazon.png", alt: "amazon" %>
+            <% elsif app == "Apple Music" %>
+              <%= image_tag "apple.png", alt: "apple" %>
+            <% elsif app == "Dropbox" %>
+              <%= image_tag "dropbox.png", alt: "dropbox" %>
+            <% elsif app == "iCloud" %>
+              <%= image_tag "icloud.png", alt: "icloud" %>
+            <% elsif app == "LinkedIn" %>
+              <%= image_tag "linkedin.png", alt: "linkedin" %>
+            <% elsif app == "Netflix" %>
+              <%= image_tag "netflix.png", alt: "netflix" %>
+            <% elsif app == "Spotify" %>
+              <%= image_tag "spotify.png", alt: "spotify" %>
+            <% else %>
+              <%= image_tag "logosmall.png", alt: "logo" %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+        <div class="info-a">
+      <div class="info-picture">
+        <h5><i class="far fa-handshake"></i> Free trials</h5>
+      </div>
+      <div class="info-text">
+        <p> will have a list here :) </p>
       </div>
     </div>
   </div>
+
+
+  <div class="cards-analysis">
+    <div class="analysis-dashboard">
+
+      <h1> My spending Dashboard </h1>
+
+        <div class="dashboard-small">
+
+        <div class="charts2">
+          <div class="column_chart">
+            <h4> Monthly subscription cost for the next 12 months</h4>
+            <%= column_chart @chart_array, legend: false,  colors: ["#748CAB"] %>
+          </div>
+          <div class="legend">
+             <h4> Yearly spending per subscription </h4>
+             <%= pie_chart @pie_chart_data_per_app%>
+          </div>
+          <div class="piechart-month">
+             <h4> This month's subscription cost per category </h4>
+            <%= pie_chart @pie_chart_data_this_month, colors: @colors_month %>
+          </div>
+          <div class="piechart-year">
+            <h4> This year's subscription cost per category </h4>
+            <%= pie_chart @pie_chart_data_this_year, colors: @colors_year  %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
