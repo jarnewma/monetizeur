@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
 
   def show  # GET /payment_methods/:id
       @subscription = Subscription.find(params[:id])
+      @parasites_to_add = current_user.parasites - @subscription.parasites
   end
 
   def new

@@ -1,4 +1,3 @@
-<h3> Your "lovely" friends using your subscriptions </h3>
 <div class="parasites-container container">
   <div class="row">
     <% parasites.each do |para| %>
@@ -10,6 +9,12 @@
         <div class="para-details">
           <p class="para-name"><%=  para.name %> </p>
           <p class="para-subsc"><%= para.subscriptions.map{ |sub| sub.name }.join(", ") %></p>
+        </div>
+        <div class="deletefriend">
+          <%= link_to "/parasites/#{para.id}", data: { confirm: 'Are you sure?' }, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+
         </div>
       </div>
 

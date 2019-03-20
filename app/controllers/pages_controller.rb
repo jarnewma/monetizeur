@@ -199,5 +199,8 @@ skip_before_action :authenticate_user!, only: :home
     end
   end
 
+  def notifications
+    @subscriptions = current_user.subscriptions.select { |n| n.notification_date && n.notify_today? }
+  end
 
 end
