@@ -2,7 +2,9 @@ import "bootstrap";
 import 'fullcalendar'
 import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
-import selectDropdown from './select_dropdown'
+import selectDropdown from './select_dropdown';
+import { initUpdateNavbarOnScroll } from './navbar';
+initUpdateNavbarOnScroll();
 
 require('./my_calendar')
 

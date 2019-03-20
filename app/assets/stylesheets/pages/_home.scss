@@ -1,1 +1,38 @@
 // Specific CSS for your home-page
+.features-title{
+  padding-bottom: 30px;
+  color: #484848;
+  font-size: 38px;
+}
+.all-features{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.single-feature{
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  box-shadow: 28px 11px 58px -2px rgba(184,184,184,1);
+  border-radius: 5px;
+  img{
+    height: 80px;
+    width: auto;
+    display: inline-block
+  }
+  h4{
+    font-size: 18px;
+    color: #5D5D5E;
+    padding-top: 5px;
+  }
+  p{
+    color: #767676;
+    text-align: left;
+
+  }
+}

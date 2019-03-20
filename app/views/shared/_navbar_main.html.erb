@@ -1,8 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo-small-white.png", id:"nav-logo" %>
-    <div style="display: none;" id="other-img"> <%= image_path 'logosmall.png' %></div>
-    <div style="display: none;" id="init-img"> <%= image_path 'logo-small-white.png' %></div>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon-main">
+  <%= link_to root_path, class: "navbar-brand-main" do %>
+    <%= image_tag "logosmall.png" %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,20 +11,20 @@
 
   <% if user_signed_in? == false %>
     <ul class="navbar-nav mr-auto">
-      <li class= "nav-item "><%= link_to "Log in", new_user_session_path, class: "nav-link"%> </li>
-      <li class= "nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %> </li>
+      <li class= "nav-item-main"><%= link_to "Log in", new_user_session_path, class: "nav-link"%> </li>
+      <li class= "nav-item-main"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %> </li>
     </ul>
 
   <% else %>
 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item-main">
           <%= link_to "My Calendar", calendar_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-main">
           <%= link_to "My Subscriptions", subscriptions_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item-main dropdown">
           <%= image_tag "avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Analytics", analysis_path, class: "dropdown-item" %>
