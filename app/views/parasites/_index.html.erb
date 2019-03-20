@@ -11,6 +11,12 @@
           <p class="para-name"><%=  para.name %> </p>
           <p class="para-subsc"><%= para.subscriptions.map{ |sub| sub.name }.join(", ") %></p>
         </div>
+        <div class="deletefriend">
+          <%= link_to "/parasites/#{para.id}", data: { confirm: 'Are you sure?' }, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+
+        </div>
       </div>
 
     <% end %>

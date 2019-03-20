@@ -20,6 +20,19 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
+          <%= link_to notifications_path, class: "nav-link"  do %>
+            <% notify = false %>
+            <% current_user.subscriptions.each { |n| notify = true if (n.notification_date && n.notify_today?) } %>
+
+            <% if notify %>
+              <div class="notify-circle"></div>
+            <% else %>
+              You have no notifications today
+            <% end %>
+            <i class="fas fa-bell"></i>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to "My Calendar", calendar_path, class: "nav-link" %>
         </li>
         <li class="nav-item">

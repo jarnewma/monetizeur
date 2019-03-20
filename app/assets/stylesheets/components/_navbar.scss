@@ -15,3 +15,16 @@
 .nav-item a{
   font-size: 16px !important;
 }
+
+.nav-link {
+  position: relative;
+}
+.notify-circle {
+  background-color: red;
+  width: 5px;
+  height: 5px;
+  border-radius: 5px;
+  position: absolute;
+  right: 5px;
+  top: 9px;
+}

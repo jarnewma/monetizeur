@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/calendar", to: 'pages#calendar'
   get "/my_profile", to: 'pages#my_profile'
   get "/analysis", to: 'pages#analysis'
+  get '/notifications', to: 'pages#notifications'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
