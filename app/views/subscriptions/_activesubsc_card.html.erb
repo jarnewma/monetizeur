@@ -30,7 +30,13 @@
       <p class="extra-info"><%= subscription.billing_date %> (<%= subscription.subscription_type%>)</p>
     </div>
     <div class="card-product-infos" id="second">
-      <p class="extra-info">payed with <strong><%= subscription.payment_method.card_nickname %></strong></p>
+      <p class="extra-info">payed with <strong>
+        <% if subscription.payment_method.nil? %>
+           no info
+        <% else %>
+        <%= subscription.payment_method.card_nickname %>
+        <% end %>
+        </strong></p>
       <p class="price"> <%= subscription.lifelong_cost %> €</p>
       <p class="extra-info">Total since <%= subscription.creation_date %></p>
     </div>

@@ -133,12 +133,13 @@ skip_before_action :authenticate_user!, only: :home
       @colors_year << sub_array.first.category_color[:value]
     end
 
-
+     # This year's subscription cost per app
+    @yearly_subscriptions_app = current_user.subscriptions
     @pie_chart_data_per_app = []
-    @sub_app.each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
-      @pie_chart_data_per_app << [year, year_value]
-
+    @yearly_subscriptions_app.each do |subs|
+      year_value_app = subs.lifelong_cost(from_date: Time.current - 1.year, to_date: Time.current)
+      @pie_chart_data_per_app << [subs.name, year_value_app]
+    end
     i = 0
     @chart_array = { }
     12.times do
@@ -154,5 +155,4 @@ skip_before_action :authenticate_user!, only: :home
 
 
   end
-end
 end
