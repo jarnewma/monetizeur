@@ -7,17 +7,13 @@
           <p class="initial"><%=  para.name[0,1] %></p>
         </div>
         <div class="para-details">
-          <p class="para-name"><%=  para.name %> </p>
-          <p class="para-subsc"><%= para.subscriptions.map{ |sub| sub.name }.join(", ") %></p>
+          <p class="para-name"><%=  para.name %></p>
+          <%= link_to delete_parasite_subscription_path(parasite: para), method: :delete, data: { confirm: "Are your friend isn't using this service anymore?" }  do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
         </div>
       </div>
 
     <% end %>
   </div>
 </div>
-
-
-<div id="back" class="btn btn-primary">
-    <%= link_to "add a Friend", new_parasite_path   %>
-</div>
-

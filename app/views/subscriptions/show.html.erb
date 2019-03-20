@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="main-container">
+  <div class="main-container-show">
     <div class="card-image2" class="btn btn-primary">
 
         <% if @subscription.name == "Amazon Prime" %>
@@ -34,7 +34,7 @@
       <p><%= @subscription.creation_date %></p>
     </div>
     <div class="field third">
-      <h4>Total spenditure since </h4>
+      <h4>Total expenditure </h4>
       <p><%= @subscription.lifelong_cost %></p>
     </div>
     <div class="field forth">
@@ -47,32 +47,26 @@
     </div>
     <div class="field sixth">
       <% if @subscription.renewal_notification == true %>
-        <h4> Notification suvscription Renewal: Yes </h4>
+        <h4> Notifications: ON </h4>
         <p> Notification Date: <%= @subscription.notification_date %></p>
       <% else %>
-        <h4> Notification suvscription Renewal: No </h4>
+        <h4> Notifications: OFF </h4>
       <% end %>
       </ul>
     </div>
     <div class="field seventh">
-      <h4>Your lovely friends using this app for "free" </h4>
-      <ul>
-        <% @subscription.parasites.each do |para| %>
-          <li> <%=  para.name %>
-            <%= link_to delete_parasite_subscription_path(parasite: para), method: :delete, data: { confirm: "Are your friend isn't using this service anymore?" }  do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-      <p id="back-little" class="btn btn-primary index">
-        <%= link_to "Add Friend", new_parasite_path(subscription_id: @subscription) %></p>
+      <h4> Current Account Users </h4>
+      <div class="Parasites-my-profile">
+        <%= render "parasites", parasites: @subscription.parasites %>
+      </div>
       <p>
         <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
-        <%= f.association :parasites  %>
+        <%= f.association :parasites, collection: @parasites_to_add, label: "Add a new parasite"  %>
         <%= f.submit %>
         <% end %>
       </p>
+      <p id="back-little" class="btn btn-primary index add-friend">
+      <%= link_to "Create a new friend", new_parasite_path(subscription_id: @subscription) %></p>
     </div>
   </div>
 </div>
