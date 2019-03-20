@@ -85,9 +85,6 @@
   margin-left: 20px;
 }
 
-
-
-
 .cards-analysis {
   flex-grow: 1;
   grid-template-rows: 1fr 1fr 1fr;
@@ -95,33 +92,91 @@
   padding: 16px;
 }
 
-
-
-.analysis-dashboard h1 {
+.cards-analysis h3 {
   text-align: center;
   padding: 20px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
-.analysis-dashboard h4{
-  text-align: center;
-  padding: 20px;
-  font-size: 20px;
-  opacity: 0.7;
-  margin: 10px;
-}
-
-.charts2 {
+.column-chart {
+  padding-top: 40px;
+  display: flex;
   flex-grow: 1;
-  display: grid;
-  grid-template-columns: 70vh 70vh;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 16px;
-  padding: 16px;
-  width: 100vh;
+  flex-direction: row;
+  border-top: 1px solid #E8E8E8;
+  margin-top: 40px;
 }
 
-.dashboard-small {
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: 230px;
+.column-chart1 {
+   width: 400px;
+}
+
+.column-chart1 h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.line-chart {
+  flex-grow: 1;
+  margin-right: 20px;
+  margin-left: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.line-chart h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.piechart-category {
+  padding-top: 40px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  border-top: 1px solid #E8E8E8;
+  margin-top: 40px;
+}
+
+.piechart-year {
+  margin-right: 20px;
+  margin-left: 40px;
+}
+
+.piechart-year h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.piechart-month h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.piechart-month {
+  margin-right: 30px;
+}
+
+.piechart-app {
+  padding-top: 40px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  border-top: 1px solid #E8E8E8;
+  margin-top: 40px;
+}
+
+.legend {
+  margin-right: 30px;
+}
+
+.legend h4 {
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
 }
