@@ -1,5 +1,14 @@
 .my-profile{
   background-color: #FCFCFC;
+  #back{
+    background-color: transparent !important;
+    border-radius: 15px;
+    border-bottom: 1px solid #32a287;
+
+    a{
+      color: black !important;
+    }
+  }
 }
 
 .user-profile{
@@ -46,6 +55,7 @@
 .your-cards{
   border-bottom: 1px solid #E8E8E8;
   margin: 0 15px;
+
 }
 .summary-container{
   display: flex;
@@ -66,10 +76,13 @@
   font-size: 10px;
 }
 .box{
-  border: 1px solid #87A2C6;
+  background-color: white;
   padding: 15px;
   width: 350px;
+
+  box-shadow: 28px 11px 58px -2px rgba(184,184,184,1);
   border-radius: 5px;
+
 }
 .cards-container{
   display: flex;
