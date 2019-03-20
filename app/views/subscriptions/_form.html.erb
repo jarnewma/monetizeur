@@ -16,15 +16,14 @@
       <%= f.input :subscription_type, label: 'Billing frequency', collection: ["Monthly", "Quarterly", "Biannually", "Annually"], prompt: 'Select frequency' %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
-      <%= f.input :billing_date, placeholder: 'Add your billing date', as: :string, input_html: { class: "datepicker-here" } %>
+      <%= f.input :billing_date, placeholder: 'Add your billing date', as: :string, input_html: { class: "datepicker-here", autocomplete: 'off' } %>
       <%= f.input :renewal_notification %>
       <div  id="notif"  class="hidden">
-
       <%= f.input :notification_date, placeholder: 'Choose date to receive reminder', as: :string, input_html: { class: "datepicker-here" } %>
         </div>
 
       <%= f.input :cost, label: 'Subscription cost', placeholder: 'Enter your subscription charge', float: 'any' %>
-      <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Choose subscription start date', as: :string, input_html: { class:  "datepicker-here" } %>
+      <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Choose subscription start date', as: :string, input_html: { class:  "datepicker-here", autocomplete: 'off' } %>
       <%= f.input :category, placeholder: 'Enter subscription type', collection: ["Media", "Wellbeing", "Streaming", "Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
       <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
 

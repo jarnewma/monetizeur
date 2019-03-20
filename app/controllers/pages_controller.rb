@@ -140,6 +140,7 @@ skip_before_action :authenticate_user!, only: :home
       year_value_app = subs.lifelong_cost(from_date: Time.current - 1.year, to_date: Time.current)
       @pie_chart_data_per_app << [subs.name, year_value_app]
     end
+
     i = 0
     @chart_array = { }
     12.times do
@@ -151,12 +152,56 @@ skip_before_action :authenticate_user!, only: :home
       @chart_array[@monthly_name] = @monthly_cost
       i += 1
       end
-    return p @chart_array
+
+    i = 0
+    @line_array = {}
+    5.times do
+      current_year = Date.today.year - i
+      yearly_cost = 0
+        @subscriptions_all.each do |create|
+          if create.creation_date.nil?
+            origin_date = create.created_at
+          else
+            origin_date = create.creation_date
+          end
+
+          next if origin_date.year > current_year
 
 
+          yearly_cost += create.lifelong_cost(from_date: Date.new(current_year, 1, 1) , to_date: Date.new(current_year, 12, 31))
+
+        end
+
+        @line_array[current_year] = yearly_cost.round(2)
+
+      i += 1
+    end
+
+    i=0
+    @line_array2 = {}
+      36.times do
+      current_month_y = Date.today - i.month
+      yearly_cost2 = 0
+        @subscriptions_all.each do |create|
+          if create.creation_date.nil?
+            origin_date = create.created_at
+          else
+            origin_date = create.creation_date
+          end
+
+          next if origin_date > current_month_y
+
+          yearly_cost2 += create.lifelong_cost(from_date: current_month_y.beginning_of_month , to_date: current_month_y.end_of_month)
+        end
+
+        @line_array2[current_month_y.beginning_of_month] = yearly_cost2.round(2)
+
+      i += 1
+    end
   end
 
   def notifications
     @subscriptions = current_user.subscriptions.select { |n| n.notification_date && n.notify_today? }
   end
+
 end

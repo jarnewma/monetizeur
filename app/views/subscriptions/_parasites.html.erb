@@ -1,0 +1,19 @@
+<div class="parasites-container container">
+  <div class="row">
+    <% parasites.each do |para| %>
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 single-parasite">
+
+        <div class="para-avatar">
+          <p class="initial"><%=  para.name[0,1] %></p>
+        </div>
+        <div class="para-details">
+          <p class="para-name"><%=  para.name %></p>
+          <%= link_to delete_parasite_subscription_path(parasite: para), method: :delete, data: { confirm: "Are your friend isn't using this service anymore?" }  do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

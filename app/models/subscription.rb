@@ -1,8 +1,8 @@
 class Subscription < ApplicationRecord
   belongs_to :payment_method
   belongs_to :user
-  has_many :subscription_parasites
-  has_many :parasites, through: :subscription_parasites
+  has_many :subscription_parasites, dependent: :nullify
+  has_many :parasites, through: :subscription_parasites, dependent: :nullify
 
 
   mount_uploader :photo, PhotoUploader
@@ -36,6 +36,9 @@ class Subscription < ApplicationRecord
       cost = 0
 
       date_pay = from_date.nil? ? self.creation_date : from_date
+      if date_pay < self.creation_date
+        date_pay = self.creation_date
+      end
       to_date = to_date.nil? ? Date.today : to_date
 
       while date_pay < to_date
@@ -50,6 +53,9 @@ class Subscription < ApplicationRecord
         cost = 0
 
       date_pay = from_date.nil? ? self.creation_date : from_date
+        if date_pay < self.creation_date
+        date_pay = self.creation_date
+        end
       to_date = to_date.nil? ? Date.today : to_date
 
       while date_pay < to_date
@@ -63,6 +69,9 @@ class Subscription < ApplicationRecord
     def calc_biannualy(from_date: nil, to_date: nil)
       cost = 0
       date_pay = from_date.nil? ? self.creation_date : from_date
+        if date_pay < self.creation_date
+        date_pay = self.creation_date
+        end
       to_date = to_date.nil? ? Date.today : to_date
 
       while date_pay < to_date
@@ -76,6 +85,9 @@ class Subscription < ApplicationRecord
   def calc_yearly(from_date: nil, to_date: nil)
     cost = 0
     date_pay = from_date.nil? ? self.creation_date : from_date
+        if date_pay < self.creation_date
+        date_pay = self.creation_date
+        end
     to_date = to_date.nil? ? Date.today : to_date
 
     while date_pay < to_date
