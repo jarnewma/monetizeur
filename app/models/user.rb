@@ -106,6 +106,19 @@ class User < ApplicationRecord
 
   def parasite_app_name
     name_parasite = self.parasites_count[0]
+    self.parasites.each do |para|
+    name_array = []
+      if para.name == name_parasite
+        para.subscriptions.each do |sub|
+          name_sub = sub.name
+          name_array << name_sub
+        end
+        return name_array
+      end
+    end
+  end
+
+  def choose_picture
 
   end
 
