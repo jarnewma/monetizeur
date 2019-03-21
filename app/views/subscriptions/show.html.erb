@@ -79,7 +79,7 @@
         <%= render "parasites", parasites: @subscription.parasites %>
       </div>
       <p>
-        <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
+        <%= simple_form_for @subscription, url: subscription_path(@subscription) do |f| %>
         <%= f.association :parasites, collection: @parasites_to_add, label: "Add a new parasite"  %>
         <%= f.submit %>
         <% end %>
