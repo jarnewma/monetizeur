@@ -101,11 +101,21 @@ class Subscription < ApplicationRecord
   def calc_yearly(from_date, to_date)
     cost = 0
 
-          date_pay = self.billing_date
+    if self.trial? == true
+      date_pay = self.billing_date
+    else
+      date_pay = from_date.nil? ? self.creation_date : from_date
+    end
+
+    if date_pay < self.creation_date
+        date_pay = self.creation_date
+        end
+      to_date = to_date.nil? ? Date.today : to_date
 
 
     while date_pay < to_date
-        cost += self.cost if (from_date..to_date) === date_pay
+        return cost if date_pay + 12.months > to_date
+        cost += self.cost
         date_pay = date_pay + 12.months
 
     end
