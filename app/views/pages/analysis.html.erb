@@ -131,7 +131,11 @@
         <h5><i class="far fa-handshake"></i> Free trials</h5>
       </div>
       <div class="info-text">
-        <p> will have a list here :) </p>
+        <% current_user.subscriptions.each do |test| %>
+          <% if test.trial? == true %>
+          <% test.name %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
