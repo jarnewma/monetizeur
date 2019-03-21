@@ -20,7 +20,13 @@
 
   <% else %>
 
-      <div class="nav-link">
+
+
+
+      <ul class="navbar-nav mr-auto">
+
+
+        <div class="nav-link" id="notification">
         <% notify = false %>
         <% current_user.subscriptions.each do |n| %>
          <% notify = true if (n.notification_date && n.renewal_notification && n.notify_today?)  %>
@@ -41,7 +47,7 @@
                   <% if n.notify_today? %>
                     <div class="dropdown-item">
                       <div class="notification-image">
-                        <div>
+                        <div class="notification-logo">
                         <% if n.name == "Amazon Prime" %>
                           <%= image_tag "amazon.png", alt: "amazon" %>
                         <% elsif n.name == "Apple Music" %>
@@ -61,14 +67,12 @@
                         <% end %>
                         </div>
                          <div>
-                          <%=  n.name %>
+                          <p><%=  n.name %></p>
                          </div>
-                         <div> €<%=  n.cost %></div>
-                         <div><%=  n.billing_date %></div>
+                         <div><p><%=  n.cost %> €</p></div>
+                         <div><p><%=  n.billing_date %></p></div>
                       </div>
                     </div>
-
-                  <!-- until here -->
                 <% end %>
               <% end %>
           </div>
@@ -76,7 +80,7 @@
       </div>
 
 
-      <ul class="navbar-nav mr-auto">
+
         <li class="nav-item">
           <%= link_to "My Calendar", calendar_path, class: "nav-link" %>
         </li>
