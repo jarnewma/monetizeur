@@ -13,15 +13,14 @@
 }
 
 .analysis-profile{
-  height: 100vh;
-  position: sticky;
   top: 0;
   width: 400px;
+  height: 100vh;
+  position: sticky;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid #E8E8E8;
-  background-color: #E8E8E8;
+
 }
 
 .info-a {
@@ -30,14 +29,22 @@
   flex-grow: 1;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
-  padding: 16px;
-  justify: content;
+  padding-top: 10px;
+  padding: 5px;
+  height: inherit;
+  margin: 2px;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 
 .info-a h5 {
   text-font: bold;
   text-align: left;
   padding-left: 20px;
+}
+.info-a p{
+  margin:1px;
 }
 
 .info-text2 {
@@ -119,9 +126,10 @@
   align-items: center;
   // width: 600px;
   // height: 400px;
+  height: auto;
   box-shadow: 28px 11px 58px -2px rgba(184,184,184,1);
   border-radius: 5px;
-  margin: 20px;
+  margin: 1vw;
 
 
   h4{

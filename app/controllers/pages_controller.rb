@@ -118,7 +118,7 @@ skip_before_action :authenticate_user!, only: :home
     @colors_month = []
     @pie_chart_data_this_month = []
     @monthly_subscriptions.group_by(&:category).each do |month, sub_array|
-      month_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost( Date.today.beginning_of_month, Date.today.end_of_month)}
+      month_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost2( Date.today.beginning_of_month, Date.today.end_of_month)}
       @pie_chart_data_this_month << [month, month_value]
       @colors_month << sub_array.first.category_color[:value]
     end

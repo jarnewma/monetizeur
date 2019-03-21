@@ -49,7 +49,6 @@ class Subscription < ApplicationRecord
       while date_pay < to_date
           cost += self.cost
           date_pay = date_pay + 1.months
-
       end
       return cost
   end
@@ -68,11 +67,10 @@ class Subscription < ApplicationRecord
         end
       to_date = to_date.nil? ? Date.today : to_date
 
-    while date_pay < to_date
-        return cost if date_pay + 3.months > to_date
-        cost += self.cost
-        date_pay = date_pay + 3.months
-    end
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 3.months
+      end
       return cost
   end
 
@@ -90,12 +88,10 @@ class Subscription < ApplicationRecord
         end
       to_date = to_date.nil? ? Date.today : to_date
 
-    while date_pay < to_date
-        return cost if date_pay + 6.months > to_date
-        cost += self.cost
-        date_pay = date_pay + 6.months
-
-    end
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 6.months
+      end
       return cost
   end
 
@@ -114,12 +110,10 @@ class Subscription < ApplicationRecord
       to_date = to_date.nil? ? Date.today : to_date
 
 
-    while date_pay < to_date
-        return cost if date_pay + 12.months > to_date
-        cost += self.cost
-        date_pay = date_pay + 12.months
-
-    end
+      while date_pay < to_date
+          cost += self.cost
+          date_pay = date_pay + 12.months
+      end
     return cost
   end
 
@@ -288,6 +282,14 @@ class Subscription < ApplicationRecord
   def trial?
     return false if self.trial_date_until.nil?
     self.trial_date_until >= Date.today
+  end
+
+  def lifelong_cost2(from_date, to_date)
+    price2 = 0
+    if self.this_month_billing_day > from_date && self.this_month_billing_day < to_date
+      price2 = self.lifelong_cost(from_date, to_date)
+    end
+    return  price2
   end
 
 
