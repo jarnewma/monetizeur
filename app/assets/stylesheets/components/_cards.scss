@@ -3,7 +3,8 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 28px 11px 58px -2px rgba(184,184,184,1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +21,6 @@
 .card-image2 {
   display: flex;
   align-items: center;
-  border-right: 1px solid #e9e9e9;
 }
 
 .card-image img {
@@ -78,6 +78,9 @@
 .extra-info {
   color: #757575;
   font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .free-trial {
   color: red;
