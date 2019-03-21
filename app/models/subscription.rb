@@ -260,5 +260,10 @@ class Subscription < ApplicationRecord
     return  facture_day
   end
 
+  def trial?
+    return false if self.trial_date_until.nil?
+    self.trial_date_until >= Date.today
+  end
+
 
 end

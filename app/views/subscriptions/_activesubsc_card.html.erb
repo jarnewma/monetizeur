@@ -27,7 +27,11 @@
     <div class="card-product-infos" id="first">
       <p class="upcase name"><%= subscription.name %></p>
       <p class="price"><%= subscription.cost %> €</p>
-      <p class="extra-info"><%= subscription.this_month_billing_day %> (<%= subscription.subscription_type%>)</p>
+      <p class="extra-info"><%= subscription.this_month_billing_day %> ( <% if subscription.trial? == true %>
+        <p class="free-trial"> Free trial </p>
+        <% else %>
+        <%= subscription.subscription_type%>
+        <% end %>)</p>
     </div>
     <div class="card-product-infos" id="second">
       <p class="extra-info">payed with <strong>
