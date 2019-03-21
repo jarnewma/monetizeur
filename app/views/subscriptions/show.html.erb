@@ -38,18 +38,18 @@
     </div>
     <div class="field second">
       <h4>Subscription started</h4>
-      <% if @subscription.creation_date.nil? %>
-       <p> Incomplete data set </p>
+      <% if @subscription.creation_date.present? %>
+        <p><%= @subscription.creation_date %></p>
        <% else %>
-      <p><%= @subscription.creation_date %></p>
+        <p> Incomplete data set </p>
         <% end %>
     </div>
     <div class="field third">
       <h4>Total expenditure </h4>
-      <% if @subscription.creation_date.nil? %>
-       <p> Incomplete data set </p>
+      <% if @subscription.creation_date.present? %>
+        <p><%= @subscription.lifelong_cost(Date.today - 10.years, Date.today) %></p>
        <% else %>
-      <p><%= @subscription.lifelong_cost %></p>
+       <p> Incomplete data set </p>
       <% end %>
     </div>
     <div class="field forth">
@@ -58,10 +58,10 @@
     </div>
     <div class="field fith">
       <h4>Card </h4>
-      <% if @subscription.payment_method.nil? %>
-      <p> no info </p>
-      <% else %>
+      <% if @subscription.payment_method.present? %>
       <p><%= @subscription.payment_method.card_nickname %></p>
+      <% else %>
+      <p> no info </p>
       <% end %>
     </div>
     <div class="field sixth">

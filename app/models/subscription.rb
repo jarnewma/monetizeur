@@ -22,17 +22,17 @@ class Subscription < ApplicationRecord
   def lifelong_cost(from_date, to_date)
     total_cost = 0
     if self.subscription_type == "Monthly"
-      return calc_monthly(from_date: from_date, to_date: to_date).round(2)
+      return calc_monthly(from_date, to_date).round(2)
     elsif self.subscription_type == "Quarterly"
-      return calc_quartertly(from_date: from_date, to_date: to_date).round(2)
+      return calc_quartertly(from_date, to_date).round(2)
     elsif self.subscription_type == "Biannually"
-      return calc_biannualy(from_date: from_date, to_date: to_date).round(2)
+      return calc_biannualy(from_date, to_date).round(2)
     else self.subscription_type == "Annually"
       return calc_yearly( from_date, to_date).round(2)
     end
   end
 
-  def calc_monthly(from_date: nil, to_date: nil)
+  def calc_monthly(from_date, to_date)
       cost = 0
 
       if self.trial? == true
@@ -54,7 +54,7 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-  def calc_quartertly(from_date: nil, to_date: nil)
+  def calc_quartertly(from_date, to_date)
         cost = 0
 
         if self.trial? == true
@@ -76,7 +76,7 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-    def calc_biannualy(from_date: nil, to_date: nil)
+    def calc_biannualy(from_date, to_date)
       cost = 0
 
         if self.trial? == true
