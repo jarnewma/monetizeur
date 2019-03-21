@@ -3,6 +3,15 @@
   display: flex;
 }
 
+.analysis h3 {
+  text-align: center;
+  padding: 20px;
+  text-font: bold;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+
 .analysis-profile{
   height: 100vh;
   position: sticky;
@@ -12,10 +21,11 @@
   flex-direction: column;
   align-items: center;
   border-right: 1px solid #E8E8E8;
+  background-color: #E8E8E8;
 }
 
 .info-a {
-  border-top: 1px solid #E8E8E8;
+  border-top: 3px solid #FCFCFC;
   width: 400px;
   flex-grow: 1;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -86,10 +96,11 @@
 }
 
 .cards-analysis {
-  flex-grow: 1;
-  grid-template-rows: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   padding: 16px;
+    margin-left: 3vw;
 }
 
 .cards-analysis h3 {
@@ -99,84 +110,43 @@
   font-weight: bold;
 }
 
-.column-chart {
-  padding-top: 40px;
+.chartkick {
+  background-color: white;
+  padding: 20px;
   display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  border-top: 1px solid #E8E8E8;
-  margin-top: 40px;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  height: 400px;
+  box-shadow: 28px 11px 58px -2px rgba(184,184,184,1);
+  border-radius: 5px;
+  margin: 20px;
+
+  h4{
+    font-size: 18px;
+    color: #5D5D5E;
+    padding-top: 5px;
+  }
+  p{
+    color: #767676;
+    text-align: left;
+
+  }
 }
 
-.column-chart1 {
-   width: 400px;
-}
 
-.column-chart1 h4 {
-  text-align: center;
-  padding: 10px;
-  font-size: 25px;
-}
 
-.line-chart {
-  flex-grow: 1;
-  margin-right: 20px;
-  margin-left: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
 
-.line-chart h4 {
-  text-align: center;
-  padding: 10px;
-  font-size: 25px;
-}
 
-.piechart-category {
-  padding-top: 40px;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  border-top: 1px solid #E8E8E8;
-  margin-top: 40px;
-}
 
-.piechart-year {
-  margin-right: 20px;
-  margin-left: 40px;
-}
 
-.piechart-year h4 {
-  text-align: center;
-  padding: 10px;
-  font-size: 25px;
-}
 
-.piechart-month h4 {
-  text-align: center;
-  padding: 10px;
-  font-size: 25px;
-}
 
-.piechart-month {
-  margin-right: 30px;
-}
 
-.piechart-app {
-  padding-top: 40px;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: row;
-  border-top: 1px solid #E8E8E8;
-  margin-top: 40px;
-}
 
-.legend {
-  margin-right: 30px;
-}
 
-.legend h4 {
-  text-align: center;
-  padding: 10px;
-  font-size: 25px;
-}
+
+
+
+
+
