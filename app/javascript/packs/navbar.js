@@ -9,7 +9,7 @@ const initUpdateNavbarOnScroll = () => {
       if (window.scrollY >= (window.innerHeight / 2)) {
         navbar.classList.add('navbar-lewagon-white');
         navbar.querySelectorAll('.nav-link').forEach((a) => {
-          a.setAttribute('style', 'color: black !important;');
+          a.setAttribute('style', 'color: rgba(0, 0, 0, 0.5) !important;');
         })
         logo.src = new_img
       } else {

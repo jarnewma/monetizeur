@@ -1,26 +1,25 @@
 <div class="wrapper-calendar">
   <div class="row">
-   <div class = " col-xs-12 col-md-6 offset-3">
-    <br>
-    <br>
+    <div class = "col-xs-1 col-md-2 arrow-wrap">
+      <div id="previous-month" class="btn btn-primary"><i class="fas fa-chevron-left"></i></div>
+    </div>
 
-    <div id="previous-month" class="btn btn-primary"><</div>
-    <div id="next-month" class="btn btn-primary">></div>
-    <br>
-    <br>
+    <div class = "col-xs-10 col-md-8" id="wrapping-calendar">
+      <div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
+    </div>
 
-    <div id='calendar' data-subscriptions="<%= @one_year_events %>"></div>
-
+    <div class = "col-xs-1 col-md-2 arrow-wrap">
+      <div id="next-month" class="btn btn-primary"><i class="fas fa-chevron-right"></i></div>
+    </div>
   </div>
-</div>
 
-<div class="button-wrapper">
-  <br>
-  <br>
-  <br>
-  <div id="back" class="btn btn-primary index">
-    <%= link_to "add a Subscription", new_subscription_path   %>
+  <div class="button-wrapper">
+    <br>
+    <br>
+    <br>
+    <div id="back" class="btn btn-primary index">
+      <%= link_to "add a Subscription", new_subscription_path   %>
+    </div>
   </div>
-</div>
 
 </div>

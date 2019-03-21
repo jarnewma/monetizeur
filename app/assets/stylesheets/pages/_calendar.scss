@@ -2,3 +2,72 @@
   background: white;
   border-color: black;
 }
+
+
+#previous-month{
+  border: none !important;
+  background-color: transparent !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+  color: #87A2C6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: lighter;
+  &:hover{
+  color:#446582;
+  }
+  i{
+    font-size: 80px;
+  }
+}
+
+#next-month{
+  border: none !important;
+  background-color: transparent !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+  color: #87A2C6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: lighter;
+  &:hover{
+  color:#446582;
+  }
+  i{
+    font-size: 80px;
+  }
+}
+
+.arrow-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#wrapping-calendar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+// #previous-month{
+//   background-color: #87A2C6 !important;
+//   border-radius: 5px;
+//   border: none;
+//   border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+//   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+//   &:hover{
+//     background-color: #446582 !important;
+//   }
+// }
+
+// #next-month{
+//   background-color: #87A2C6 !important;
+//   border-radius: 5px;
+//   border: none;
+//   border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+//   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+//   &:hover{
+//     background-color: #446582 !important;
+//   }
+// }

@@ -1,13 +1,24 @@
 .my-profile{
   background-color: #FCFCFC;
   #back{
-    background-color: transparent !important;
+    background-color: #ececec !important;
     border-radius: 15px;
     border-bottom: 1px solid #32a287;
+    text-shadow: none !important;
 
+    height: 43px;
+    border-radius: 50px;
     a{
-      color: black !important;
+      color: #5D5D5E !important;
     }
+  }
+}
+.cards{
+  background-color: #FCFCFC;
+  #back{
+  margin-right: 35%;
+  margin-left: 35%;
+
   }
 }
 
@@ -20,7 +31,14 @@
   flex-direction: column;
   align-items: center;
   border-right: 1px solid #E8E8E8;
+  #back{
+    padding-right: 25px;
+    padding-left: 25px;
+  }
 }
+
+
+
 
 .my-profile {
   display: flex;
@@ -32,25 +50,30 @@
   grid-gap: 16px;
   padding: 16px;
 }
+.your-cards{
+  padding-bottom: 30px;
+}
 .your-cards h3{
   margin-top:15px;
 }
 .summary{
   border-bottom: 1px solid #E8E8E8;
   margin: 0 15px;
+  padding-bottom: 20px;
 }
 .Parasites-my-profile{
   border-bottom: 1px solid #E8E8E8;
   margin: 0 15px;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
 }
 
-//  .deletefriend{
+.deletefriend i{
 //    display: block;
 //    position: absolute;
 //    top: 0;
 //    right: 0;
-// }
+color: #5D5D5E;
+}
 
 .your-cards{
   border-bottom: 1px solid #E8E8E8;
@@ -143,6 +166,7 @@ h3, h5, p{
   width: 90px;
   height: 90px;
   border-radius: 50%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
   background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
   display: flex;
   position: relative;
@@ -173,6 +197,7 @@ h3, h5, p{
 
 .para-subsc{
   font-size: 15px;
+  margin-bottom: 4px;
 }
 .para-details{
   margin-top: 100px;
@@ -207,7 +232,4 @@ h3, h5, p{
   }
 }
 
-.btn-contain{
-  margin-bottom: 15px;
-}
 
