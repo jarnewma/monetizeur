@@ -45,6 +45,10 @@
 
     <%= yield %>
     <%= javascript_pack_tag 'application' %>
+
+    <% unless controller_name == 'pages' && action_name == 'analysis'%>
     <%= render 'shared/footer' %>
+    <% end %>
+
   </body>
 </html>

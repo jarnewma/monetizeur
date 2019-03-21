@@ -1,9 +1,13 @@
 // Specific CSS for your home-page
 .features-title{
-  padding-bottom: 30px;
-  color: #484848;
+  padding-bottom: 45px;
+  color: white;
+  font-weight: 300;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   font-size: 38px;
 }
+
 .all-features{
   display: flex;
   flex-direction: row;
@@ -26,9 +30,10 @@
     display: inline-block
   }
   h4{
-    font-size: 18px;
-    color: #5D5D5E;
-    padding-top: 5px;
+    // color: #5D5D5E;
+    padding-top: 15px;
+    color: gray;
+    font-size: 15px;
   }
   p{
     color: #767676;
@@ -37,12 +42,11 @@
   }
 }
 .product-features{
-  margin-top: -90px;
+  margin-top: -370px;
 }
 
 .reviews {
   padding-top: 50px;
-
   .upcase{
   color: gray;
   margin-bottom: 0;
@@ -50,6 +54,7 @@
   padding-left: 120px;
   }
 }
+
 .reviews-title{
   font-size: 40px;
   color: #484848;
@@ -102,5 +107,8 @@
   #website{
     color:#87a2c6;
   }
+}
+.make-transp{
+  opacity:0.2;
 }
 
