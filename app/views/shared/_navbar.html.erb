@@ -22,22 +22,53 @@
 
       <div class="nav-link">
         <% notify = false %>
-        <% current_user.subscriptions.each { |n| notify = true if (n.notification_date && n.notify_today?) } %>
+        <% current_user.subscriptions.each do |n| %>
+         <% notify = true if (n.notification_date && n.renewal_notification && n.notify_today?)  %>
+        <% end %>
 
         <% if notify %>
           <div class="notify-circle"></div>
-        <% else %>
-          <div id="notice_wrapper">
-            <p>You have no notifications today</p>
-          </div>
         <% end %>
+       <!--    <div id="notice_wrapper">
+            <a You have no notifications today</p> -->
         <div class="dropdown nav-link">
           <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell"></i>
           </div>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <p class="dropdown-item">hey</p>
-            <p class="dropdown-item">ho</p>
+               <% current_user.subscriptions.each do |n| %>
+                 <!-- design notif card here -->
+                  <% if notify %>
+                    <p class="dropdown-item">
+                      <div class="notification-image">
+                        <% if n.name == "Amazon Prime" %>
+                          <%= image_tag "amazon.png", alt: "amazon" %>
+                        <% elsif n.name == "Apple Music" %>
+                          <%= image_tag "apple.png", alt: "apple" %>
+                        <% elsif n.name == "Dropbox" %>
+                          <%= image_tag "dropbox.png", alt: "dropbox" %>
+                        <% elsif n.name == "iCloud" %>
+                          <%= image_tag "icloud.png", alt: "icloud" %>
+                        <% elsif n.name == "LinkedIn" %>
+                          <%= image_tag "linkedin.png", alt: "linkedin" %>
+                        <% elsif n.name == "Netflix" %>
+                          <%= image_tag "netflix.png", alt: "netflix" %>
+                        <% elsif n.name == "Spotify" %>
+                          <%= image_tag "spotify.png", alt: "spotify" %>
+                        <% else %>
+                          <%= image_tag "logosmall.png", alt: "logo" %>
+                        <% end %>
+                      </div>
+
+                      <%=  n.name %>
+                      <%=  n.cost %>
+                      <%=  n.billing_date %>
+                        <%= link_to "add a Friend", new_parasite_path %>
+                    </p>
+
+                  <!-- until here -->
+                <% end %>
+              <% end %>
           </div>
         </div>
       </div>
