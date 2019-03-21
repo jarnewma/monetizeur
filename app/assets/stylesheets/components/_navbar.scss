@@ -97,10 +97,10 @@
 }
 
 .dropdown-item {
-
   text-align: justify;
   padding-left: 5px;
   padding-right: 5px;
+  font-size: 13px;
 }
 
 
@@ -119,5 +119,9 @@
 .dropdown-toggle::after {
   content: '' !important;
   border: 0 !important;
+}
+
+.notification-name {
+  width: 80px;
 }
 
