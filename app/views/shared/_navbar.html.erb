@@ -38,9 +38,10 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                <% current_user.subscriptions.each do |n| %>
                  <!-- design notif card here -->
-                  <% if notify %>
-                    <p class="dropdown-item">
+                  <% if n.notify_today? %>
+                    <div class="dropdown-item">
                       <div class="notification-image">
+                        <div>
                         <% if n.name == "Amazon Prime" %>
                           <%= image_tag "amazon.png", alt: "amazon" %>
                         <% elsif n.name == "Apple Music" %>
@@ -58,13 +59,14 @@
                         <% else %>
                           <%= image_tag "logosmall.png", alt: "logo" %>
                         <% end %>
+                        </div>
+                         <div>
+                          <%=  n.name %>
+                         </div>
+                         <div> €<%=  n.cost %></div>
+                         <div><%=  n.billing_date %></div>
                       </div>
-
-                      <%=  n.name %>
-                      <%=  n.cost %>
-                      <%=  n.billing_date %>
-                        <%= link_to "add a Friend", new_parasite_path %>
-                    </p>
+                    </div>
 
                   <!-- until here -->
                 <% end %>
