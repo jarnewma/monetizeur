@@ -1,5 +1,5 @@
 <p>Hi <%= @user.first_name %>,</p>
 
-<p>This is a notification about your <%= @subscription.name %> charge of EUR <%= @subscription.cost%> that is coming up on <%= @subscription.payment_date %>. Please go on your <%= link_to 'Subscriptions page' www.redlinestation.com/subscriptions(@user.subscriptions) %> for more details. </p>
+<p>This is a notification about your <%= @subscription.name %> charge of EUR <%= @subscription.cost%> that is coming up on <%= @subscription.payment_date %>. Please go on your <%= link_to subscription_path(@subscription), 'Subscriptions page' %> for more details. </p>
 
 <p>Your Monetizeur</p>
