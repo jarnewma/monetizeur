@@ -68,11 +68,11 @@ class Subscription < ApplicationRecord
         end
       to_date = to_date.nil? ? Date.today : to_date
 
-      while date_pay < to_date
-          cost += self.cost
-          date_pay = date_pay + 3.months
-
-      end
+    while date_pay < to_date
+        return cost if date_pay + 3.months > to_date
+        cost += self.cost
+        date_pay = date_pay + 3.months
+    end
       return cost
   end
 
@@ -90,11 +90,12 @@ class Subscription < ApplicationRecord
         end
       to_date = to_date.nil? ? Date.today : to_date
 
-      while date_pay < to_date
-          cost += self.cost
-          date_pay = date_pay + 6.months
+    while date_pay < to_date
+        return cost if date_pay + 6.months > to_date
+        cost += self.cost
+        date_pay = date_pay + 6.months
 
-      end
+    end
       return cost
   end
 
