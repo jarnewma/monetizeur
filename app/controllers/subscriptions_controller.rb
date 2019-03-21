@@ -33,6 +33,7 @@ class SubscriptionsController < ApplicationController
 
   def edit          # GET /payment_methods/:id/edit
     @subscription = Subscription.find(params[:id])
+    @subscription.user = current_user
   end
 
   def update
@@ -77,6 +78,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date, :photo)
+    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date, :photo, :trial_date_until)
   end
 end

@@ -13,6 +13,9 @@
       <%= f.input :name, label: 'Name of your service provider/Subscription', input_html: { style: "display: none;"} %>
       <%= f.input :name, placeholder: 'Enter subscription name', label: false, input_html: { id: "nameInput", class: "hidden" } %>
       <%= f.input :name, label: false, collection: ["Amazon Prime", "Apple Music", "Dropbox", "iCloud", "LinkedIn", "Netflix", "Spotify", "Add manually"], select: 'From ', prompt: 'Select your subscription', input_html: { id: "nameDropdown"} %>
+      <p> Free trial? </p>
+      <p class="notify-me"> <i class="fas fa-info-circle"></i> if this is a Free trial, please enter the ending date of the free trial, if it isn't leave it blank </p>
+      <%= f.input  :trial_date_until, label: false, placeholder: "Free trial end date", as: :string, input_html: { class: "datepicker-here" } %>
       <%= f.input :subscription_type, label: 'Billing frequency', collection: ["Monthly", "Quarterly", "Biannually", "Annually"], prompt: 'Select frequency' %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
@@ -25,7 +28,7 @@
       <%= f.input :cost, label: 'Subscription cost', placeholder: 'Enter your subscription charge', float: 'any' %>
       <%= f.input :creation_date, label: 'Subscription creation date',placeholder: 'Choose subscription start date', as: :string, input_html: { class:  "datepicker-here", autocomplete: 'off' } %>
       <%= f.input :category, placeholder: 'Enter subscription type', collection: ["Media", "Wellbeing", "Streaming", "Leisure", "Social", "Shopping", "Food", "Technology", "Other"] %>
-      <%= f.input :payment_method_id, collection: PaymentMethod.all, label_method: :card_nickname %>
+      <%= f.input :payment_method_id, collection: current_user.payment_methods, label_method: :card_nickname %>
 
     <div class = "form-action form-container">
       <%= f.button :submit, class: 'btn btn-primary form', id: 'back' %>
