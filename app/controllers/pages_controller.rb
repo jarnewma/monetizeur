@@ -114,7 +114,7 @@ skip_before_action :authenticate_user!, only: :home
     @sub_app = @subscriptions.group_by(&:name)
 
     # This month's subscription cost per category
-    @monthly_subscriptions = current_user.subscriptions.select{|sub| sub.billing_date.month == Time.current.month }
+    @monthly_subscriptions = current_user.subscriptions.select{|sub| sub.previous_billing_day.month == Date.today.month || sub.this_month_billing_day.month == Date.today.month}
     @colors_month = []
     @pie_chart_data_this_month = []
     @monthly_subscriptions.group_by(&:category).each do |month, sub_array|
@@ -128,7 +128,7 @@ skip_before_action :authenticate_user!, only: :home
     @colors_year = []
     @pie_chart_data_this_year = []
     @yearly_subscriptions.group_by(&:category).each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(from_date: Time.current - 1.year, to_date: Time.current)}
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(from_date: Date.today - 1.year, to_date: Date.today)}
       @pie_chart_data_this_year << [year, year_value]
       @colors_year << sub_array.first.category_color[:value]
     end

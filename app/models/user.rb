@@ -118,8 +118,17 @@ class User < ApplicationRecord
     end
   end
 
-  def choose_picture
-
+  def how_nice_am_i
+    array_parasite = []
+    parasites = self.parasites
+    parasites.each do |par|
+        count = 0
+        par.subscriptions.each do |sum|
+          count += sum.lifelong_cost.round(2)
+        end
+      array_parasite << [par.name, count]
+    end
+    return array_parasite
   end
 
 end
