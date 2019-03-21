@@ -19,7 +19,7 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def lifelong_cost(from_date: nil, to_date: nil)
+  def lifelong_cost(from_date, to_date)
     total_cost = 0
     if self.subscription_type == "Monthly"
       return calc_monthly(from_date: from_date, to_date: to_date).round(2)
@@ -28,14 +28,19 @@ class Subscription < ApplicationRecord
     elsif self.subscription_type == "Biannually"
       return calc_biannualy(from_date: from_date, to_date: to_date).round(2)
     else self.subscription_type == "Annually"
-      return calc_yearly(from_date: from_date, to_date: to_date).round(2)
+      return calc_yearly( from_date, to_date).round(2)
     end
   end
 
   def calc_monthly(from_date: nil, to_date: nil)
       cost = 0
 
-      date_pay = from_date.nil? ? self.creation_date : from_date
+      if self.trial? == true
+        date_pay = self.billing_date
+      else
+        date_pay = from_date.nil? ? self.creation_date : from_date
+      end
+
       if date_pay < self.creation_date
         date_pay = self.creation_date
       end
@@ -52,7 +57,12 @@ class Subscription < ApplicationRecord
   def calc_quartertly(from_date: nil, to_date: nil)
         cost = 0
 
-      date_pay = from_date.nil? ? self.creation_date : from_date
+        if self.trial? == true
+          date_pay = self.billing_date
+        else
+          date_pay = from_date.nil? ? self.creation_date : from_date
+        end
+
         if date_pay < self.creation_date
         date_pay = self.creation_date
         end
@@ -68,7 +78,13 @@ class Subscription < ApplicationRecord
 
     def calc_biannualy(from_date: nil, to_date: nil)
       cost = 0
-      date_pay = from_date.nil? ? self.creation_date : from_date
+
+        if self.trial? == true
+          date_pay = self.billing_date
+        else
+          date_pay = from_date.nil? ? self.creation_date : from_date
+        end
+
         if date_pay < self.creation_date
         date_pay = self.creation_date
         end
@@ -82,16 +98,14 @@ class Subscription < ApplicationRecord
       return cost
   end
 
-  def calc_yearly(from_date: nil, to_date: nil)
+  def calc_yearly(from_date, to_date)
     cost = 0
-    date_pay = from_date.nil? ? self.creation_date : from_date
-        if date_pay < self.creation_date
-        date_pay = self.creation_date
-        end
-    to_date = to_date.nil? ? Date.today : to_date
+
+          date_pay = self.billing_date
+
 
     while date_pay < to_date
-        cost += self.cost
+        cost += self.cost if (from_date..to_date) === date_pay
         date_pay = date_pay + 12.months
 
     end
@@ -121,7 +135,6 @@ class Subscription < ApplicationRecord
   def subs_month(date)
     notify = false
     value_date = billing_date
-    p self if self.name == "Fitness"
     until ((date.beginning_of_month..date.end_of_month) === value_date) || (value_date > date.end_of_month )
        if self.subscription_type == "Monthly"
           value_date = value_date + 1.month

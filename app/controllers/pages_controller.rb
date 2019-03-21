@@ -114,11 +114,11 @@ skip_before_action :authenticate_user!, only: :home
     @sub_app = @subscriptions.group_by(&:name)
 
     # This month's subscription cost per category
-    @monthly_subscriptions = current_user.subscriptions.select{|sub| sub.previous_billing_day.month == Date.today.month || sub.this_month_billing_day.month == Date.today.month}
+    @monthly_subscriptions = current_user.subscriptions
     @colors_month = []
     @pie_chart_data_this_month = []
     @monthly_subscriptions.group_by(&:category).each do |month, sub_array|
-      month_value = sub_array.inject(0) {|sum, sub| sum + sub.cost}
+      month_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost( Date.today.beginning_of_month, Date.today.end_of_month)}
       @pie_chart_data_this_month << [month, month_value]
       @colors_month << sub_array.first.category_color[:value]
     end
@@ -128,7 +128,7 @@ skip_before_action :authenticate_user!, only: :home
     @colors_year = []
     @pie_chart_data_this_year = []
     @yearly_subscriptions.group_by(&:category).each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(from_date: Date.today - 1.year, to_date: Date.today)}
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(Date.today.beginning_of_year, Date.today.end_of_year)}
       @pie_chart_data_this_year << [year, year_value]
       @colors_year << sub_array.first.category_color[:value]
     end
@@ -137,7 +137,7 @@ skip_before_action :authenticate_user!, only: :home
     @yearly_subscriptions_app = current_user.subscriptions
     @pie_chart_data_per_app = []
     @yearly_subscriptions_app.each do |subs|
-      year_value_app = subs.lifelong_cost(from_date: Time.current - 1.year, to_date: Time.current)
+      year_value_app = subs.lifelong_cost(Date.today.beginning_of_year, Date.today.end_of_year)
       @pie_chart_data_per_app << [subs.name, year_value_app]
     end
 
@@ -168,7 +168,7 @@ skip_before_action :authenticate_user!, only: :home
           next if origin_date.year > current_year
 
 
-          yearly_cost += create.lifelong_cost(from_date: Date.new(current_year, 1, 1) , to_date: Date.new(current_year, 12, 31))
+          yearly_cost += create.lifelong_cost(Date.new(current_year, 1, 1) , Date.new(current_year, 12, 31))
 
         end
 
@@ -191,7 +191,7 @@ skip_before_action :authenticate_user!, only: :home
 
           next if origin_date > current_month_y
 
-          yearly_cost2 += create.lifelong_cost(from_date: current_month_y.beginning_of_month , to_date: current_month_y.end_of_month)
+          yearly_cost2 += create.lifelong_cost(current_month_y.beginning_of_month , current_month_y.end_of_month)
         end
 
         @line_array2[current_month_y.beginning_of_month] = yearly_cost2.round(2)

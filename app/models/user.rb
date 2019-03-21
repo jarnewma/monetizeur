@@ -64,7 +64,7 @@ class User < ApplicationRecord
   def ytd_spending
     total_cost = 0
     self.subscriptions.each do |sub|
-      cost_sub = sub.lifelong_cost(from_date: Date.today - 1.year, to_date: Date.today)
+      cost_sub = sub.lifelong_cost( Date.today - 1.year, Date.today)
       total_cost += cost_sub
     end
     return total_cost
@@ -75,7 +75,7 @@ class User < ApplicationRecord
     array_expensive = []
     array_expensive_name = []
     yearly_subscriptions.each do |subs|
-      year_value = subs.lifelong_cost(from_date: Time.current - 1.year, to_date: Date.today)
+      year_value = subs.lifelong_cost( Time.current - 1.year, Date.today)
 
       array_expensive_name << [subs.name, year_value]
     end
@@ -88,7 +88,7 @@ class User < ApplicationRecord
     yearly_subscriptions = self.subscriptions
     array_expensive = []
     yearly_subscriptions.group_by(&:category).each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(from_date: Time.current - 1.year, to_date: Date.today)}
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost( Time.current - 1.year, Date.today)}
       array_expensive << [year, year_value]
     end
     return  array_expensive.max_by {|sub| sub[1]}
@@ -124,7 +124,7 @@ class User < ApplicationRecord
     parasites.each do |par|
         count = 0
         par.subscriptions.each do |sum|
-          count += sum.lifelong_cost.round(2)
+          count += sum.lifelong_cost(Date.today - 10.years, Date.today).round(2)
         end
       array_parasite << [par.name, count]
     end

@@ -23,6 +23,11 @@
     <div  id="wrapper-show">
       <%= cl_image_tag(@subscription.photo) %>
     </div>
+    <div class="field zero">
+      <% if @subscription.trial? == true %>
+      <h4 style="color:red; font-weight: bold"> This is a Free Trial until <%= @subscription.trial_date_until %></h4>
+      <% end %>
+    </div>
     <div class="square">
       <h4 class="cost"><%= @subscription.cost %> EUR</h4>
       <p>(<%= @subscription.subscription_type %>)</p>
