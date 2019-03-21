@@ -1,6 +1,6 @@
 <div class="container">
   <div class="main-container-show">
-    <div class="card-image2" class="btn btn-primary">
+    <div class="card-image-show" class="btn btn-primary">
 
         <% if @subscription.name == "Amazon Prime" %>
           <%= image_tag "amazon.png", alt: "amazon" %>
@@ -19,8 +19,10 @@
         <% else %>
           <%= image_tag "logosmall.png", alt: "logo" %>
         <% end %>
-    </div class="wrapper-show">
-    <%= cl_image_tag(@subscription.photo) %>
+    </div>
+    <div  id="wrapper-show">
+      <%= cl_image_tag(@subscription.photo) %>
+    </div>
     <div class="square">
       <h4 class="cost"><%= @subscription.cost %> EUR</h4>
       <p>(<%= @subscription.subscription_type %>)</p>
