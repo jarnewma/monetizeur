@@ -7,21 +7,25 @@
   padding-top: 40vh;
   background-position: center;
   padding: 150px 0;
+  .container{
+    align-items: flex-start;
+  }
 }
 
 .banner h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 42px;
-  font-weight: lighter;
+  font-size: 50px;
+  font-weight: 400;
 
 }
 
 .banner p {
-  font-size: 30px;
+  font-size: 16px;
   color: white;
-  font-weight:lighter;
+  font-weight:300;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin-bottom: 0;
+
 }

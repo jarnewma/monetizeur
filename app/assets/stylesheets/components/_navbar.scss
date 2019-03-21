@@ -79,7 +79,8 @@
   border-radius: 5px;
   position: absolute;
   right: 16px;
-  top: 11px
+  top: 11px;
+  z-index: 3;
 }
 
 .notification-image img {
