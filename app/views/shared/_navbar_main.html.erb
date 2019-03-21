@@ -18,6 +18,68 @@
   <% else %>
 
       <ul class="navbar-nav mr-auto">
+
+
+
+
+        <div class="nav-link" id="notification">
+        <% notify = false %>
+        <% current_user.subscriptions.each do |n| %>
+         <% notify = true if (n.notification_date && n.renewal_notification && n.notify_today?)  %>
+        <% end %>
+
+        <% if notify %>
+          <div class="notify-circle"></div>
+        <% end %>
+       <!--    <div id="notice_wrapper">
+            <a You have no notifications today</p> -->
+        <div class="dropdown nav-link">
+          <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell"></i>
+          </div>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <% current_user.subscriptions.each do |n| %>
+                 <!-- design notif card here -->
+                  <% if n.notify_today? %>
+                    <div class="dropdown-item">
+                      <div class="notification-image">
+                        <div class="notification-logo">
+                        <% if n.name == "Amazon Prime" %>
+                          <%= image_tag "amazon.png", alt: "amazon" %>
+                        <% elsif n.name == "Apple Music" %>
+                          <%= image_tag "apple.png", alt: "apple" %>
+                        <% elsif n.name == "Dropbox" %>
+                          <%= image_tag "dropbox.png", alt: "dropbox" %>
+                        <% elsif n.name == "iCloud" %>
+                          <%= image_tag "icloud.png", alt: "icloud" %>
+                        <% elsif n.name == "LinkedIn" %>
+                          <%= image_tag "linkedin.png", alt: "linkedin" %>
+                        <% elsif n.name == "Netflix" %>
+                          <%= image_tag "netflix.png", alt: "netflix" %>
+                        <% elsif n.name == "Spotify" %>
+                          <%= image_tag "spotify.png", alt: "spotify" %>
+                        <% else %>
+                          <%= image_tag "logosmall.png", alt: "logo" %>
+                        <% end %>
+                        </div>
+                         <div>
+                          <p><%=  n.name %></p>
+                         </div>
+                         <div><p><%=  n.cost %> €</p></div>
+                         <div><p><%=  n.billing_date %></p></div>
+                      </div>
+                    </div>
+
+                  <!-- until here -->
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+
+
+
+
         <li class="nav-item-main">
           <%= link_to "My Calendar", calendar_path, class: "nav-link" %>
         </li>
