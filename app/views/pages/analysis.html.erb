@@ -143,14 +143,14 @@
       <div class="info-text">
         <% current_user.subscriptions.each do |test| %>
           <% if test.trial? %>
-          <%= test.name %>
+          <p><%= test.name %>&nbsp;&nbsp;</p>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
 
-<div>
+<div class="spending-container">
 <h3> My spending Dashboard </h3>
 
   <div class="cards-analysis">
