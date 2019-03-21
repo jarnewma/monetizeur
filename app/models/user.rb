@@ -72,26 +72,34 @@ class User < ApplicationRecord
 
   def most_expensive
     yearly_subscriptions = self.subscriptions
+    if yearly_subscriptions.nil?
+      return 0
+    else
     array_expensive = []
     array_expensive_name = []
     yearly_subscriptions.each do |subs|
-      year_value = subs.lifelong_cost( Time.current - 1.year, Date.today)
+      year_value = subs.lifelong_cost(Date.today.beginning_of_year, Date.today.end_of_year)
 
       array_expensive_name << [subs.name, year_value]
     end
     max = array_expensive.max
     return  array_expensive_name.max_by {|sub| sub[1]}
+  end
 
   end
 
   def most_expensive_category
     yearly_subscriptions = self.subscriptions
+    if yearly_subscriptions.nil?
+      return 0
+    else
     array_expensive = []
     yearly_subscriptions.group_by(&:category).each do |year, sub_array|
-      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost( Time.current - 1.year, Date.today)}
+      year_value = sub_array.inject(0) {|sum, sub| sum + sub.lifelong_cost(Date.today.beginning_of_year, Date.today.end_of_year)}
       array_expensive << [year, year_value]
     end
     return  array_expensive.max_by {|sub| sub[1]}
+    end
   end
 
   def parasites_count

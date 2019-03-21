@@ -43,6 +43,9 @@
         <h5><i class="fas fa-sort-amount-up"></i>  Most expensive subscription YTD </h5>
       </div>
       <div class="info-text2">
+        <% if current_user.most_expensive.nil? %>
+          <p> No subscriptions yet </p>
+        <% else %>
         <p> <%= current_user.most_expensive[1] %> € </p>
         <div class="image-app">
           <% if current_user.most_expensive[0] == "Amazon Prime" %>
@@ -62,6 +65,7 @@
             <% else %>
               <%= image_tag "logosmall.png", alt: "logo" %>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -71,6 +75,9 @@
         <h5><i class="fas fa-chart-pie"></i> Most expensive category YTD</h5>
       </div>
       <div class="info-text">
+        <% if current_user.most_expensive_category  .nil? %>
+        <p> No subscriptions </p>
+        <% else %>
         <p> <%= current_user.most_expensive_category[1] %> €
           <% if current_user.most_expensive_category[0] == "Media" %>
             Media color:red
@@ -91,6 +98,7 @@
           <% elsif current_user.most_expensive_category[0] == "Other" %>
             <p style="color:purple;"> &nbsp;&nbsp;Other</p>
           <% end %>
+          <% end %>
         </p>
       </div>
     </div>
@@ -100,7 +108,7 @@
         <h5><i class="far fa-kiss-wink-heart"></i> Friend using the most app's </h5>
       </div>
       <div class="info-text4">
-        <% if current_user.parasites.nil?%>
+        <% if current_user.parasites.blank?%>
           <p> No one is using your app's</p>
         <% else %>
           <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>

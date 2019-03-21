@@ -44,8 +44,12 @@
         <%= subscription.payment_method.card_nickname %>
         <% end %>
         </strong></p>
-      <p class="price"> <%= subscription.lifelong_cost %> €</p>
-      <p class="extra-info">Total since <%= subscription.creation_date %></p>
+      <% if subscription.creation_date.nil? %>
+        <p class="extra-info"> no creation date </p>
+      <% else %>
+        <p class="price"> <%= subscription.lifelong_cost(Date.today - 10.year, Date.today ) %> €</p>
+        <p class="extra-info">Total since <%= subscription.creation_date %></p>
+      <% end %>
     </div>
     <div class="card-product-infos" id="last">
       <%= simple_form_for subscription, url: subscription_update_notification_path(subscription) do |form| %>
