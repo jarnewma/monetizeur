@@ -76,6 +76,10 @@
   top: 18px;
 }
 
+.dropdown-menu {
+  min-width: 20rem;
+}
+
 .dropdown-toggle::after {
   content: '' !important;
   border: 0 !important;
