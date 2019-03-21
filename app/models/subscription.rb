@@ -100,6 +100,7 @@ class Subscription < ApplicationRecord
 
   def notify_today?
     notify = false
+    return false if notification_date.nil? || !renewal_notification
     value_date = notification_date
 
     until value_date >= Date.today
