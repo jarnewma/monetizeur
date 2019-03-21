@@ -47,7 +47,7 @@
       <% if subscription.creation_date.nil? %>
         <p class="extra-info"> no creation date </p>
       <% else %>
-        <p class="price"> <%= subscription.lifelong_cost(Date.today - 10.year, Date.today ) %> €</p>
+        <p class="price"> <%= subscription.lifelong_cost(subscription.creation_date, Date.today) %> €</p>
         <p class="extra-info">Total since <%= subscription.creation_date %></p>
       <% end %>
     </div>
