@@ -100,25 +100,29 @@
         <h5><i class="far fa-kiss-wink-heart"></i> Friend using the most app's </h5>
       </div>
       <div class="info-text4">
-        <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
-        <div class="picture-app-all">
-          <% current_user.parasite_app_name.each do |app| %>
-          <% if app == "Amazon Prime" %>
-              <%= image_tag "amazon.png", alt: "amazon" %>
-            <% elsif app == "Apple Music" %>
-              <%= image_tag "apple.png", alt: "apple" %>
-            <% elsif app == "Dropbox" %>
-              <%= image_tag "dropbox.png", alt: "dropbox" %>
-            <% elsif app == "iCloud" %>
-              <%= image_tag "icloud.png", alt: "icloud" %>
-            <% elsif app == "LinkedIn" %>
-              <%= image_tag "linkedin.png", alt: "linkedin" %>
-            <% elsif app == "Netflix" %>
-              <%= image_tag "netflix.png", alt: "netflix" %>
-            <% elsif app == "Spotify" %>
-              <%= image_tag "spotify.png", alt: "spotify" %>
-            <% else %>
-              <%= image_tag "logosmall.png", alt: "logo" %>
+        <% if current_user.parasites.nil?%>
+          <p> No one is using your app's</p>
+        <% else %>
+          <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
+          <div class="picture-app-all">
+            <% current_user.parasite_app_name.each do |app| %>
+            <% if app == "Amazon Prime" %>
+                <%= image_tag "amazon.png", alt: "amazon" %>
+              <% elsif app == "Apple Music" %>
+                <%= image_tag "apple.png", alt: "apple" %>
+              <% elsif app == "Dropbox" %>
+                <%= image_tag "dropbox.png", alt: "dropbox" %>
+              <% elsif app == "iCloud" %>
+                <%= image_tag "icloud.png", alt: "icloud" %>
+              <% elsif app == "LinkedIn" %>
+                <%= image_tag "linkedin.png", alt: "linkedin" %>
+              <% elsif app == "Netflix" %>
+                <%= image_tag "netflix.png", alt: "netflix" %>
+              <% elsif app == "Spotify" %>
+                <%= image_tag "spotify.png", alt: "spotify" %>
+              <% else %>
+                <%= image_tag "logosmall.png", alt: "logo" %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
