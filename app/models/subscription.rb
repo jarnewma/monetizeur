@@ -174,4 +174,91 @@ class Subscription < ApplicationRecord
       {class_name:'purple', value: 'purple'}
     end
   end
+
+  def this_month_billing_day
+    facture_day = self.billing_date
+    i = 0
+    if self.subscription_type == "Monthly"
+      while facture_day < Date.today.beginning_of_month
+        facture_day += i.month
+        i += 1
+      end
+    elsif self.subscription_type == "Quarterly"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 3
+      end
+    elsif self.subscription_type == "Biannually"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 6
+      end
+    else self.subscription_type == "Annually"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 12
+      end
+    end
+    return  facture_day
+  end
+
+    def previous_billing_day
+    facture_day = self.billing_date
+    i = 0
+    if self.subscription_type == "Monthly"
+      while facture_day < Date.today.beginning_of_month
+        facture_day += i.month
+        i += 1
+      end
+        facture_day -= 1.month
+    elsif self.subscription_type == "Quarterly"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 3
+      end
+      facture_day -= 3.month
+    elsif self.subscription_type == "Biannually"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 6
+      end
+      facture_day -= 6.month
+    else self.subscription_type == "Annually"
+      while facture_day < Date.today.beginning_of_month
+      facture_day += i.month
+      i += 12
+      end
+      facture_day -= 12.month
+    end
+    return  facture_day
+  end
+
+  def current_billing_day
+    facture_day = self.billing_date
+    i = 0
+    if self.subscription_type == "Monthly"
+      while facture_day < Date.today
+        facture_day += i.month
+        i += 1
+      end
+    elsif self.subscription_type == "Quarterly"
+      while facture_day < Date.today
+      facture_day += i.month
+      i += 3
+      end
+    elsif self.subscription_type == "Biannually"
+      while facture_day < Date.today
+      facture_day += i.month
+      i += 6
+      end
+    else self.subscription_type == "Annually"
+      while facture_day < Date.today
+      facture_day += i.month
+      i += 12
+      end
+    end
+    return  facture_day
+  end
+
+
 end

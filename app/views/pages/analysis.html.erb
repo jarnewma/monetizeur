@@ -162,8 +162,13 @@
       <div class="chartkick fifth">
         <h4> Yearly spending per subscription </h4>
           <%= pie_chart @pie_chart_data_per_app, heigth: "250px"%>
-    </div>
-
+          <p> Yearly spending in € per subscription </p>
+      </div>
+      <div class="chartkick sixth">
+              <h4> How nice am I? </h4>
+          <%= pie_chart current_user.how_nice_am_i, heigth: "250px"%>
+          <p> Total cost in € of subscription used by friends </p>
+      </div>
   </div>
   </div>
 
