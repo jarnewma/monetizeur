@@ -2,13 +2,20 @@
   background-color: #87A2C6 !important;
   border:none;
   border-radius: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+  height: 43px;
   &:hover{
     background-color: #446582 !important;
   }
 }
 
 #back a{
-  color: #FCFCFC !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
+  color: white !important;
   text-decoration: none;
 }
 

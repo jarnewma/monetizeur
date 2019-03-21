@@ -3,19 +3,12 @@
 
   <div class="user-profile">
     <div class="profile-picture">
-      <%= image_tag "avatar-profile.png", class: "profile-picture-round"%>
+      <%= image_tag "avatar.jpg", class: "profile-picture-round"%>
     </div>
     <div class="profile info">
-      <p> Email: <%=current_user.email  %> </p>
-      <p> First Name:
-          <%= current_user.first_name %>
-      </p>
-      <p> Last Name:
-          <%= current_user.last_name %>
-      </p>
-      <p> Birth Date:
-          <%= current_user.dob %>
-      </p>
+      <p> <%=current_user.email  %> </p>
+      <p> <%= current_user.first_name %> <%= current_user.last_name %></p>
+      <p><%= current_user.dob %></p>
 
       <div id="back" class="btn btn-primary">
         <%= link_to "Update Your Profile", edit_user_registration_path  %>

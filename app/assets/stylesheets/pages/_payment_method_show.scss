@@ -61,6 +61,8 @@
   border: none;
   border-radius: 10px;
   margin-bottom:10px;
+  margin-right: 12%;
+  margin-left: 12%;
   &:hover{
    background-color: #C13836 !important;
   }
@@ -76,6 +78,10 @@
   flex-direction: column;
 }
 
+.back-my-profile{
+  margin-right: 12%;
+  margin-left: 12%;
+}
 .back-my-profile p{
   color:white !important;
   margin: 0;

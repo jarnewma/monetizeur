@@ -1,6 +1,7 @@
 .avatar {
   width: 40px;
   border-radius: 50%;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15) !important;
 }
 .avatar-large {
   width: 56px;
@@ -23,4 +24,5 @@
   width: 100px;
   border-radius: 50%;
   margin: 20px;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5) !important;
 }
