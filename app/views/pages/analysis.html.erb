@@ -100,7 +100,9 @@
         <h5><i class="far fa-kiss-wink-heart"></i> Friend using the most app's </h5>
       </div>
       <div class="info-text4">
-        <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
+        <% if current_user.parasites.present? %>
+          <p> <%= current_user.parasites_count[0] %> uses <%= current_user.parasites_count[1] %> subscriptions: </p>
+        <% end %>
         <div class="picture-app-all">
           <% current_user.parasite_app_name.each do |app| %>
           <% if app == "Amazon Prime" %>
