@@ -2,8 +2,11 @@
   display: flex;
   align-items: center;
   img {
-    width: 60%;
-    align-items: center;
+  margin: auto;
+  width: 60%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: contain;
   }
 }
 
@@ -27,7 +30,7 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 20px;
   background-color: #FCFCFC;
-  width: 65%;
+  width: 60%;
   min-width: 300px;
 }
 
@@ -69,16 +72,11 @@
   text-align: center;
 }
 
-.add-friend {
-  margin-bottom: 25px;
+
+  .add-btn-container {
+     display: flex;
+    justify-content: center;
+
 }
 
-#wrapper-show {
-  margin-right: auto;
-  margin-left:  auto;
-  max-width: 960px;
-  padding-right: 10px;
-  padding-left:  10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+
