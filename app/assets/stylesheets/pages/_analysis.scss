@@ -2,8 +2,11 @@
   background-color: #FCFCFC;
   display: flex;
 }
+.analysis-profile{
+  background-color: rgba(50,162,135,0.05);
+}
 .spending-container{
-  background-color: #F2FFFC;
+  background-color: rgba(50,162,135,0.05);
 }
 .analysis h3 {
   text-align: center;
@@ -51,10 +54,8 @@
 .info-text2 {
   text-font: bold;
   text-align: left;
-  padding-left: 20px;
-  padding-top: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .info-text2 p {
@@ -149,11 +150,71 @@
 }
 
 
+.ytd-all{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.ytd-total{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+  h5{
+    padding: 0px;
+  }
+  p{
+    font-size: 17px;
+  }
+}
 
+.ytd-mostexpensive{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.most-expensive{
+  flex-grow: 1;
+}
 
+.ytd-title{
+  color: #767676;
+  font-size: 14px;
+  text-align: center !important;
+}
+.main-title-ytd{
+  color: #5D5D5E !important;
+  font-weight: 500 !important;
+  font-size: 16px;
+    letter-spacing: 1px;
+}
 
-
-
+.ytd-category{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .ytd-title{
+    padding-top: 5px;
+  }
+  .info-text{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  }
+}
+.ytd-subsc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .image-app img{
+    margin-left: 7px;
+  }
+}
 
 
 

@@ -6,12 +6,11 @@
       <%= image_tag "avatar.jpg", class: "profile-picture-round"%>
     </div>
     <div class="profile info">
-      <p> <%=current_user.email  %> </p>
-      <p> <%= current_user.first_name %> <%= current_user.last_name %></p>
-      <p><%= current_user.dob %></p>
 
+      <p class="profile-name"> <%= current_user.first_name %> <%= current_user.last_name %></p>
+      <p class="profile-mail"> <%=current_user.email  %> </p>
       <div id="back" class="btn btn-primary">
-        <%= link_to "Update Your Profile", edit_user_registration_path  %>
+        <%= link_to "Update your profile", edit_user_registration_path  %>
       </div>
 
     </div>
@@ -46,7 +45,9 @@
         </div>
 
         <div class="box calendar-view">
+          <%= link_to calendar_path do %>
           <h5><i class="far fa-calendar-alt"></i> Calendar <%= (Date.today).strftime("%B") %> <%= Date.today.year %></h5>
+          <% end %>
           <div id='calendar' class='profile-calendar' data-subscriptions="<%= @one_year_events %>"></div>
         </div>
       </div>
