@@ -78,6 +78,7 @@
       <div class="Parasites-my-profile">
         <%= render "parasites", parasites: @subscription.parasites %>
       </div>
+
       <div class="add-friend">
         <%= simple_form_for @subscription, url: subscription_path(@subscription) do |f| %>
         <%= f.association :parasites, collection: @parasites_to_add, label: "Add user to subscription"  %>

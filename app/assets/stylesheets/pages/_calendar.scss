@@ -1,7 +1,36 @@
+#wrapping-calendar{
+
 .fc-event {
   background: white;
   border-color: black;
 }
+
+.fc-left h2{
+  color: #5D5D5E;
+}
+
+.fc-day-header{
+  color: #757575;
+  padding: 5px 0;
+  font-weight: 400;
+}
+.fc-day-number{
+  color: #5D5D5E;
+}
+
+.fc-basic-view .fc-day-number, .fc-basic-view .fc-week-number{
+  padding-right: 7px;
+}
+.fc-content-skeleton{
+  height: 80px;
+  table{
+      height: 80px !important;
+  }
+}
+}
+
+
+
 
 
 #previous-month{

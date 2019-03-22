@@ -4,17 +4,18 @@ import Pikaday from 'pikaday';
 import selectNotificationDate from './form_subscription';
 import selectDropdown from './select_dropdown';
 import { initUpdateNavbarOnScroll } from './navbar';
-// import { initUpdateBannerOnScroll } from './banner';
+import { initUpdateBannerOnScroll } from './banner';
 
 const landingNavbar = document.querySelector('.navbar-lewagon')
 if (landingNavbar) {
   initUpdateNavbarOnScroll();
 }
 
-// const transparent = document.querySelector('.transparent')
-// if (transparent) {
-//   initUpdateNavbarOnScroll();
-// }
+const transparent = document.querySelector('.transparent')
+if (transparent) {
+  console.log("I found qn element !")
+  initUpdateBannerOnScroll();
+}
 
 
 require('./my_calendar')
