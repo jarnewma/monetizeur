@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
 
   def show  # GET /payment_methods/:id
       @subscription = Subscription.find(params[:id])
-      @parasites_to_add = current_user.parasites - @subscription.parasites
+      @parasites_to_add = (current_user.parasites - @subscription.parasites).compact
   end
 
   def new
@@ -14,6 +14,11 @@ class SubscriptionsController < ApplicationController
 
   def update
     @subscription = Subscription.find(params[:id])
+    if params[:subscription][:parasite_ids]
+      params[:subscription][:parasite_ids].reject { |c| c.empty? }.each do |par_id|
+         @subscription.parasites << Parasite.find(par_id)
+      end
+    end
     if @subscription.update(subscription_params)
       redirect_to subscription_path(@subscription), notice: 'Subscription edited'
     else
@@ -36,14 +41,14 @@ class SubscriptionsController < ApplicationController
     @subscription.user = current_user
   end
 
-  def update
-    @subscription = Subscription.find(params[:id])
-    if @subscription.update(subscription_params)
-      redirect_to subscription_path(@subscription), notice: 'Subscription updated'
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @subscription = Subscription.find(params[:id])
+  #   if @subscription.update(subscription_params)
+  #     redirect_to subscription_path(@subscription), notice: 'Subscription updated'
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def add_parasite
     @subscription = Subscription.find(params[:id])
@@ -78,6 +83,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date, :photo, :trial_date_until)
+    params.require(:subscription).permit(:name, :subscription_type, :cost, :category, :creation_date, :renewal_notification, :notification_date, :payment_method_id, :subscription_id, :billing_date, :photo, :trial_date_until, :parasite_ids)
   end
 end

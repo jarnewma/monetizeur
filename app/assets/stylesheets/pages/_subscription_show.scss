@@ -1,12 +1,13 @@
 .card-image-show{
   display: flex;
   align-items: center;
-  img {
-  margin: auto;
-  width: 60%;
   height: auto;
-  background-repeat: no-repeat;
-  background-size: contain;
+  width: 300px;
+  justify-content: center;
+  padding-bottom: 0px;
+  padding-top: 25px;
+  img {
+    width: 55%;
   }
 }
 
@@ -76,7 +77,6 @@
   .add-btn-container {
      display: flex;
     justify-content: center;
+    border-bottom: 0 solid white !important;
 
 }
-
-
