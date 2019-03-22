@@ -35,6 +35,9 @@ if (subscriptionForm) {
 }
 
 function getEventNotif(){
+  const notificationCheck = document.getElementById('subscription_renewal_notification')
+  const notificationForm = document.getElementById('notif')
+  if (notificationCheck.checked) { notificationForm.classList.toggle('hidden') }
   document.getElementById('subscription_renewal_notification').addEventListener('click', (e) => {
     // e.preventDefault();
     document.getElementById('notif').classList.toggle('hidden')

@@ -139,4 +139,12 @@ class User < ApplicationRecord
     return array_parasite
   end
 
+
+  def subscriptions_today
+    today_subscriptions = []
+    self.subscriptions.each do |subscription|
+       today_subscriptions << subscription if subscription.notification_date && subscription.renewal_notification && subscription.notify_today?
+    end
+    today_subscriptions
+  end
 end
