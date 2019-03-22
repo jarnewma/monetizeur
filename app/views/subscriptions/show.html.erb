@@ -78,14 +78,15 @@
       <div class="Parasites-my-profile">
         <%= render "parasites", parasites: @subscription.parasites %>
       </div>
-      <p>
-        <%= simple_form_for @subscription, url: add_parasite_subscription_path do |f| %>
-        <%= f.association :parasites, collection: @parasites_to_add, label: "Add a new parasite"  %>
-        <%= f.submit %>
+
+      <div class="add-friend">
+        <%= simple_form_for @subscription, url: subscription_path(@subscription) do |f| %>
+        <%= f.association :parasites, collection: @parasites_to_add, label: "Add user to subscription"  %>
+        <div class="add-btn-container">
+        <%= f.submit :Add, id: "back", class: "text-center", class: "btn btn-primary" %>
+        </div>
         <% end %>
-      </p>
-      <p id="back-little" class="btn btn-primary index add-friend">
-      <%= link_to "Create a new friend", new_parasite_path(subscription_id: @subscription) %></p>
+      </div >
     </div>
   </div>
 </div>
