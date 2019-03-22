@@ -28,78 +28,79 @@
     </div>
 
     <div class="info-a">
-      <div class="info-picture">
-        <h5><i class="fas fa-file-invoice-dollar"></i>  Year to date Spending </h5>
-      </div>
-      <div class="info-text">
-        <p><%= current_user.ytd_spending %> €</p>
-      </div>
-    </div>
-
-    <div class="info-a">
-      <div class="info-picture">
-        <h5><i class="fas fa-sort-amount-up"></i>  Most expensive subscription YTD </h5>
-      </div>
-      <div class="info-text2">
-        <% if current_user.most_expensive.nil? %>
-          <p> No subscriptions yet </p>
-        <% else %>
-        <p> <%= current_user.most_expensive[1] %> € </p>
-        <div class="image-app">
-          <% if current_user.most_expensive[0] == "Amazon Prime" %>
-              <%= image_tag "amazon.png", alt: "amazon" %>
-            <% elsif current_user.most_expensive[0] == "Apple Music" %>
-              <%= image_tag "apple.png", alt: "apple" %>
-            <% elsif current_user.most_expensive[0] == "Dropbox" %>
-              <%= image_tag "dropbox.png", alt: "dropbox" %>
-            <% elsif current_user.most_expensive[0] == "iCloud" %>
-              <%= image_tag "icloud.png", alt: "icloud" %>
-            <% elsif current_user.most_expensive[0] == "LinkedIn" %>
-              <%= image_tag "linkedin.png", alt: "linkedin" %>
-            <% elsif current_user.most_expensive[0] == "Netflix" %>
-              <%= image_tag "netflix.png", alt: "netflix" %>
-            <% elsif current_user.most_expensive[0] == "Spotify" %>
-              <%= image_tag "spotify.png", alt: "spotify" %>
-            <% else %>
-              <%= image_tag "logosmall.png", alt: "logo" %>
-            <% end %>
-          <% end %>
+      <h5><i class="fas fa-file-invoice-dollar"></i>  Year to date Spending </h5>
+        <div class="ytd-all">
+        <div class="info-text ytd-total">
+          <h5 class="ytd-title main-title-ytd">TOTAL</h5>
+          <p><%= current_user.ytd_spending %> €</p>
         </div>
-      </div>
+        <div class="most-expensive">
+          <h5 class="ytd-title main-title-ytd">MOST EXPENSIVE</h5>
+          <div class="ytd-mostexpensive">
+            <div class="ytd-subsc">
+              <h5 class="ytd-title"><i class="fas fa-sort-amount-up"></i>&nbsp;SUBSCRIPTION</h5>
+              <div class="info-text2">
+              <% if current_user.most_expensive.nil? %>
+                <p> No subscriptions yet </p>
+              <% else %>
+              <p> <%= current_user.most_expensive[1] %> € </p>
+              <div class="image-app">
+                <% if current_user.most_expensive[0] == "Amazon Prime" %>
+                    <%= image_tag "amazon.png", alt: "amazon" %>
+                  <% elsif current_user.most_expensive[0] == "Apple Music" %>
+                    <%= image_tag "apple.png", alt: "apple" %>
+                  <% elsif current_user.most_expensive[0] == "Dropbox" %>
+                    <%= image_tag "dropbox.png", alt: "dropbox" %>
+                  <% elsif current_user.most_expensive[0] == "iCloud" %>
+                    <%= image_tag "icloud.png", alt: "icloud" %>
+                  <% elsif current_user.most_expensive[0] == "LinkedIn" %>
+                    <%= image_tag "linkedin.png", alt: "linkedin" %>
+                  <% elsif current_user.most_expensive[0] == "Netflix" %>
+                    <%= image_tag "netflix.png", alt: "netflix" %>
+                  <% elsif current_user.most_expensive[0] == "Spotify" %>
+                    <%= image_tag "spotify.png", alt: "spotify" %>
+                  <% else %>
+                    <%= image_tag "logosmall.png", alt: "logo" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+            <div class="ytd-category">
+              <h5 class="ytd-title"><i class="fas fa-chart-pie">&nbsp;</i>CATEGORY</h5>
+              <div class="info-text">
+                <% if current_user.most_expensive_category  .nil? %>
+                <p> No subscriptions </p>
+                <% else %>
+                <p> <%= current_user.most_expensive_category[1] %> €
+                  <% if current_user.most_expensive_category[0] == "Media" %>
+                    Media color:red
+                  <% elsif current_user.most_expensive_category[0] == "Wellbeing" %>
+                    <p style="color:#5CB566;">Wellbeing</p>
+                  <% elsif current_user.most_expensive_category[0] == "Streaming" %>
+                    <p style="color:lightblue;">Streaming</p>
+                  <% elsif current_user.most_expensive_category[0] == "Leisure" %>
+                    <p style="color:darkblue;">Leisure</p>
+                  <% elsif current_user.most_expensive_category[0] == "Social" %>
+                    <p style="color:orange;">Social</p>
+                  <% elsif current_user.most_expensive_category[0] == "Shopping" %>
+                    <p style="color:pink;">Leisure</p>
+                  <% elsif current_user.most_expensive_category[0] == "Food" %>
+                    <p style="color:darkblue;">Food</p>
+                  <% elsif current_user.most_expensive_category[0] == "Technology" %>
+                    <p style="color:gray;">Technology</p>
+                  <% elsif current_user.most_expensive_category[0] == "Other" %>
+                    <p style="color:purple;">Other</p>
+                  <% end %>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
+  </div>
 
-    <div class="info-a">
-      <div class="info-picture">
-        <h5><i class="fas fa-chart-pie"></i> Most expensive category YTD</h5>
-      </div>
-      <div class="info-text">
-        <% if current_user.most_expensive_category  .nil? %>
-        <p> No subscriptions </p>
-        <% else %>
-        <p> <%= current_user.most_expensive_category[1] %> €
-          <% if current_user.most_expensive_category[0] == "Media" %>
-            Media color:red
-          <% elsif current_user.most_expensive_category[0] == "Wellbeing" %>
-            <p style="color:#5CB566;"> &nbsp;&nbsp;Wellbeing</p>
-          <% elsif current_user.most_expensive_category[0] == "Streaming" %>
-            <p style="color:lightblue;"> &nbsp;&nbsp;Streaming</p>
-          <% elsif current_user.most_expensive_category[0] == "Leisure" %>
-            <p style="color:darkblue;"> &nbsp;&nbsp;Leisure</p>
-          <% elsif current_user.most_expensive_category[0] == "Social" %>
-            <p style="color:orange;"> &nbsp;&nbsp;Social</p>
-          <% elsif current_user.most_expensive_category[0] == "Shopping" %>
-            <p style="color:pink;"> &nbsp;&nbsp;Leisure</p>
-          <% elsif current_user.most_expensive_category[0] == "Food" %>
-            <p style="color:darkblue;"> &nbsp;&nbsp;Food</p>
-          <% elsif current_user.most_expensive_category[0] == "Technology" %>
-            <p style="color:gray;"> &nbsp;&nbsp;Technology</p>
-          <% elsif current_user.most_expensive_category[0] == "Other" %>
-            <p style="color:purple;"> &nbsp;&nbsp;Other</p>
-          <% end %>
-          <% end %>
-        </p>
-      </div>
-    </div>
 
     <div class="info-a">
       <div class="info-picture">

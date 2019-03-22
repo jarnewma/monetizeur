@@ -1,10 +1,10 @@
 .my-profile{
-  background-color: #FCFCFC;
+  background-color: white;
+
   #back{
-    background-color: #ececec !important;
+    background-color: white !important;
     border-radius: 15px;
     border-bottom: 1px solid #32a287;
-    text-shadow: none !important;
 
     height: 43px;
     border-radius: 50px;
@@ -21,7 +21,24 @@
 
   }
 }
+.info{
+  p{
+    padding-bottom: 15px;
+  }
+}
 
+.profile-name{
+  text-align: center;
+  font-weight: 400;
+  font-size: 26px;
+  text-align: center;
+}
+.profile-mail{
+    font-size: 18px;
+    font-weight: 300;
+    color: gray;
+    text-align: center;
+}
 .user-profile{
   height: 100vh;
   position: sticky;
@@ -30,7 +47,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid #E8E8E8;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  padding-top: 30px;
   #back{
     padding-right: 25px;
     padding-left: 25px;
@@ -52,6 +70,7 @@
 }
 .your-cards{
   padding-bottom: 30px;
+  border-bottom: none !important;
 }
 .your-cards h3{
   margin-top:15px;
@@ -115,6 +134,9 @@ color: #5D5D5E;
 .subscriptions{
   margin-right: 40px;
   position: relative;
+  h5{
+    padding-bottom: 25px;
+  }
 }
 .subsc-cost{
   display: flex;
@@ -234,4 +256,10 @@ h3, h5, p{
   }
 }
 
-
+.calendar-view {
+  a{
+   &:hover{
+    text-decoration: none;
+   }
+}
+}
