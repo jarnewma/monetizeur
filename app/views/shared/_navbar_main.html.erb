@@ -17,18 +17,10 @@
 
   <% else %>
 
+
       <ul class="navbar-nav mr-auto">
-
-
-
-
         <div class="nav-link" id="notification">
-        <% notify = false %>
-        <% current_user.subscriptions.each do |n| %>
-         <% notify = true if (n.notification_date && n.renewal_notification && n.notify_today?)  %>
-        <% end %>
-
-        <% if notify %>
+        <% unless current_user.subscriptions_today.empty? %>
           <div class="notify-circle"></div>
         <% end %>
        <!--    <div id="notice_wrapper">
@@ -38,10 +30,14 @@
             <i class="fas fa-bell"></i>
           </div>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-               <% current_user.subscriptions.each do |n| %>
+        <% if current_user.subscriptions_today.empty? %>
+         <div class=""> <p>You have no notifications today</p></div>
+
+        <% end %>
+
+               <% current_user.subscriptions_today.each do |n| %>
                  <!-- design notif card here -->
-                  <% if n.notify_today? %>
-                    <div class="dropdown-item">
+                   <%= link_to subscription_path(n), class: "dropdown-item" do %>
                       <div class="notification-image">
                         <div class="notification-logo">
                         <% if n.name == "Amazon Prime" %>
@@ -62,18 +58,18 @@
                           <%= image_tag "logosmall.png", alt: "logo" %>
                         <% end %>
                         </div>
-                         <div style="width: 80px;">
+                         <div class="notification-name">
                           <p><%=  n.name %></p>
                          </div>
                          <div><p><%=  n.cost %> €</p></div>
                          <div><p><%=  n.billing_date %></p></div>
                       </div>
-                    </div>
                 <% end %>
               <% end %>
           </div>
         </div>
       </div>
+
 
 
 
