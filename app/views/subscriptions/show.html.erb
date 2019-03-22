@@ -20,9 +20,7 @@
           <%= image_tag "logosmall.png", alt: "logo" %>
         <% end %>
     </div>
-    <div  id="wrapper-show">
-      <%= cl_image_tag(@subscription.photo) %>
-    </div>
+
     <div class="field zero">
       <% if @subscription.trial? == true %>
       <h4 style="color:red; font-weight: bold"> This is a Free Trial until <%= @subscription.trial_date_until %></h4>
@@ -83,7 +81,7 @@
         <%= simple_form_for @subscription, url: subscription_path(@subscription) do |f| %>
         <%= f.association :parasites, collection: @parasites_to_add, label: "Add user to subscription"  %>
         <div class="add-btn-container">
-        <%= f.submit :Add, id: "back", class: "text-center", class: "btn btn-primary" %>
+        <%= f.submit :Add, id: "back", class: "text-center btn btn-primary" %>
         </div>
         <% end %>
       </div >
